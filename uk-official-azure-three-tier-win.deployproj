@@ -54,7 +54,7 @@
     <None Include="parameters\azure\virtualNetwork-adds-dns.parameters.json" />
     <None Include="parameters\azure\virtualNetworkGateway.parameters.json" />
     <None Include="templates\postsetup.azuredeploy.json" />
-    <None Include="templates\worklloads.azuredeploy.json" />
+    <None Include="templates\workloads.azuredeploy.json" />
     <None Include="templates\aads.azuredeploy.json" />
     <None Include="templates\virtualnetwork.azuredeploy.json" />
     <None Include="templates\azure\vnetpeering\azuredeploy.json" />
