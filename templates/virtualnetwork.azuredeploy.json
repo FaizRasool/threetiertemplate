@@ -137,8 +137,8 @@
         "name": "application-gateway-deployment",
         "type": "Microsoft.Resources/deployments",
         "dependsOn": [
-        "[concat('Microsoft.Resources/deployments/', 'operational-vpn-gateway-deployment')]"
-       ]
+          "[concat('Microsoft.Resources/deployments/', 'operational-vpn-gateway-deployment')]"
+        ],
         "properties": {
           "mode": "incremental",
           "templateLink": {
