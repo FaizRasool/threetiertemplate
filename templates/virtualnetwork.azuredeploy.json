@@ -62,7 +62,8 @@
       "name": "operational-vnet-peering-deployment",
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
-        "[concat('Microsoft.Resources/deployments/', 'operational-vnet-deployment')]"
+        "[concat('Microsoft.Resources/deployments/', 'operational-vnet-deployment')]",
+        "[concat('Microsoft.Resources/deployments/', 'azure-mgmt-vnet-deployment')]"
       ],
       "properties": {
         "mode": "incremental",
@@ -81,6 +82,7 @@
       "name": "mgmt-vnet-peering-deployment",
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
+        "[concat('Microsoft.Resources/deployments/', 'operational-vnet-deployment')]",
         "[concat('Microsoft.Resources/deployments/', 'azure-mgmt-vnet-deployment')]"
       ],
       "properties": {
