@@ -36,7 +36,7 @@
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/parameters/azure/virtualNetwork.parameters.json",
+          "uri": "[variables('parameterFiles').azureVirtualNetworkParametersFile]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -64,7 +64,7 @@
       "properties": {
         "mode": "incremental",
         "templateLink": {
-          "uri": "[variables('buildingBlocks').vnetPeeringTemplate]",
+          "uri": "[variables('vnetPeeringTemplate')]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
@@ -80,7 +80,7 @@
       "properties": {
         "mode": "incremental",
         "templateLink": {
-          "uri": "[variables('buildingBlocks').vnetPeeringTemplate]",
+          "uri": "[variables('vnetPeeringTemplate')]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {

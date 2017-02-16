@@ -4,7 +4,7 @@
   "parameters": {
     "virtualNetworkSettings": {
       "value": {
-        "name": "azure-operational-vnet",
+        "name": "azure-operational-vnet"
       }
     },
     "virtualNetworkGatewaySettings": {
@@ -21,7 +21,7 @@
         "connectionType": "IPSec",
         "sharedKey": "123secret",
         "virtualNetworkGateway1": {
-          "name": "operational-vpn-vgw",
+          "name": "operational-vpn-vgw"
         },
         "localNetworkGateway": {
           "name": "bb-hybrid-vpn-lgw",
