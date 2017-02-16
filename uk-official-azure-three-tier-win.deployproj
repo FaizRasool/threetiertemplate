@@ -35,6 +35,7 @@
     <None Include="extensions\enable-windows-auth.ps1" />
     <None Include="extensions\adds-forest.ps1" />
     <None Include="extensions\adds.ps1" />
+    <None Include="metadata.json" />
     <None Include="parameters\azure\add-adds-domain-controller.parameters.json" />
     <None Include="parameters\azure\application-gateway.parameters.json" />
     <None Include="parameters\azure\ops-vent-nsgs.json" />

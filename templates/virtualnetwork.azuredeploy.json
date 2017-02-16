@@ -18,37 +18,21 @@
       "managementResourceGroupName": "azure-mgmt-rg"
     },
     "buildingBlocks": {
-      "loadBalancerTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/loadBalancer-backend-n-vm/azuredeploy.json')]",
       "virtualNetworkTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vnet-n-subnet/azuredeploy.json')]",
-      "virtualMachineTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json')]",
       "dmzTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/dmz/azuredeploy.json')]",
       "nsgTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/networkSecurityGroups/azuredeploy.json')]",
       "virtualNetworkGatewayTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vpn-gateway-vpn-connection/azuredeploy.json')]",
-      "virtualMachineExtensionsTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/virtualMachine-extensions/azuredeploy.json')]"
     },
     "vnetPeeringTemplate": "[concat(variables('localRepoBaseUrl'), 'templates/azure/vnetpeering/azuredeploy.json')]",
     "applicationGatewayTemplate": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-application-gateway-create/azuredeploy.json",
     "parameterFiles": {
-      "azureAddsVirtualMachinesParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/virtualMachines-adds.parameters.json')]",
-      "azureCreateAddsForestExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/create-adds-forest-extension.parameters.json')]",
-      "azureAddAddsDomainControllerExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/add-adds-domain-controller.parameters.json')]",
       "azureVirtualNetworkGatewayParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/virtualNetworkGateway.parameters.json')]",
       "azureVirtualNetworkParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/virtualNetwork.parameters.json')]",
       "azureMgmtVirtualNetworkParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-vnet.parameters.json')]",
-      "azureVirtualNetworkDnsParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/virtualNetwork-adds-dns.parameters.json')]",
-      "webLoadBalancerParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/loadBalancer-web.parameters.json')]",
-      "bizLoadBalancerParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/loadBalancer-biz.parameters.json')]",
-      "dataLoadBalancerParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/loadBalancer-data.parameters.json')]",
-      "azureOperationVmDomainJoinExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/ops-vm-domain-join.parameters.json')]",
-      "azureOperationalVmEnableWindowsAuthExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/ops-vm-enable-windows-auth.parameters.json')]",
-      "azureMgmtVmDomainJoinExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-vm-domain-join.parameters.json')]",
-      "azureMgmtVmEnableWindowsAuthExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-vm-enable-windows-auth.parameters.json')]",
       "nsgParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-subnet-nsg.parameters.json')]",
-      "opsvnetnsgParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/ops-vent-nsgs.json')]",
       "applicationGatewayParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/application-gateway.parameters.json')]",
       "operationalVnetPeeringParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/operational-vnet-peering.parameters.json')]",
       "mgmtVnetPeeringParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-vnet-peering.parameters.json')]",
-      "mgmtVMJumpboxParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-virtualmachine.parameters.json')]"
     }
   },
   "resources": [
@@ -150,6 +134,23 @@
         },
         "parametersLink": {
           "uri": "[variables('parameterFiles').nsgParametersFile]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "apiVersion": "2015-01-01",
+      "name": "application-gateway-deployment",
+      "type": "Microsoft.Resources/deployments",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('applicationGatewayTemplate')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parametersLink": {
+          "uri": "[variables('parameterFiles').applicationGatewayParametersFile]",
           "contentVersion": "1.0.0.0"
         }
       }
