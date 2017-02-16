@@ -4,8 +4,7 @@
   "parameters": {
     "virtualNetworkSettings": {
       "value": {
-        "name": "azure-operational-vnet",
-        "resourceGroup": "bh-demo-official-networking-rg"
+        "name": "azure-operational-vnet"
       }
     },
     "virtualNetworkGatewaySettings": {
