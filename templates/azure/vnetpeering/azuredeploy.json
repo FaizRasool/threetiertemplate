@@ -2,9 +2,6 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "remoteVirtualNetworkResourceGroupName": {
-      "type": "string"
-    },
     "remoteVirtualNetworkName": {
       "type": "string"
     },
@@ -12,15 +9,11 @@
       "type": "string"
     }
   },
-  "variables": {
-    "remoteVNet": "[resourceId(parameters('remoteVirtualNetworkResourceGroupName'), 'Microsoft.Network/virtualNetworks', parameters('remoteVirtualNetworkName'))]",
-    "peeringName": "[parameters('peeringName')]"
-  },
   "resources": [
     {
       "apiVersion": "2016-06-01",
       "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-      "name": "[variables('peeringName')]",
+      "name": "[parameters('peeringName')]",
       "location": "[resourceGroup().location]",
       "properties": {
         "allowVirtualNetworkAccess": true,
@@ -28,7 +21,7 @@
         "allowGatewayTransit": false,
         "useRemoteGateways": false,
         "remoteVirtualNetwork": {
-          "id": "[variables('remoteVNet')]"
+          "id": "[resourceId('Microsoft.Network/virtualNetworks', parameters('remoteVirtualNetworkName'))]"
         }
       }
     }
