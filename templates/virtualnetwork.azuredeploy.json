@@ -36,7 +36,7 @@
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "parameters/azure/virtualNetwork.parameters.json",
+          "uri": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/parameters/azure/virtualNetwork.parameters.json",
           "contentVersion": "1.0.0.0"
         }
       }
