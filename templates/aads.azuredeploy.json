@@ -2,23 +2,11 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "location": {
-      "type": "string",
-      "defaultValue": "UKSouth"
-    }
   },
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
-    "localRepoBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
-    "parameterFileBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
-    "resourceGroups": {
-      "azureNetworkResourceGroupName": "azure-operational-network-rg", 
-      "workloadResourceGroupName": "azure-operational-workload-rg",
-      "addsResourceGroupName": "azure-operational-adds-rg",
-      "managementResourceGroupName": "azure-mgmt-rg"
-    },
+    "localRepoBaseUrl": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/",
     "buildingBlocks": {
-      "loadBalancerTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/loadBalancer-backend-n-vm/azuredeploy.json')]",
       "virtualNetworkTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vnet-n-subnet/azuredeploy.json')]",
       "virtualMachineTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json')]",
       "dmzTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/dmz/azuredeploy.json')]",
@@ -30,32 +18,32 @@
     "mgmtVnetPeeringTemplate": "[concat(variables('localRepoBaseUrl'), 'templates\\azure\\vnetpeering-mgmt-vnet.json')]",
     "applicationGatewayTemplate": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-application-gateway-create/azuredeploy.json",
     "parameterFiles": {
-      "azureAddsVirtualMachinesParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/virtualMachines-adds.parameters.json')]",
-      "azureCreateAddsForestExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/create-adds-forest-extension.parameters.json')]",
-      "azureAddAddsDomainControllerExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/add-adds-domain-controller.parameters.json')]",
-      "azureVirtualNetworkGatewayParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/virtualNetworkGateway.parameters.json')]",
-      "azureVirtualNetworkParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/virtualNetwork.parameters.json')]",
-      "azureMgmtVirtualNetworkParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-vnet.parameters.json')]",
-      "azureVirtualNetworkDnsParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/virtualNetwork-adds-dns.parameters.json')]",
-      "webLoadBalancerParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/loadBalancer-web.parameters.json')]",
-      "bizLoadBalancerParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/loadBalancer-biz.parameters.json')]",
-      "dataLoadBalancerParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/loadBalancer-data.parameters.json')]",
-      "azureOperationVmDomainJoinExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/ops-vm-domain-join.parameters.json')]",
-      "azureOperationalVmEnableWindowsAuthExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/ops-vm-enable-windows-auth.parameters.json')]",
-      "azureMgmtVmDomainJoinExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-vm-domain-join.parameters.json')]",
-      "azureMgmtVmEnableWindowsAuthExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-vm-enable-windows-auth.parameters.json')]",
-      "nsgParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-subnet-nsg.parameters.json')]",
-      "opsvnetnsgParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/ops-vent-nsgs.json')]",
-      "applicationGatewayParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/application-gateway.parameters.json')]",
-      "operationalVnetPeeringParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/operational-vnet-peering.parameters.json')]",
-      "mgmtVnetPeeringParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-vnet-peering.parameters.json')]",
-      "mgmtVMJumpboxParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-virtualmachine.parameters.json')]"
+      "azureAddsVirtualMachinesParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualMachines-adds.parameters.json')]",
+      "azureCreateAddsForestExtensionParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/create-adds-forest-extension.parameters.json')]",
+      "azureAddAddsDomainControllerExtensionParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/add-adds-domain-controller.parameters.json')]",
+      "azureVirtualNetworkDnsParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualNetwork-adds-dns.parameters.json')]"
     }
   },
   "resources": [
     {
       "apiVersion": "2015-01-01",
-      "name": "linkedTemplate",
+      "name": "operational-adds-deployment",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('buildingBlocks').virtualMachineTemplate]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parametersLink": {
+          "uri": "[variables('parameterFiles').azureAddsVirtualMachinesParametersFile]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "apiVersion": "2015-01-01",
+      "name": "operational-adds-deployment",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "incremental",
@@ -64,7 +52,39 @@
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[variables('parameterFiles').azureMgmtVirtualNetworkParametersFile]",
+          "uri": "[variables('parameterFiles').azureVirtualNetworkDnsParametersFile]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "apiVersion": "2015-01-01",
+      "name": "operational-azure-adds-forest-deployment",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('buildingBlocks').virtualMachineExtensionsTemplate]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parametersLink": {
+          "uri": "[variables('parameterFiles').azureCreateAddsForestExtensionParametersFile]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "apiVersion": "2015-01-01",
+      "name": "operational-azure-adds-dc-deployment",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('buildingBlocks').virtualMachineExtensionsTemplate]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parametersLink": {
+          "uri": "[variables('parameterFiles').azureAddAddsDomainControllerExtensionParametersFile]",
           "contentVersion": "1.0.0.0"
         }
       }

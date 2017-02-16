@@ -2,37 +2,26 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "location": {
-      "type": "string",
-      "defaultValue": "UKSouth"
-    }
   },
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
-    "localRepoBaseUrl": "https://github.com/ben-houghton/threetiertemplate/blob/master/",
-    "parameterFileBaseUrl": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/",
-    "resourceGroups": {
-      "azureNetworkResourceGroupName": "azure-operational-network-rg",
-      "workloadResourceGroupName": "azure-operational-workload-rg",
-      "addsResourceGroupName": "azure-operational-adds-rg",
-      "managementResourceGroupName": "azure-mgmt-rg"
-    },
+    "localRepoBaseUrl": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/",
     "buildingBlocks": {
       "virtualNetworkTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vnet-n-subnet/azuredeploy.json')]",
       "dmzTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/dmz/azuredeploy.json')]",
       "nsgTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/networkSecurityGroups/azuredeploy.json')]",
-      "virtualNetworkGatewayTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vpn-gateway-vpn-connection/azuredeploy.json')]",
+      "virtualNetworkGatewayTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vpn-gateway-vpn-connection/azuredeploy.json')]"
     },
     "vnetPeeringTemplate": "[concat(variables('localRepoBaseUrl'), 'templates/azure/vnetpeering/azuredeploy.json')]",
     "applicationGatewayTemplate": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-application-gateway-create/azuredeploy.json",
     "parameterFiles": {
-      "azureVirtualNetworkGatewayParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/virtualNetworkGateway.parameters.json')]",
-      "azureVirtualNetworkParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/virtualNetwork.parameters.json')]",
-      "azureMgmtVirtualNetworkParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-vnet.parameters.json')]",
-      "nsgParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-subnet-nsg.parameters.json')]",
-      "applicationGatewayParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/application-gateway.parameters.json')]",
-      "operationalVnetPeeringParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/operational-vnet-peering.parameters.json')]",
-      "mgmtVnetPeeringParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-vnet-peering.parameters.json')]",
+      "azureVirtualNetworkGatewayParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualNetworkGateway.parameters.json')]",
+      "azureVirtualNetworkParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualNetwork.parameters.json')]",
+      "azureMgmtVirtualNetworkParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/mgmt-vnet.parameters.json')]",
+      "nsgParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/mgmt-subnet-nsg.parameters.json')]",
+      "applicationGatewayParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/application-gateway.parameters.json')]",
+      "operationalVnetPeeringParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/operational-vnet-peering.parameters.json')]",
+      "mgmtVnetPeeringParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/mgmt-vnet-peering.parameters.json')]"
     }
   },
   "resources": [
@@ -40,7 +29,6 @@
       "apiVersion": "2015-01-01",
       "name": "operational-vnet",
       "type": "Microsoft.Resources/deployments",
-      "location": "[resourceGroup().location]",
       "properties": {
         "mode": "incremental",
         "templateLink": {
@@ -48,7 +36,7 @@
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[variables('parameterFiles').azureVirtualNetworkParametersFile]",
+          "uri": "parameters/azure/virtualNetwork.parameters.json",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -57,7 +45,6 @@
       "apiVersion": "2015-01-01",
       "name": "azure-mgmt-vnet-deployment",
       "type": "Microsoft.Resources/deployments",
-      "location": "[resourceGroup().location]",
       "properties": {
         "mode": "incremental",
         "templateLink": {
@@ -74,7 +61,6 @@
       "apiVersion": "2015-01-01",
       "name": "operational-vnet-peering-deployment",
       "type": "Microsoft.Resources/deployments",
-      "location": "[resourceGroup().location]",
       "properties": {
         "mode": "incremental",
         "templateLink": {
@@ -91,7 +77,6 @@
       "apiVersion": "2015-01-01",
       "name": "mgmt-vnet-peering-deployment",
       "type": "Microsoft.Resources/deployments",
-      "location": "[resourceGroup().location]",
       "properties": {
         "mode": "incremental",
         "templateLink": {
@@ -108,7 +93,6 @@
       "apiVersion": "2015-01-01",
       "name": "operational-vpn-gateway-deployment",
       "type": "Microsoft.Resources/deployments",
-      "location": "[resourceGroup().location]",
       "properties": {
         "mode": "incremental",
         "templateLink": {
@@ -125,8 +109,7 @@
       "apiVersion": "2015-01-01",
       "name": "nsg-deployment",
       "type": "Microsoft.Resources/deployments",
-      "location": "[resourceGroup().location]",
-      "properties": {
+       "properties": {
         "mode": "incremental",
         "templateLink": {
           "uri": "[variables('buildingBlocks').nsgTemplate]",
@@ -142,7 +125,6 @@
       "apiVersion": "2015-01-01",
       "name": "application-gateway-deployment",
       "type": "Microsoft.Resources/deployments",
-      "location": "[resourceGroup().location]",
       "properties": {
         "mode": "incremental",
         "templateLink": {
