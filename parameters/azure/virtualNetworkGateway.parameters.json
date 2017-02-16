@@ -24,7 +24,7 @@
           "name": "operational-vpn-vgw"
         },
         "localNetworkGateway": {
-          "name": "bb-hybrid-vpn-lgw",
+          "name": "azure-hybrid-vpn-lgw",
           "ipAddress": "40.50.60.70",
           "addressPrefixes": [ "10.2.0.0/24" ]
         }
