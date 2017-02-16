@@ -42,7 +42,6 @@
     <None Include="parameters\azure\mgmt-vnet-peering.parameters.json" />
     <None Include="parameters\azure\operational-vnet-peering.parameters.json" />
     <None Include="parameters\azure\mgmt-subnet-nsg.parameters.json" />
-    <None Include="parameters\azure\mgmt-vm-domain-join.parameters.json" />
     <None Include="parameters\azure\vm-enable-windows-auth.parameters.json" />
     <None Include="parameters\azure\vm-domain-join.parameters.json" />
     <None Include="parameters\azure\create-adds-forest-extension.parameters.json" />

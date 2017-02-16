@@ -9,14 +9,8 @@
     "buildingBlocks": {
       "virtualNetworkTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vnet-n-subnet/azuredeploy.json')]",
       "virtualMachineTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json')]",
-      "dmzTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/dmz/azuredeploy.json')]",
-      "nsgTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/networkSecurityGroups/azuredeploy.json')]",
-      "virtualNetworkGatewayTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vpn-gateway-vpn-connection/azuredeploy.json')]",
       "virtualMachineExtensionsTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/virtualMachine-extensions/azuredeploy.json')]"
     },
-    "vnetPeeringTemplate": "[concat(variables('localRepoBaseUrl'), 'templates\\azure\\vnetpeering\\azuredeploy.json')]",
-    "mgmtVnetPeeringTemplate": "[concat(variables('localRepoBaseUrl'), 'templates\\azure\\vnetpeering-mgmt-vnet.json')]",
-    "applicationGatewayTemplate": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-application-gateway-create/azuredeploy.json",
     "parameterFiles": {
       "azureAddsVirtualMachinesParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualMachines-adds.parameters.json')]",
       "azureCreateAddsForestExtensionParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/create-adds-forest-extension.parameters.json')]",
