@@ -1,0 +1,43 @@
+﻿{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualNetworkName": {
+      "value": "azure-operational-vnet"
+    },
+    "vnetAddressPrefix": {
+      "value": "10.0.0.0/16"
+    },
+    "subnetName": {
+      "value": "InetGatewaySubnet"
+    },
+    "subnetPrefix": {
+      "value": "10.0.5.0/27"
+    },
+    "applicationGatewayName": {
+      "value": "azure-app-gateway"
+    },
+    "applicationGatewaySize": {
+      "value": "Standard_Small"
+    },
+    "applicationGatewayInstanceCount": {
+      "value": 2
+    },
+    "frontendPort": {
+      "value": 80
+    },
+    "backendPort": {
+      "value": 80
+    },
+    "backendIPAddresses": {
+      "value": [
+        {
+          "IpAddress": "10.0.1.254"
+        }
+      ]
+    },
+    "cookieBasedAffinity": {
+      "value": "Disabled"
+    }
+  }
+}
