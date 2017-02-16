@@ -5,7 +5,7 @@
     "virtualNetworkSettings": {
       "value": {
         "name": "azure-operational-vnet",
-        "resourceGroup": "[resourceGroup().name]"
+        "resourceGroup": "bh-demo-official-networking-rg"
       }
     },
     "virtualNetworkGatewaySettings": {
