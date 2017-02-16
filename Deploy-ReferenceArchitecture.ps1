@@ -93,10 +93,6 @@ if ($Mode -eq "Infrastructure" -Or $Mode -eq "Prepare") {
 	Write-Host "Creating Networking resource group..."
     $azureNetworkResourceGroup = New-AzureRmResourceGroup -Name $azureNetworkResourceGroupName -Location $Location
 
-
-    New-AzureRmResourceGroupDeployment -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName -TemplateUri "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/scenarios/vnet-n-subnet/azuredeploy.json" `
-        -templateParameterUriFromTemplate "https://raw.githubusercontent.com/mspnp/reference-architectures/master/guidance-compute-n-tier-sql/parameters/virtualNetwork.parameters.json"
-
 	
 	## Deploy management vnet network infrastructure
  #   Write-Host "Deploying management virtual network..."
