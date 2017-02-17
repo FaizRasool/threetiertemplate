@@ -38,7 +38,7 @@
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[variables('parameterFiles').azureVirtualNetworkParametersFile]",
+          "uri": "[variables('parameterFiles').vpnGatewayPeeringParametersFile]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -49,7 +49,7 @@
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
         "[concat('Microsoft.Resources/deployments/', 'operational-vnet-vpn-deployment')]"
-        ],
+      ],
         "properties":
         {
           "mode": "incremental",
