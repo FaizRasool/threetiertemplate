@@ -1,0 +1,45 @@
+﻿{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vpnType": {
+            "value": "RouteBased"
+        },
+      "localGatewayName": {
+        "value": "azure-hybrid-vpn-lgw"
+      },
+      "localGatewayIpAddress": {
+        "value": "40.50.60.70"
+      },
+      "localAddressPrefix": {
+        "value": "10.2.0.0/24"
+      },
+      "virtualNetworkName": {
+        "value": "azure-operational-vnet"
+      },
+      "azureVNetAddressPrefix": {
+        "value": "10.0.1.0/24"
+      },
+      "subnetName": {
+        "value": "web"
+      },
+        "subnetPrefix": {
+             "value": "10.0.255.224/27"
+        },
+      "gatewaySubnetPrefix": {
+        "value": "10.0.255.224/27"
+      },
+        "gatewayPublicIPName": {
+            "value": "azureVPNGatewayPIP"
+        },
+      "gatewayName": {
+        "value": "operational-vpn-vgw"
+      },
+      "connectionName": {
+        "value": "operational-vpn-cn"
+      },
+      "sharedKey": {
+        "value": "123secret"
+      }
+    }
+}
