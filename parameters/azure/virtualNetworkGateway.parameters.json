@@ -5,7 +5,7 @@
     "virtualNetworkSettings": {
       "value": {
         "name": "azure-operational-vnet",
-        "resourceGroup": "operational-vpn-vgw-rg"
+        "resourceGroup": "[resourceGroup().id]"
       }
     },
     "virtualNetworkGatewaySettings": {
