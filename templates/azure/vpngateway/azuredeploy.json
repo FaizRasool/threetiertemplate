@@ -156,23 +156,33 @@
             },
             {
               "name": "web",
-              "addressPrefix": "10.0.1.0/24"
+              "properties": {
+                "addressPrefix": "10.0.1.0/24"
+              }
             },
             {
               "name": "biz",
-              "addressPrefix": "10.0.2.0/24"
+              "properties": {
+                "addressPrefix": "10.0.2.0/24"
+              }
             },
             {
               "name": "data",
-              "addressPrefix": "10.0.3.0/24"
+              "properties": {
+                "addressPrefix": "10.0.3.0/24"
+              }
             },
             {
               "name": "adds",
-              "addressPrefix": "10.0.4.0/27"
+              "properties": {
+                "addressPrefix": "10.0.4.0/27"
+              }
             },
             {
               "name": "AagSubnet",
-              "addressPrefix": "10.0.254.224/27"
+              "properties": {
+                "addressPrefix": "10.0.254.224/27"
+              }
             }
           ],
         "dnsServers": [
