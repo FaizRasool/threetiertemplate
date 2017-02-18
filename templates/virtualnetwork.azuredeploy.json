@@ -14,7 +14,7 @@
     },
     "vnetPeeringTemplate": "[concat(variables('localRepoBaseUrl'), 'templates/azure/vnetpeering/azuredeploy.json')]",
     "applicationGatewayTemplate": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-application-gateway-create/azuredeploy.json",
-    "vpnGatewayTemplate": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-site-to-site-vpn-create/azuredeploy.parameters.json",
+    "vpnGatewayTemplate": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-site-to-site-vpn-create/azuredeploy.json",
     "parameterFiles": {
       "azureVirtualNetworkGatewayParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualNetworkGateway.parameters.json')]",
       "azureVirtualNetworkParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualNetwork.parameters.json')]",
@@ -23,7 +23,7 @@
       "applicationGatewayParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/application-gateway.parameters.json')]",
       "operationalVnetPeeringParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/operational-vnet-peering.parameters.json')]",
       "mgmtVnetPeeringParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/mgmt-vnet-peering.parameters.json')]",
-      "vpnGatewayPeeringParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/vpnGateway.parameters.json')]"
+      "vpnGatewayParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/vpnGateway.parameters.json')]"
     }
   },
   "resources": [
@@ -38,7 +38,7 @@
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[variables('parameterFiles').vpnGatewayPeeringParametersFile]",
+          "uri": "[variables('parameterFiles').vpnGatewayParametersFile]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -159,7 +159,7 @@
       "name": "application-gateway-deployment",
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
-        "[concat('Microsoft.Resources/deployments/', 'operational-vpn-gateway-deployment')]"
+        "[concat('Microsoft.Resources/deployments/', 'operational-vnet-deployment')]"
       ],
       "properties": {
         "mode": "incremental",
