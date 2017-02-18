@@ -8,10 +8,6 @@
         "addressPrefixes": [ "10.0.0.0/16"],
         "subnets": [
           {
-            "name": "GatewaySubnet",
-            "addressPrefix": "10.0.255.224/27"
-          },
-          {
             "name": "web",
             "addressPrefix": "10.0.1.0/24"
           },
@@ -26,10 +22,6 @@
           {
             "name": "adds",
             "addressPrefix": "10.0.4.0/27"
-          },
-          {
-            "name": "aagSubnet",
-            "addressPrefix": "10.0.254.224/27"
           }
         ],
         "dnsServers": [

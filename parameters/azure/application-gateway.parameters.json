@@ -12,7 +12,7 @@
       "value": "InetGatewaySubnet"
     },
     "subnetPrefix": {
-      "value": "10.0.5.0/27"
+      "value": "10.0.6.0/27"
     },
     "applicationGatewayName": {
       "value": "azure-app-gateway"
