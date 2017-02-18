@@ -14,7 +14,7 @@
     },
     "vnetPeeringTemplate": "[concat(variables('localRepoBaseUrl'), 'templates/azure/vnetpeering/azuredeploy.json')]",
     "applicationGatewayTemplate": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-application-gateway-create/azuredeploy.json",
-    "vpnGatewayTemplate": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-site-to-site-vpn-create/azuredeploy.json",
+    "vpnGatewayTemplate": "[concat(variables('localRepoBaseUrl'), 'templates/azure/vpngateway/azuredeploy.json')]",
     "parameterFiles": {
       "azureVirtualNetworkGatewayParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualNetworkGateway.parameters.json')]",
       "azureVirtualNetworkParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualNetwork.parameters.json')]",
