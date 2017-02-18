@@ -7,14 +7,14 @@
         "name": "azure-operational-vnet",
         "addressPrefixes": [ "10.0.0.0/16"],
         "subnets": [
-          {
-            "name": "GatewaySubnet",
-            "addressPrefix": "10.0.255.224/27"
-          },
-          {
-            "name": "web",
-            "addressPrefix": "10.0.1.0/24"
-          },
+          //{
+          //  "name": "GatewaySubnet",
+          //  "addressPrefix": "10.0.255.224/27"
+          //},
+          //{
+          //  "name": "web",
+          //  "addressPrefix": "10.0.1.0/24"
+          //},
           {
             "name": "biz",
             "addressPrefix": "10.0.2.0/24"
