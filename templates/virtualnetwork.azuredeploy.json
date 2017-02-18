@@ -31,18 +31,17 @@
       "apiVersion": "2015-01-01",
       "name": "operational-vnet-deployment",
       "type": "Microsoft.Resources/deployments",
-        "properties":
-        {
-          "mode": "incremental",
-          "templateLink": {
-            "uri": "[variables('buildingBlocks').virtualNetworkTemplate]",
-            "contentVersion": "1.0.0.0"
-          },
-          "parametersLink": {
-            "uri": "[variables('parameterFiles').azureVirtualNetworkParametersFile]",
-            "contentVersion": "1.0.0.0"
-          }
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('buildingBlocks').virtualNetworkTemplate]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parametersLink": {
+          "uri": "[variables('parameterFiles').azureVirtualNetworkParametersFile]",
+          "contentVersion": "1.0.0.0"
         }
+      }
     },
     {
       "apiVersion": "2015-01-01",
@@ -115,6 +114,22 @@
     //    },
     //    "parametersLink": {
     //      "uri": "[variables('parameterFiles').azureVirtualNetworkGatewayParametersFile]",
+    //      "contentVersion": "1.0.0.0"
+    //    }
+    //  }
+    //},
+    //{
+    //  "apiVersion": "2015-01-01",
+    //  "name": "operational-vnet-vpn-deployment",
+    //  "type": "Microsoft.Resources/deployments",
+    //  "properties": {
+    //    "mode": "incremental",
+    //    "templateLink": {
+    //      "uri": "[variables('vpnGatewayTemplate')]",
+    //      "contentVersion": "1.0.0.0"
+    //    },
+    //    "parametersLink": {
+    //      "uri": "[variables('parameterFiles').vpnGatewayParametersFile]",
     //      "contentVersion": "1.0.0.0"
     //    }
     //  }
