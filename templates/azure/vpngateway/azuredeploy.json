@@ -150,7 +150,9 @@
           "subnets": [
             {
               "name": "GatewaySubnet",
-              "addressPrefix": "10.0.255.224/27"
+              "properties": {
+                "addressPrefix": "[parameters('gatewaySubnetPrefix')]"
+              }
             },
             {
               "name": "web",
