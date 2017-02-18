@@ -34,11 +34,11 @@
       "properties": {
         "mode": "incremental",
         "templateLink": {
-          "uri": "[variables('buildingBlocks').virtualNetworkTemplate]",
+          "uri": "[variables('vpnGatewayTemplate')]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[variables('parameterFiles').azureVirtualNetworkParametersFile]",
+          "uri": "[variables('parameterFiles').vpnGatewayParametersFile]",
           "contentVersion": "1.0.0.0"
         }
       }
@@ -101,26 +101,6 @@
     },
     {
       "apiVersion": "2015-01-01",
-      "name": "operational-vnet-vpn-deployment",
-      "type": "Microsoft.Resources/deployments",
-      "dependsOn": [
-        "[concat('Microsoft.Resources/deployments/', 'operational-vnet-deployment')]",
-        "[concat('Microsoft.Resources/deployments/', 'azure-mgmt-vnet-deployment')]"
-      ],
-      "properties": {
-        "mode": "incremental",
-        "templateLink": {
-          "uri": "[variables('vpnGatewayTemplate')]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parametersLink": {
-          "uri": "[variables('parameterFiles').vpnGatewayParametersFile]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-    {
-      "apiVersion": "2015-01-01",
       "name": "nsg-deployment",
       "type": "Microsoft.Resources/deployments",
       "properties": {
@@ -134,25 +114,25 @@
           "contentVersion": "1.0.0.0"
         }
       }
-    //},
-    //{
-    //  "apiVersion": "2015-01-01",
-    //  "name": "application-gateway-deployment",
-    //  "type": "Microsoft.Resources/deployments",
-    //  "dependsOn": [
-    //    "[concat('Microsoft.Resources/deployments/', 'operational-vnet-deployment')]"
-    //  ],
-    //  "properties": {
-    //    "mode": "incremental",
-    //    "templateLink": {
-    //      "uri": "[variables('applicationGatewayTemplate')]",
-    //      "contentVersion": "1.0.0.0"
-    //    },
-    //    "parametersLink": {
-    //      "uri": "[variables('parameterFiles').applicationGatewayParametersFile]",
-    //      "contentVersion": "1.0.0.0"
-    //    }
-    //  }
+      //},
+      //{
+      //  "apiVersion": "2015-01-01",
+      //  "name": "application-gateway-deployment",
+      //  "type": "Microsoft.Resources/deployments",
+      //  "dependsOn": [
+      //    "[concat('Microsoft.Resources/deployments/', 'operational-vnet-deployment')]"
+      //  ],
+      //  "properties": {
+      //    "mode": "incremental",
+      //    "templateLink": {
+      //      "uri": "[variables('applicationGatewayTemplate')]",
+      //      "contentVersion": "1.0.0.0"
+      //    },
+      //    "parametersLink": {
+      //      "uri": "[variables('parameterFiles').applicationGatewayParametersFile]",
+      //      "contentVersion": "1.0.0.0"
+      //    }
+      //  }
     }
   ]
 }
