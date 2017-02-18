@@ -17,9 +17,6 @@
     "localAddressPrefix": {
       "value": "192.168.0.0/16"
     },
-    "azureVNetAddressPrefix": {
-      "value": "10.0.0.0/16"
-    },
     "gatewaySubnetPrefix": {
       "value": "10.0.255.224/29"
     },
