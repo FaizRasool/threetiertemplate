@@ -94,21 +94,6 @@
         "description": "Shared key (PSK) for IPSec tunnel"
       }
     },
-    "subnetName": {
-      "type": "string",
-      "defaultValue": "subnet1",
-      "metadata": {
-        "description": "Subnet Name"
-      }
-    },
-    "subnetPrefix": {
-      "type": "string",
-      "defaultValue": "10.0.0.0/24",
-      "metadata": {
-        "description": "Subnet prefix"
-      }
-    },
-
     "applicationGatewayName": {
       "type": "string",
       "defaultValue": "applicationGateway1",
@@ -192,7 +177,7 @@
     "aagPublicIPRef": "[resourceId('Microsoft.Network/publicIPAddresses',variables('aagPublicIPAddressName'))]",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "gatewaySubnetRef": "[concat(variables('vnetID'),'/subnets/','GatewaySubnet')]",
-    "subnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('subnetName'))]",
+    "aagSubnetRef": "[concat(variables('vnetID'),'/subnets/','ApplicationGatewaySubnet')]",
     "api-version": "2015-06-15"
   },
   "resources": [
@@ -274,7 +259,7 @@
             }
           },
           {
-            "name": "AagSubnet",
+            "name": "ApplicationGatewaySubnet",
             "properties": {
               "addressPrefix": "10.0.254.224/29"
             }
@@ -344,93 +329,94 @@
       "type": "Microsoft.Network/applicationGateways",
       "location": "[resourceGroup().location]",
       "dependsOn": [
-        "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
+        "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
+        "[concat('Microsoft.Network/publicIPAddresses/', variables('aagPublicIPAddressName'))]"
       ],
       "properties": {
         "sku": {
-          "name": "[parameters('applicationGatewaySize')]",
-          "tier": "Standard",
-          "capacity": "[parameters('applicationGatewayInstanceCount')]"
-        },
-        "gatewayIPConfigurations": [
-          {
-            "name": "appGatewayIpConfig",
-            "properties": {
-              "subnet": {
-                "id": "[variables('subnetRef')]"
+            "name": "[parameters('applicationGatewaySize')]",
+            "tier": "Standard",
+            "capacity": "[parameters('applicationGatewayInstanceCount')]"
+          },
+          "gatewayIPConfigurations": [
+            {
+              "name": "appGatewayIpConfig",
+              "properties": {
+                "subnet": {
+                  "id": "[variables('aagSubnetRef')]"
+                }
               }
             }
-          }
-        ],
-        "frontendIPConfigurations": [
-          {
-            "name": "appGatewayFrontendIP",
-            "properties": {
-              "PublicIPAddress": {
-                "id": "[variables('aagPublicIPRef')]"
+          ],
+          "frontendIPConfigurations": [
+            {
+              "name": "appGatewayFrontendIP",
+              "properties": {
+                "PublicIPAddress": {
+                  "id": "[variables('aagPublicIPRef')]"
+                }
               }
             }
-          }
-        ],
-        "frontendPorts": [
-          {
-            "name": "appGatewayFrontendPort",
-            "properties": {
-              "Port": "[parameters('frontendPort')]"
-            }
-          }
-        ],
-        "backendAddressPools": [
-          {
-            "name": "appGatewayBackendPool",
-            "properties": {
-              "BackendAddresses": "[parameters('backendIPAddresses')]"
-            }
-          }
-        ],
-        "backendHttpSettingsCollection": [
-          {
-            "name": "appGatewayBackendHttpSettings",
-            "properties": {
-              "Port": "[parameters('backendPort')]",
-              "Protocol": "Http",
-              "CookieBasedAffinity": "[parameters('cookieBasedAffinity')]"
-            }
-          }
-        ],
-        "httpListeners": [
-          {
-            "name": "appGatewayHttpListener",
-            "properties": {
-              "FrontendIPConfiguration": {
-                "Id": "[concat(parameters('applicationGatewayName'), '/frontendIPConfigurations/appGatewayFrontendIP')]"
-              },
-              "FrontendPort": {
-                "Id": "[concat(parameters('applicationGatewayName'), '/frontendPorts/appGatewayFrontendPort')]"
-              },
-              "Protocol": "Http",
-              "SslCertificate": null
-            }
-          }
-        ],
-        "requestRoutingRules": [
-          {
-            "Name": "rule1",
-            "properties": {
-              "RuleType": "Basic",
-              "httpListener": {
-                "id": "[concat(parameters('applicationGatewayName'), '/httpListeners/appGatewayHttpListener')]"
-              },
-              "backendAddressPool": {
-                "id": "[concat(parameters('applicationGatewayName'), '/backendAddressPools/appGatewayBackendPool')]"
-              },
-              "backendHttpSettings": {
-                "id": "[concat(parameters('applicationGatewayName'), '/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
+          ],
+          "frontendPorts": [
+            {
+              "name": "appGatewayFrontendPort",
+              "properties": {
+                "Port": "[parameters('frontendPort')]"
               }
             }
-          }
-        ]
-      }
+          ],
+          "backendAddressPools": [
+            {
+              "name": "appGatewayBackendPool",
+              "properties": {
+                "BackendAddresses": "[parameters('backendIPAddresses')]"
+              }
+            }
+          ],
+          "backendHttpSettingsCollection": [
+            {
+              "name": "appGatewayBackendHttpSettings",
+              "properties": {
+                "Port": "[parameters('backendPort')]",
+                "Protocol": "Http",
+                "CookieBasedAffinity": "[parameters('cookieBasedAffinity')]"
+              }
+            }
+          ],
+          "httpListeners": [
+            {
+              "name": "appGatewayHttpListener",
+              "properties": {
+                "FrontendIPConfiguration": {
+                  "Id": "[concat(parameters('applicationGatewayName'), '/frontendIPConfigurations/appGatewayFrontendIP')]"
+                },
+                "FrontendPort": {
+                  "Id": "[concat(parameters('applicationGatewayName'), '/frontendPorts/appGatewayFrontendPort')]"
+                },
+                "Protocol": "Http",
+                "SslCertificate": null
+              }
+            }
+          ],
+          "requestRoutingRules": [
+            {
+              "Name": "rule1",
+              "properties": {
+                "RuleType": "Basic",
+                "httpListener": {
+                  "id": "[concat(parameters('applicationGatewayName'), '/httpListeners/appGatewayHttpListener')]"
+                },
+                "backendAddressPool": {
+                  "id": "[concat(parameters('applicationGatewayName'), '/backendAddressPools/appGatewayBackendPool')]"
+                },
+                "backendHttpSettings": {
+                  "id": "[concat(parameters('applicationGatewayName'), '/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
+                }
+              }
+            }
+          ]
+        }
     }
   ]
 }

@@ -24,7 +24,7 @@
       "value": "10.0.255.224/29"
     },
     "gatewayPublicIPName": {
-      "value": "azureVPNGatewayPIP"
+      "value": "vpnGatewayPip"
     },
     "gatewayName": {
       "value": "operational-vpn-vgw"
@@ -34,12 +34,6 @@
     },
     "sharedKey": {
       "value": "123secret"
-    },
-    "subnetName": {
-      "value": "AagSubnet"
-    },
-    "subnetPrefix": {
-      "value": "10.0.254.224/29"
     },
     "applicationGatewayName": {
       "value": "azure-app-gateway"
