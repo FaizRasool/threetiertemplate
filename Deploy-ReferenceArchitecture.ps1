@@ -70,7 +70,8 @@ $mgmtVMJumpboxParametersFile  = [System.IO.Path]::Combine($PSScriptRoot, "parame
 
 
 # Azure ADDS Deployments
-$azureNetworkResourceGroupName = "azure-network-rg"
+#$azureNetworkResourceGroupName = "azure-network-rg"
+$azureNetworkResourceGroupName = "netinfra-rg"
 $workloadResourceGroupName = "azure-workload-rg"
 $addsResourceGroupName = "azure-operational-adds-rg"
 
@@ -90,8 +91,10 @@ Login-AzureRmAccount -SubscriptionId $SubscriptionId  #| Out-Null
 if ($Mode -eq "Infrastructure" -Or $Mode -eq "Prepare") {
 
     
-	Write-Host "Creating Networking resource group..."
-    $azureNetworkResourceGroup = New-AzureRmResourceGroup -Name $azureNetworkResourceGroupName -Location $Location
+	#Write-Host "Creating Networking resource group..."
+ #   $azureNetworkResourceGroup = New-AzureRmResourceGroup -Name $azureNetworkResourceGroupName -Location $Location
+
+	$azureNetworkResourceGroup = Get-AzureRmResourceGroup -Name $azureNetworkResourceGroupName
 
 	
 	## Deploy management vnet network infrastructure
@@ -128,11 +131,11 @@ if ($Mode -eq "Infrastructure" -Or $Mode -eq "Prepare") {
  #       -TemplateUri $virtualNetworkGatewayTemplate.AbsoluteUri -TemplateParameterFile $azureVirtualNetworkGatewayParametersFile
 
 	
-	##############Fix this
-	##Deploy App Gateway
-	#Write-Host "Deploying Inet facing App Gateway..."
- #   New-AzureRmResourceGroupDeployment -Name "operational-agw-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
- #          -TemplateUri $applicationGatewayTemplate.AbsoluteUri -TemplateParameterFile $applicationGatewayParametersFile
+	#############Fix this
+	#Deploy App Gateway
+	Write-Host "Deploying Inet facing App Gateway..."
+    New-AzureRmResourceGroupDeployment -Name "operational-agw-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
+           -TemplateUri $applicationGatewayTemplate.AbsoluteUri -TemplateParameterFile $applicationGatewayParametersFile
 
 	
 }
