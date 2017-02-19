@@ -191,11 +191,12 @@
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "gatewaySubnetRef": "[concat(variables('vnetID'),'/subnets/','GatewaySubnet')]",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('subnetName'))]",
+    "apiVersion": "2015-06-15",
     "api-version": "2015-06-15"
   },
   "resources": [
     {
-      "api-version": "[variables('api-version')]",
+      "apiVersion": "[variables('api-version')]",
       "type": "Microsoft.Network/localNetworkGateways",
       "name": "[parameters('localGatewayName')]",
       "location": "[resourceGroup().location]",
@@ -209,7 +210,7 @@
       }
     },
     {
-      "api-version": "[variables('api-version')]",
+      "apiVersion": "[variables('api-version')]",
       "name": "[parameters('connectionName')]",
       "type": "Microsoft.Network/connections",
       "location": "[resourceGroup().location]",
@@ -230,7 +231,7 @@
       }
     },
     {
-      "api-version": "[variables('api-version')]",
+      "apiVersion": "[variables('api-version')]",
       "type": "Microsoft.Network/virtualNetworks",
       "name": "[parameters('virtualNetworkName')]",
       "location": "[resourceGroup().location]",
@@ -286,7 +287,7 @@
       }
     },
     {
-      "api-version": "[variables('api-version')]",
+      "apiVersion": "[variables('api-version')]",
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[parameters('gatewayPublicIPName')]",
       "location": "[resourceGroup().location]",
@@ -295,7 +296,7 @@
       }
     },
     {
-      "api-version": "[variables('api-version')]",
+      "apiVersion": "[variables('api-version')]",
       "type": "Microsoft.Network/virtualNetworkGateways",
       "name": "[parameters('gatewayName')]",
       "location": "[resourceGroup().location]",
@@ -328,7 +329,7 @@
       }
     },
     {
-      "api-version": "[variables('api-version')]",
+      "apiVersion": "[variables('apiVersion')]",
       "name": "[parameters('applicationGatewayName')]",
       "type": "Microsoft.Network/applicationGateways",
       "location": "[resourceGroup().location]",
