@@ -188,6 +188,8 @@
     }
   },
   "variables": {
+    "aagPublicIPAddressName": "aagpublicIp",
+    "aagPublicIPRef": "[resourceId('Microsoft.Network/publicIPAddresses',variables('aagPublicIPAddressName'))]",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "gatewaySubnetRef": "[concat(variables('vnetID'),'/subnets/','GatewaySubnet')]",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/',parameters('subnetName'))]",
@@ -329,6 +331,15 @@
     },
     {
       "apiVersion": "[variables('api-version')]",
+      "type": "Microsoft.Network/publicIPAddresses",
+      "name": "[variables('aagPublicIPAddressName')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "publicIPAllocationMethod": "Dynamic"
+      }
+    },
+    {
+      "apiVersion": "[variables('api-version')]",
       "name": "[parameters('applicationGatewayName')]",
       "type": "Microsoft.Network/applicationGateways",
       "location": "[resourceGroup().location]",
@@ -355,8 +366,8 @@
           {
             "name": "appGatewayFrontendIP",
             "properties": {
-              "subnet": {
-                "id": "[variables('subnetRef')]"
+              "PublicIPAddress": {
+                "id": "[variables('aagPublicIPRef')]"
               }
             }
           }
@@ -391,11 +402,11 @@
           {
             "name": "appGatewayHttpListener",
             "properties": {
-              "FrontendIpConfiguration": {
-                "Id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGatewayName')), '/frontendIPConfigurations/appGatewayFrontendIP')]"
+              "FrontendIPConfiguration": {
+                "Id": "[concat(parameters('applicationGatewayName'), '/frontendIPConfigurations/appGatewayFrontendIP')]"
               },
               "FrontendPort": {
-                "Id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGatewayName')), '/frontendPorts/appGatewayFrontendPort')]"
+                "Id": "[concat(parameters('applicationGatewayName'), '/frontendPorts/appGatewayFrontendPort')]"
               },
               "Protocol": "Http",
               "SslCertificate": null
@@ -408,13 +419,13 @@
             "properties": {
               "RuleType": "Basic",
               "httpListener": {
-                "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGatewayName')), '/httpListeners/appGatewayHttpListener')]"
+                "id": "[concat(parameters('applicationGatewayName'), '/httpListeners/appGatewayHttpListener')]"
               },
               "backendAddressPool": {
-                "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGatewayName')), '/backendAddressPools/appGatewayBackendPool')]"
+                "id": "[concat(parameters('applicationGatewayName'), '/backendAddressPools/appGatewayBackendPool')]"
               },
               "backendHttpSettings": {
-                "id": "[concat(resourceId('Microsoft.Network/applicationGateways', parameters('applicationGatewayName')), '/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
+                "id": "[concat(parameters('applicationGatewayName'), '/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
               }
             }
           }
