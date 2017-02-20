@@ -448,21 +448,14 @@ Deployment Guide
 
 ### Deployment and Configuration Activities
 
-### 
-
-  |Activity|Configuration|
-  |---|---|
-  |Create Management VNet Resource Groups           |None required|
-
-  |Create Operational VNet Resource Groups          |None required|
-
-  |Deploy management VNet network infrastructure    |None required|
-
-  |Deploy operational VNet network infrastructure   |None required|
-
-  |Create VNet Peerings                             |None required|
-
-  |Deploy VPN Gateway                               |The template deploys an Azure environment with a public facing endpoint and an Azure Gateway to allow VPN setup between the Azure environment and your on-premises environment. To complete this VPN connection, you will need to provide the Local Gateway (your on-premises VPN public IP address) and complete the VPN connection set up locally. VPN Gateway requires local gateway configuration in the [https://\[root\]/parameters/azure/ops-network.parameters.json](https://[root]/parameters/azure/ops-network.parameters.json) template parameters file.
+  Activity|Configuration|
+  ---|---
+  Create Management VNet Resource Groups|None required
+  Create Operational VNet Resource Groups|None required
+  Deploy management VNet network infrastructure |None required
+  Deploy operational VNet network infrastructure|None required
+  Create VNet Peerings|None required|
+  Deploy VPN Gateway|The template deploys an Azure environment with a public facing endpoint and an Azure Gateway to allow VPN setup between the Azure environment and your on-premises environment. To complete this VPN connection, you will need to provide the Local Gateway (your on-premises VPN public IP address) and complete the VPN connection set up locally. VPN Gateway requires local gateway configuration in the [https://\[root\]/parameters/azure/ops-network.parameters.json](https://[root]/parameters/azure/ops-network.parameters.json) template parameters file.
                                                    
                                                     
                                                    
