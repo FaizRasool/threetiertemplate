@@ -454,7 +454,7 @@ Deployment Guide
   Deploy operational VNet network infrastructure|None required
   Create VNet Peerings|None required|
   Deploy VPN Gateway|The template deploys an Azure environment with a public facing endpoint and an Azure Gateway to allow VPN setup between the Azure environment and your on-premises environment. To complete this VPN connection, you will need to provide the Local Gateway (your on-premises VPN public IP address) and complete the VPN connection set up locally. VPN Gateway requires local gateway configuration in the [https://\[root\]/parameters/azure/ops-network.parameters.json](https://[root]/parameters/azure/ops-network.parameters.json) template parameters file.                                      
-                                                   "connectionSettings": {
+                                                  `"connectionSettings": {
                                                    "value": {
                                                    "name": "operational-vpn-cn",
                                                    "connectionType": "IPSec",
@@ -479,7 +479,7 @@ Deployment Guide
                                                    
                                                    }
                                                    
-                                                   }|
+                                                   }`|
 
   Deploying internet facing Application Gateway    |For SSL termination, Application Gateway requires you SSL certificates to be uploaded. When provisioned the Application Gateway will instantiate a public IP address and domain name to allow access to the web application.|
                                                    
@@ -493,7 +493,7 @@ Deployment Guide
                                                    
                                                     
                                                    
-                                                   "securityRules": \[
+                                                   `"securityRules": \[
                                                    
                                                    {
                                                    
@@ -517,7 +517,7 @@ Deployment Guide
                                                    
                                                    }
                                                    
-                                                   \]
+                                                   \]`
                                                    
                                                    NSG configuration for the Operation VNet can be found in the [https://\[root\]/parameters/azure/ops-vent-nsgs.json](https://[root]/parameters/azure/ops-vent-nsgs.json) template parameters file.|
 
