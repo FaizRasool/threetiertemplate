@@ -303,16 +303,14 @@ Security Matrix
 > Security Controls for UK Cloud Using Microsoft
 > Azure](https://microsoft.sharepoint.com/teams/UKresponsetoAWSUKOFFICALtemplate/Shared%20Documents/General/Azure%20UK%20Governments%20-%2014%20compliance%20controls.pdf)
 > whitepaper.
->
 
-  | |NCSC Cloud Principle|Microsoft Azure
-  |----|:----------------------------------|------------------------------------------------------------------------|
-*Data in transit protection:** Consumer data transiting networks should be adequately protected against tampering and eavesdropping via 
+
+*Data in transit protection:* Consumer data transiting networks should be adequately protected against tampering and eavesdropping via 
 a combination of network protection and encryption.
 > Azure uses the industry-standard Transport Layer Security (TLS) 1.2 protocol with 2048-bit RSA/SHA256 encryption keys to encrypt 
 communication internally and between customers and the cloud.
 
-*Asset protection and resilience:** Consumer data, and the assets that store or process it, should be protected against physical 
+*Asset protection and resilience:* Consumer data, and the assets that store or process it, should be protected against physical 
 tampering, loss, damage, and seizure.
 > Most Azure services are deployed regionally, and customers can configure certain Azure services to store customer data only in a single region. Each facility is designed to run 24x7x365 and employs various industry-standard measures to help protect operations from power failure, physical intrusion, and network outages.
 > These datacenters comply with industry standards (such as ISO 27001) for physical security and availability. They are managed, monitored, and administered by Microsoft operations personnel. Azure offers a wide range of encryption capabilities, giving customers the flexibility to choose the solution that best meets their needs. 
@@ -321,14 +319,14 @@ tampering, loss, damage, and seizure.
 > To ensure data resiliency Azure asynchronously replicates data from a primary location to a secondary location within the same region.
 > For applications resiliency, Microsoft Azure patterns ensure that at least one virtual machine will be available and meet the 99.95% Azure SLA.
 
-*Separation between consumers:.** Separation should exist between different consumers of the service to prevent one malicious or compromised consumer from affecting the service or data of another.
+*Separation between consumers:* Separation should exist between different consumers of the service to prevent one malicious or compromised consumer from affecting the service or data of another.
 > Because all customer cloud servers are virtual, the physical separation paradigm no longer applies. 
 > Microsoft Azure was designed to help identify and counter risks inherent in a multitenant environment. 
 > Data storage and processing is logically segregated among consumers of Azure using Active Directory and functionality specifically
 > developed for multitenant services, which aims to ensure that consumer data stored in shared Azure data centers is not accessible by 
 > another organisation.
 
-*Governance framework:** The service provider should have a security governance framework that coordinates and directs their overall 
+*Governance framework:* The service provider should have a security governance framework that coordinates and directs their overall 
   approach to the management of the service and information within it.
 > The Microsoft compliance framework includes the following activities:
                                                                                                                                                                                                                                                
@@ -342,24 +340,24 @@ tampering, loss, damage, and seizure.
                                                                                                                                                                                                                                                
 > 5.  Improve and optimize.
                                                                                                                                                                                                                                                
-*Operational security:** The service provider should have processes and procedures in place to ensure the operational security of the service.
+*Operational security:* The service provider should have processes and procedures in place to ensure the operational security of the service.
 > Operational Security Assurance (OSA) is a framework that incorporates the knowledge gained through a variety of resources that are unique to Microsoft, 
 > such as the Microsoft Security Response Center (MSRC), and incorporates deep awareness of the cybersecurity threat landscape. 
 > OSA helps make Microsoft cloud-based services’ infrastructure more resilient to attack by decreasing the amount of time needed to prevent, detect, contain 
 > and respond to real and potential Internet-based security threats, thereby increasing the security of those services for customers.
 
-*Personnel security:** Service provider staff should be subject to personnel security screening and security education appropriate for their role.
+*Personnel security:* Service provider staff should be subject to personnel security screening and security education appropriate for their role.
 > Microsoft Azure Operations and Customer Support personnel and data center staff, who operate Azure services and provide customer support (or Microsoft subcontractors
 > who assist with platform operations, troubleshooting, and technical support) undergo a Microsoft standard background (or equivalent) check to evaluate employee 
 > education, employment, and criminal history. The background checks that are carried out are broadly in line with the requirements of the UK Government’s 
 > BPSS / BS7858. They do not specifically include a formal identity check.
 
-*Secure development:** Services should be designed and developed to identify and mitigate threats to their security.
+*Secure development:* Services should be designed and developed to identify and mitigate threats to their security.
 > The Microsoft [Security Development Lifecycle](https://www.microsoft.com/en-us/sdl/default.aspx) (SDL) provides an effective threat-modelling process to identify
 >  threats and vulnerabilities in software and services. The STRIDE system (Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, and 
 > Elevation of privilege) is used to help identify and resolve security threats early in the design process, before they can affect customers.
 
-*Supply chain security:** The service provider should ensure that its supply chain satisfactorily supports all of the security principles that the service 
+*Supply chain security:* The service provider should ensure that its supply chain satisfactorily supports all of the security principles that the service 
 claims to implement.|                                                           
 > In Azure, security risks that relate to external parties, such as customers and vendors, are identified and addressed as follows:
                                                                                                                                                                                                                                                
@@ -367,27 +365,27 @@ claims to implement.|
                                                                                                                                                                                                                                                
 > 2.  Additional risks that relate to granting access to facilities and information systems are controlled and managed by Microsoft teams, including physical and network level access to facilities and Microsoft resources.
                                                                                                                                                                                                                                                
-*Secure consumer management:** Consumers should be provided with the tools required to help them securely manage their service.
+*Secure consumer management:* Consumers should be provided with the tools required to help them securely manage their service.
 > Customers administer their Azure resources through the Azure portal, which provides access to all virtual machines, databases, cloud services, and 
 > other resources configured for the customer’s account. Web access to the Azure portal is secured by industry-standard Transport Layer Security (TLS) 1.2 
 > connections using 2048-bit RSA/SHA256 encryption keys, as recommended by CESG/NCSC . Role-based access controls are provided to enable customers to provide 
 > limited access to Azure management resources for specific users and groups.
                                                                                                                                                                                                                                                
-*Identity and authentication:** Access to all service interfaces (for consumers and providers) should be limited to authenticated and authorised individuals.
+*Identity and authentication* Access to all service interfaces (for consumers and providers) should be limited to authenticated and authorised individuals.
 > Azure provides services to help track identity as well as integrate it with identity stores that may already be in use. Azure AD is a comprehensive identity and access management service for the cloud that helps secure access to data in on-premises and cloud applications.
 
-*External interface protection:** All external or less trusted interfaces of the service should be identified and have appropriate protections to defend against 
+*External interface protection:* All external or less trusted interfaces of the service should be identified and have appropriate protections to defend against 
 attacks through them.
 > Microsoft employs a method it calls “Red Teaming” to improve Azure security controls and processes through regular penetration testing.
 
-*Secure service administration:**The methods used by the service provider’s administrators to manage the operational service should be designed to mitigate 
+*Secure service administration:* The methods used by the service provider’s administrators to manage the operational service should be designed to mitigate 
 any risk of exploitation that could undermine the security of the service.
 > Azure infrastructure operations personnel are required to use secure admin workstations (SAWs; also known as privileged access workstations, or PAWs). The SAW approach is an extension of the well-established recommended practice to use separate admin and user accounts for administrative personnel.
 
-*Audit information provision to consumers:** Consumers should be provided with the audit records they need to monitor access to their service and the data held within it.
+*Audit information provision to consumers:* Consumers should be provided with the audit records they need to monitor access to their service and the data held within it.
 > Azure Log Analytics collects records of the events occurring within an organisation’s systems and networks as soon as they occur, before anyone can tamper with them, and allows different types of analysis by correlating data across multiple computers.
 
-*Secure use of the service by the consumer:** Consumers have certain responsibilities when using a cloud service in order for this use to remain secure, and for their 
+*Secure use of the service by the consumer:* Consumers have certain responsibilities when using a cloud service in order for this use to remain secure, and for their 
 data to be adequately protected.
 > Azure Security Center helps consumers prevent, detect, and respond to threats with increased visibility into and control over the security of their Azure resources. 
 > It provides integrated security monitoring and policy management across Azure subscriptions, helps detect threats that might otherwise go unnoticed, 
