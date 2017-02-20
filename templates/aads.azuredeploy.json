@@ -2,6 +2,20 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    //"virtualNetworkName": {
+    //  "type": "string",
+    //  "defaultValue": "azure-operational-vnet",
+    //  "metadata": {
+    //    "description": "Resources VNet"
+    //    }
+    //  },
+    //  "virtualNetworkResourceGroupName": {
+    //    "type": "string",
+    //    "defaultValue": "uk-official-networking-rg ",
+    //    "metadata": {
+    //      "description": "VNet Resource Group"
+    //    }
+      //}
     },
     "variables": {
       "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
@@ -29,16 +43,19 @@
             "uri": "[variables('buildingBlocks').virtualMachineTemplate]",
             "contentVersion": "1.0.0.0"
           },
-          "parametersLink": {
-            "uri": "[variables('parameterFiles').azureAddsVirtualMachinesParametersFile]",
-            "contentVersion": "1.0.0.0"
+            "parametersLink": {
+              "uri": "[variables('parameterFiles').azureAddsVirtualMachinesParametersFile]",
+              "contentVersion": "1.0.0.0"
+            }
           }
-        }
-      },
+        },
       {
         "apiVersion": "2015-01-01",
         "name": "operational-adds-deployment-dns",
         "type": "Microsoft.Resources/deployments",
+        "dependsOn": [
+          "[concat('Microsoft.Resources/deployments/', 'operational-adds-deployment-vms')]"
+        ],
         "properties": {
           "mode": "incremental",
           "templateLink": {
@@ -55,6 +72,9 @@
         "apiVersion": "2015-01-01",
         "name": "operational-azure-adds-forest-deployment",
         "type": "Microsoft.Resources/deployments",
+        "dependsOn": [
+          "[concat('Microsoft.Resources/deployments/', 'operational-adds-deployment-vms')]"
+        ],
         "properties": {
           "mode": "incremental",
           "templateLink": {
@@ -71,6 +91,10 @@
         "apiVersion": "2015-01-01",
         "name": "operational-azure-adds-dc-deployment",
         "type": "Microsoft.Resources/deployments",
+        "dependsOn": [
+          "[concat('Microsoft.Resources/deployments/', 'operational-adds-deployment-vms')]",
+          "[concat('Microsoft.Resources/deployments/', 'operational-azure-adds-forest-deployment')]"
+        ],
         "properties": {
           "mode": "incremental",
           "templateLink": {
