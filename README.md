@@ -301,7 +301,7 @@ NCSC Security Matrix Compliance
  mapping of the 14 principles can be found in Microsoft's [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://microsoft.sharepoint.com/teams/UKresponsetoAWSUKOFFICALtemplate/Shared%20Documents/General/Azure%20UK%20Governments%20-%2014%20compliance%20controls.pdf)
  whitepaper.
  
- ===============
+ ---
 
 *Data in transit protection:* Consumer data transiting networks should be adequately protected against tampering and eavesdropping via 
 a combination of network protection and encryption.
