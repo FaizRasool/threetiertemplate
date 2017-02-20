@@ -173,7 +173,7 @@
     }
   },
   "variables": {
-    "aagPublicIPAddressName": "aagpublicIp1",
+    "aagPublicIPAddressName": "application-gateway-pip",
     "aagPublicIPRef": "[resourceId('Microsoft.Network/publicIPAddresses', variables('aagPublicIPAddressName'))]",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "gatewaySubnetRef": "[concat(variables('vnetID'),'/subnets/','GatewaySubnet')]",

@@ -24,7 +24,7 @@
       "value": "10.0.255.224/29"
     },
     "gatewayPublicIPName": {
-      "value": "vpnGatewayPip"
+      "value": "vpn-gateway-pip"
     },
     "gatewayName": {
       "value": "operational-vpn-vgw"
