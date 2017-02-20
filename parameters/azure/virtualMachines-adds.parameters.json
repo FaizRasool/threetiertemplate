@@ -44,7 +44,7 @@
         ],
         "availabilitySet": {
           "useExistingAvailabilitySet": "No",
-          "name": "operational-as"
+          "name": "operational-ad-as"
         }
       }
     },
