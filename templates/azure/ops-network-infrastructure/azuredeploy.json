@@ -173,11 +173,12 @@
     }
   },
   "variables": {
-    "aagPublicIPAddressName": "aagpublicIp",
-    "aagPublicIPRef": "[resourceId('Microsoft.Network/publicIPAddresses',variables('aagPublicIPAddressName'))]",
+    "aagPublicIPAddressName": "aagpublicIp1",
+    "aagPublicIPRef": "[resourceId('Microsoft.Network/publicIPAddresses', variables('aagPublicIPAddressName'))]",
     "vnetID": "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
     "gatewaySubnetRef": "[concat(variables('vnetID'),'/subnets/','GatewaySubnet')]",
     "aagSubnetRef": "[concat(variables('vnetID'),'/subnets/','ApplicationGatewaySubnet')]",
+    "applicationGatewayID": "[resourceId('Microsoft.Network/applicationGateways',parameters('applicationGatewayName'))]",
     "api-version": "2015-06-15"
   },
   "resources": [
@@ -389,10 +390,10 @@
               "name": "appGatewayHttpListener",
               "properties": {
                 "FrontendIPConfiguration": {
-                  "Id": "[concat(parameters('applicationGatewayName'), '/frontendIPConfigurations/appGatewayFrontendIP')]"
+                  "Id": "[concat(variables('applicationGatewayID'), '/frontendIPConfigurations/appGatewayFrontendIP')]"
                 },
                 "FrontendPort": {
-                  "Id": "[concat(parameters('applicationGatewayName'), '/frontendPorts/appGatewayFrontendPort')]"
+                  "Id": "[concat(variables('applicationGatewayID'), '/frontendPorts/appGatewayFrontendPort')]"
                 },
                 "Protocol": "Http",
                 "SslCertificate": null
@@ -405,13 +406,13 @@
               "properties": {
                 "RuleType": "Basic",
                 "httpListener": {
-                  "id": "[concat(parameters('applicationGatewayName'), '/httpListeners/appGatewayHttpListener')]"
+                  "id": "[concat(variables('applicationGatewayID'), '/httpListeners/appGatewayHttpListener')]"
                 },
                 "backendAddressPool": {
-                  "id": "[concat(parameters('applicationGatewayName'), '/backendAddressPools/appGatewayBackendPool')]"
+                  "id": "[concat(variables('applicationGatewayID'), '/backendAddressPools/appGatewayBackendPool')]"
                 },
                 "backendHttpSettings": {
-                  "id": "[concat(parameters('applicationGatewayName'), '/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
+                  "id": "[concat(variables('applicationGatewayID'), '/backendHttpSettingsCollection/appGatewayBackendHttpSettings')]"
                 }
               }
             }
