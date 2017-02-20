@@ -15,7 +15,7 @@
     "parameterFiles": {
       "opsNetworkInfrastructureParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/ops-network.parameters.json')]",
       "azureMgmtVirtualNetworkParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/mgmt-vnet.parameters.json')]",
-      "nsgParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/mgmt-subnet-nsg.parameters.json')]",
+      "nsgParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/nsg-rules.parameters.json')]",
       "operationalVnetPeeringParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/operational-vnet-peering.parameters.json')]",
       "mgmtVnetPeeringParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/mgmt-vnet-peering.parameters.json')]"
     }
@@ -32,7 +32,7 @@
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[variables('parameterFiles').azureVirtualNetworkParametersFile]",
+          "uri": "[variables('parameterFiles').opsNetworkInfrastructureParametersFile]",
           "contentVersion": "1.0.0.0"
         }
       }
