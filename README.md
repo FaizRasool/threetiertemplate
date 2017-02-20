@@ -450,20 +450,19 @@ Deployment Guide
 
 ### 
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Activity                                         Configuration
-  ------------------------------------------------ ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Create Management VNet Resource Groups           None required
+  |Activity|Configuration|
+  |---|---|---|
+  |Create Management VNet Resource Groups           |None required|
 
-  Create Operational VNet Resource Groups          None required
+  |Create Operational VNet Resource Groups          |None required|
 
-  Deploy management VNet network infrastructure    None required
+  |Deploy management VNet network infrastructure    |None required|
 
-  Deploy operational VNet network infrastructure   None required
+  |Deploy operational VNet network infrastructure   |None required|
 
-  Create VNet Peerings                             None required
+  |Create VNet Peerings                             |None required|
 
-  Deploy VPN Gateway                               The template deploys an Azure environment with a public facing endpoint and an Azure Gateway to allow VPN setup between the Azure environment and your on-premises environment. To complete this VPN connection, you will need to provide the Local Gateway (your on-premises VPN public IP address) and complete the VPN connection set up locally. VPN Gateway requires local gateway configuration in the [https://\[root\]/parameters/azure/ops-network.parameters.json](https://[root]/parameters/azure/ops-network.parameters.json) template parameters file.
+  |Deploy VPN Gateway                               |The template deploys an Azure environment with a public facing endpoint and an Azure Gateway to allow VPN setup between the Azure environment and your on-premises environment. To complete this VPN connection, you will need to provide the Local Gateway (your on-premises VPN public IP address) and complete the VPN connection set up locally. VPN Gateway requires local gateway configuration in the [https://\[root\]/parameters/azure/ops-network.parameters.json](https://[root]/parameters/azure/ops-network.parameters.json) template parameters file.
                                                    
                                                     
                                                    
@@ -495,19 +494,17 @@ Deployment Guide
                                                    
                                                    }
                                                    
-                                                   }
+                                                   }|
 
-  Deploying internet facing Application Gateway    For SSL termination, Application Gateway requires you SSL certificates to be uploaded. When provisioned the Application Gateway will instantiate a public IP address and domain name to allow access to the web application.
+  |Deploying internet facing Application Gateway    |For SSL termination, Application Gateway requires you SSL certificates to be uploaded. When provisioned the Application Gateway will instantiate a public IP address and domain name to allow access to the web application.|
                                                    
                                                     
-                                                   
-                                                   ![Resource group (cunge) azure-operational-network-rg Location UK South Subscription name (change) Microsoft Azure Internal Consumption IP address 51.140.33.168 DNS name 5f496b92-00c34757-bd03-cdb66edeOe4ccloudapp.net Associated to azure-app-gateway ](media/image2.png){width="4.148824365704287in" height="0.6918514873140857in"}
-                                                   
+                                                                                                    
                                                     
                                                    
                                                     
 
-  Create Network Security Groups for VNETs         RDP access to the Management VNet Jumpbox must be secured to a trusted IP address range. It is important to amend the "sourceAddressPrefix" parameter with your own trusted source IP address range in the [https://\[root\]/parameters/azure/mgmt-subnet-nsg.parameters.json](https://[root]/parameters/azure/mgmt-subnet-nsg.parameters.json) template parameters file.
+  |Create Network Security Groups for VNETs         |RDP access to the Management VNet Jumpbox must be secured to a trusted IP address range. It is important to amend the "sourceAddressPrefix" parameter with your own trusted source IP address range in the [https://\[root\]/parameters/azure/mgmt-subnet-nsg.parameters.json](https://[root]/parameters/azure/mgmt-subnet-nsg.parameters.json) template parameters file.
                                                    
                                                     
                                                    
@@ -537,42 +534,40 @@ Deployment Guide
                                                    
                                                    \]
                                                    
-                                                   NSG configuration for the Operation VNet can be found in the [https://\[root\]/parameters/azure/ops-vent-nsgs.json](https://[root]/parameters/azure/ops-vent-nsgs.json) template parameters file.
+                                                   NSG configuration for the Operation VNet can be found in the [https://\[root\]/parameters/azure/ops-vent-nsgs.json](https://[root]/parameters/azure/ops-vent-nsgs.json) template parameters file.|
 
-  Create ADDS resource group                       None required
+  |Create ADDS resource group                       |None required|
 
-  Deploying ADDS servers                           None required
+  |Deploying ADDS servers                           |None required|
 
-  Updating DNS servers                             None required
+  |Updating DNS servers                             |None required|
 
-  Create ADDS forest                               The provided templates create a demo 'treyresearch' domain. To ensure that the required Active Directory Domain in created with the desired domain name and administrative user the [https://\[root\]/parameters/azure/create-adds-forest-extension.parameters.json](https://[root]/parameters/azure/create-adds-forest-extension.parameters.json) template parameters file must be edited with the required values.
+  |Create ADDS forest                               |The provided templates create a demo 'treyresearch' domain. To ensure that the required Active Directory Domain in created with the desired domain name and administrative user the [https://\[root\]/parameters/azure/create-adds-forest-extension.parameters.json](https://[root]/parameters/azure/create-adds-forest-extension.parameters.json) template parameters file must be edited with the required values.|
 
-  Create ADDS domain controller                    None required
+  |Create ADDS domain controller                    |None required|
 
-  Create operational workload Resource Group       None required
+  |Create operational workload Resource Group       |None required|
 
-  Deploy operational VM tiers and load balancers   None required
+  |Deploy operational VM tiers and load balancers   |None required|
 
-  Domain join VMs                                  The provided template creates a demo 'treyresearch' domain. To ensure that Virtual Machines are correctly joined parameter configuration is required in the following files
+  |Domain join VMs                                  |The provided template creates a demo 'treyresearch' domain. To ensure that Virtual Machines are correctly joined parameter configuration is required in the following files
                                                    
                                                     
                                                    
-                                                   > Domain Controller - [https://\[root\]/parameters/azure/add-adds-domain-controller.parameters.json](https://[root]/parameters/azure/add-adds-domain-controller.parameters.json) template parameters file.
-                                                   >
-                                                   > Operational workload Virtual Machines - [https://\[root\]/parameters/azure/add-adds-domain-controller.parameters.json](https://[root]/parameters/azure/add-adds-domain-controller.parameters.json) template parameters file.
-                                                   >
-                                                   > Management Jumpbox - [https://\[root\]/parameters/azure/add-adds-domain-controller.parameters.json](https://[root]/parameters/azure/add-adds-domain-controller.parameters.json) template parameters file.
+                                                   Domain Controller - [https://\[root\]/parameters/azure/add-adds-domain-controller.parameters.json](https://[root]/parameters/azure/add-adds-domain-controller.parameters.json) template parameters file.
+                                                   
+                                                   Operational workload Virtual Machines - [https://\[root\]/parameters/azure/add-adds-domain-controller.parameters.json](https://[root]/parameters/azure/add-adds-domain-controller.parameters.json) template parameters file.
+                                                   
+                                                   Management Jumpbox - [https://\[root\]/parameters/azure/add-adds-domain-controller.parameters.json](https://[root]/parameters/azure/add-adds-domain-controller.parameters.json) template parameters file.|
                                                    
                                                     
 
-  Enable Windows Auth for VMs                      None required
+  |Enable Windows Auth for VMs                      |None required|
 
-  Deploy Microsoft Anti-malware to VMs             None required
-  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  |Deploy Microsoft Anti-malware to VMs             |None required|
 
->  
->
->  
+
+
 
 ### Deployment Process
 
