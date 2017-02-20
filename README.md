@@ -451,7 +451,7 @@ Deployment Guide
 ### 
 
   |Activity|Configuration|
-  |---|---|---|
+  |---|---|
   |Create Management VNet Resource Groups           |None required|
 
   |Create Operational VNet Resource Groups          |None required|
