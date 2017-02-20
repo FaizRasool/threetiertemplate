@@ -288,22 +288,20 @@ Guidance and Recommendations
 >
 
 
-Security Matrix
+NCSC Security Matrix Compliance
 ===============
 
-> This UK-OFFICIAL Azure template aligns to the 14 cloud security
-> principles are documented in the (NCSC) [Cloud Security
-> Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)
-> paper to ensure an environment that supports workloads classified as
-> UK-OFFICIAL.
->
-> The following matrix provides a high level alignment of the 14 cloud
-> security principles the Microsoft Azure security model, a detailed
-> mapping of the 14 principles can be found in Microsoft's [14 Cloud
-> Security Controls for UK Cloud Using Microsoft
-> Azure](https://microsoft.sharepoint.com/teams/UKresponsetoAWSUKOFFICALtemplate/Shared%20Documents/General/Azure%20UK%20Governments%20-%2014%20compliance%20controls.pdf)
-> whitepaper.
+ This UK-OFFICIAL Azure template aligns to the 14 cloud security
+ principles are documented in the (NCSC) [Cloud Security
+ Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)
+ paper to ensure an environment that supports workloads classified as
+ UK-OFFICIAL.
 
+ The following matrix provides a high level alignment of the 14 cloud security principles the Microsoft Azure security model, a detailed
+ mapping of the 14 principles can be found in Microsoft's [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://microsoft.sharepoint.com/teams/UKresponsetoAWSUKOFFICALtemplate/Shared%20Documents/General/Azure%20UK%20Governments%20-%2014%20compliance%20controls.pdf)
+ whitepaper.
+ 
+ ===============
 
 *Data in transit protection:* Consumer data transiting networks should be adequately protected against tampering and eavesdropping via 
 a combination of network protection and encryption.
