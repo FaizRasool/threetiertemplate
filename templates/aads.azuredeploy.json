@@ -2,89 +2,89 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-  },
-  "variables": {
-    "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
-    "localRepoBaseUrl": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/",
-    "buildingBlocks": {
-      "virtualNetworkTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vnet-n-subnet/azuredeploy.json')]",
-      "virtualMachineTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json')]",
-      "virtualMachineExtensionsTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/virtualMachine-extensions/azuredeploy.json')]"
     },
-    "parameterFiles": {
-      "azureAddsVirtualMachinesParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualMachines-adds.parameters.json')]",
-      "azureCreateAddsForestExtensionParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/create-adds-forest-extension.parameters.json')]",
-      "azureAddAddsDomainControllerExtensionParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/add-adds-domain-controller.parameters.json')]",
-      "azureVirtualNetworkDnsParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualNetwork-adds-dns.parameters.json')]"
+    "variables": {
+      "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
+      "localRepoBaseUrl": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/",
+      "buildingBlocks": {
+        "virtualNetworkTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vnet-n-subnet/azuredeploy.json')]",
+        "virtualMachineTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json')]",
+        "virtualMachineExtensionsTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/virtualMachine-extensions/azuredeploy.json')]"
+      },
+      "parameterFiles": {
+        "azureAddsVirtualMachinesParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualMachines-adds.parameters.json')]",
+        "azureCreateAddsForestExtensionParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/create-adds-forest-extension.parameters.json')]",
+        "azureAddAddsDomainControllerExtensionParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/add-adds-domain-controller.parameters.json')]",
+        "azureVirtualNetworkDnsParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualNetwork-adds-dns.parameters.json')]"
+      }
+    },
+    "resources": [
+      {
+        "apiVersion": "2015-01-01",
+        "name": "operational-adds-deployment-vms",
+        "type": "Microsoft.Resources/deployments",
+        "properties": {
+          "mode": "incremental",
+          "templateLink": {
+            "uri": "[variables('buildingBlocks').virtualMachineTemplate]",
+            "contentVersion": "1.0.0.0"
+          },
+          "parametersLink": {
+            "uri": "[variables('parameterFiles').azureAddsVirtualMachinesParametersFile]",
+            "contentVersion": "1.0.0.0"
+          }
+        }
+      },
+      {
+        "apiVersion": "2015-01-01",
+        "name": "operational-adds-deployment-dns",
+        "type": "Microsoft.Resources/deployments",
+        "properties": {
+          "mode": "incremental",
+          "templateLink": {
+            "uri": "[variables('buildingBlocks').virtualNetworkTemplate]",
+            "contentVersion": "1.0.0.0"
+          },
+          "parametersLink": {
+            "uri": "[variables('parameterFiles').azureVirtualNetworkDnsParametersFile]",
+            "contentVersion": "1.0.0.0"
+          }
+        }
+      },
+      {
+        "apiVersion": "2015-01-01",
+        "name": "operational-azure-adds-forest-deployment",
+        "type": "Microsoft.Resources/deployments",
+        "properties": {
+          "mode": "incremental",
+          "templateLink": {
+            "uri": "[variables('buildingBlocks').virtualMachineExtensionsTemplate]",
+            "contentVersion": "1.0.0.0"
+          },
+          "parametersLink": {
+            "uri": "[variables('parameterFiles').azureCreateAddsForestExtensionParametersFile]",
+            "contentVersion": "1.0.0.0"
+          }
+        }
+      },
+      {
+        "apiVersion": "2015-01-01",
+        "name": "operational-azure-adds-dc-deployment",
+        "type": "Microsoft.Resources/deployments",
+        "properties": {
+          "mode": "incremental",
+          "templateLink": {
+            "uri": "[variables('buildingBlocks').virtualMachineExtensionsTemplate]",
+            "contentVersion": "1.0.0.0"
+          },
+          "parametersLink": {
+            "uri": "[variables('parameterFiles').azureAddAddsDomainControllerExtensionParametersFile]",
+            "contentVersion": "1.0.0.0"
+          }
+        }
+      }
+    ],
+    "outputs": {
     }
-  },
-  "resources": [
-    {
-      "apiVersion": "2015-01-01",
-      "name": "operational-adds-deployment-vms",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "incremental",
-        "templateLink": {
-          "uri": "[variables('buildingBlocks').virtualMachineTemplate]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parametersLink": {
-          "uri": "[variables('parameterFiles').azureAddsVirtualMachinesParametersFile]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-    {
-      "apiVersion": "2015-01-01",
-      "name": "operational-adds-deployment-dns",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "incremental",
-        "templateLink": {
-          "uri": "[variables('buildingBlocks').virtualNetworkTemplate]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parametersLink": {
-          "uri": "[variables('parameterFiles').azureVirtualNetworkDnsParametersFile]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-    {
-      "apiVersion": "2015-01-01",
-      "name": "operational-azure-adds-forest-deployment",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "incremental",
-        "templateLink": {
-          "uri": "[variables('buildingBlocks').virtualMachineExtensionsTemplate]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parametersLink": {
-          "uri": "[variables('parameterFiles').azureCreateAddsForestExtensionParametersFile]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    },
-    {
-      "apiVersion": "2015-01-01",
-      "name": "operational-azure-adds-dc-deployment",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "incremental",
-        "templateLink": {
-          "uri": "[variables('buildingBlocks').virtualMachineExtensionsTemplate]",
-          "contentVersion": "1.0.0.0"
-        },
-        "parametersLink": {
-          "uri": "[variables('parameterFiles').azureAddAddsDomainControllerExtensionParametersFile]",
-          "contentVersion": "1.0.0.0"
-        }
-      }
-    }
-  ],
-  "outputs": {
   }
-}
 

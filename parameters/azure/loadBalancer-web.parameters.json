@@ -142,7 +142,8 @@
     },
     "virtualNetworkSettings": {
       "value": {
-        "name": "azure-operational-vnet"
+        "name": "azure-operational-vnet",
+        "resourceGroup": "uk-official-networking-rg"
       }
     },
     "buildingBlockSettings": {
