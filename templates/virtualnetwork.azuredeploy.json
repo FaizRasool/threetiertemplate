@@ -129,27 +129,27 @@
         "parametersLink": {
           "uri": "[variables('parameterFiles').nsgParametersFile]",
           "contentVersion": "1.0.0.0"
+          }
         }
-        },
-        {
-          "apiVersion": "2015-01-01",
-          "name": "operational-app-gateway-deployment",
-          "type": "Microsoft.Resources/deployments",
-          "dependsOn": [
-            "[concat('Microsoft.Resources/deployments/', 'azure-ops-network-deployment')]",
-            "[concat('Microsoft.Resources/deployments/', 'azure-mgmt-vnet-deployment')]"
-          ],
-          "properties": {
-            "mode": "incremental",
-            "templateLink": {
-              "uri": "[variables('applicationGatewayTemplate')]",
-              "contentVersion": "1.0.0.0"
-            },
-            "parametersLink": {
-              "uri": "[variables('parameterFiles').applicationGatewayParametersFile]",
-              "contentVersion": "1.0.0.0"
-            }
-        }
+      },
+      {
+        "apiVersion": "2015-01-01",
+        "name": "operational-app-gateway-deployment",
+        "type": "Microsoft.Resources/deployments",
+        "dependsOn": [
+          "[concat('Microsoft.Resources/deployments/', 'azure-ops-network-deployment')]",
+          "[concat('Microsoft.Resources/deployments/', 'azure-mgmt-vnet-deployment')]"
+        ],
+        "properties": {
+          "mode": "incremental",
+          "templateLink": {
+            "uri": "[variables('applicationGatewayTemplate')]",
+            "contentVersion": "1.0.0.0"
+          },
+          "parametersLink": {
+            "uri": "[variables('parameterFiles').applicationGatewayParametersFile]",
+            "contentVersion": "1.0.0.0"
+         }
       }
     }
   ]
