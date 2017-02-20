@@ -21,7 +21,7 @@
   "resources": [
     {
       "apiVersion": "2015-01-01",
-      "name": "operational-adds-deployment",
+      "name": "operational-adds-deployment-vms",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "incremental",
@@ -37,7 +37,7 @@
     },
     {
       "apiVersion": "2015-01-01",
-      "name": "operational-adds-deployment",
+      "name": "operational-adds-deployment-dns",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "incremental",

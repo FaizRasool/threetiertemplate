@@ -444,8 +444,6 @@ Deployment Guide
 
  
 
->  
-
 ### Deployment and Configuration Activities
 
   Activity|Configuration|
@@ -455,16 +453,10 @@ Deployment Guide
   Deploy management VNet network infrastructure |None required
   Deploy operational VNet network infrastructure|None required
   Create VNet Peerings|None required|
-  Deploy VPN Gateway|The template deploys an Azure environment with a public facing endpoint and an Azure Gateway to allow VPN setup between the Azure environment and your on-premises environment. To complete this VPN connection, you will need to provide the Local Gateway (your on-premises VPN public IP address) and complete the VPN connection set up locally. VPN Gateway requires local gateway configuration in the [https://\[root\]/parameters/azure/ops-network.parameters.json](https://[root]/parameters/azure/ops-network.parameters.json) template parameters file.
-                                                   
-                                                    
-                                                   
+  Deploy VPN Gateway|The template deploys an Azure environment with a public facing endpoint and an Azure Gateway to allow VPN setup between the Azure environment and your on-premises environment. To complete this VPN connection, you will need to provide the Local Gateway (your on-premises VPN public IP address) and complete the VPN connection set up locally. VPN Gateway requires local gateway configuration in the [https://\[root\]/parameters/azure/ops-network.parameters.json](https://[root]/parameters/azure/ops-network.parameters.json) template parameters file.                                      
                                                    "connectionSettings": {
-                                                   
                                                    "value": {
-                                                   
                                                    "name": "operational-vpn-cn",
-                                                   
                                                    "connectionType": "IPSec",
                                                    
                                                    "sharedKey": "\[Yourshared secret\]",
@@ -489,7 +481,7 @@ Deployment Guide
                                                    
                                                    }|
 
-  |Deploying internet facing Application Gateway    |For SSL termination, Application Gateway requires you SSL certificates to be uploaded. When provisioned the Application Gateway will instantiate a public IP address and domain name to allow access to the web application.|
+  Deploying internet facing Application Gateway    |For SSL termination, Application Gateway requires you SSL certificates to be uploaded. When provisioned the Application Gateway will instantiate a public IP address and domain name to allow access to the web application.|
                                                    
                                                     
                                                                                                     
@@ -497,7 +489,7 @@ Deployment Guide
                                                    
                                                     
 
-  |Create Network Security Groups for VNETs         |RDP access to the Management VNet Jumpbox must be secured to a trusted IP address range. It is important to amend the "sourceAddressPrefix" parameter with your own trusted source IP address range in the [https://\[root\]/parameters/azure/mgmt-subnet-nsg.parameters.json](https://[root]/parameters/azure/mgmt-subnet-nsg.parameters.json) template parameters file.
+ Create Network Security Groups for VNETs|RDP access to the Management VNet Jumpbox must be secured to a trusted IP address range. It is important to amend the "sourceAddressPrefix" parameter with your own trusted source IP address range in the [https://\[root\]/parameters/azure/mgmt-subnet-nsg.parameters.json](https://[root]/parameters/azure/mgmt-subnet-nsg.parameters.json) template parameters file.
                                                    
                                                     
                                                    
