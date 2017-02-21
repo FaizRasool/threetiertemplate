@@ -47,10 +47,10 @@
             "uri": "[variables('buildingBlocks').virtualMachineTemplate]",
             "contentVersion": "1.0.0.0"
           },
-          "parametersLink": {
-            "uri": "[variables('parameterFiles').azureAddsVirtualMachinesParametersFile]",
-            "contentVersion": "1.0.0.0"
-          },
+          //"parametersLink": {
+          //  "uri": "[variables('parameterFiles').azureAddsVirtualMachinesParametersFile]",
+          //  "contentVersion": "1.0.0.0"
+          //},
           //"parameters": {
           //  "virtualNetworkSettings": {
           //    "value": "[variables('virtualNetworkSettings')]"
