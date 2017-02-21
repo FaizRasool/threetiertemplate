@@ -30,6 +30,8 @@
     </None>
     <Content Include="Deploy-ReferenceArchitecture.ps1" />
     <Content Include="parameters\azure\mgmt-vnet.parameters.json" />
+    <None Include="documents\Azure (G-Cloud).xlsx" />
+    <None Include="documents\Azure UK Governments - 14 compliance controls.pdf" />
     <None Include="extensions\iisaspnet.ps1.zip" />
     <None Include="extensions\enable-windows-auth.ps1" />
     <None Include="extensions\adds-forest.ps1" />

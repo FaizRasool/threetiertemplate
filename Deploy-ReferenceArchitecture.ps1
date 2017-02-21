@@ -131,34 +131,34 @@ if ($Mode -eq "Infrastructure" -Or $Mode -eq "Prepare") {
 ############################################################################
 
 if ($Mode -eq "ADDS" -Or $Mode -eq "Prepare") {
-    # Deploy AD tier in azure
+  #  # Deploy AD tier in azure
 
-    # Creating ADDS resource group
-    Write-Host "Creating ADDS resource group..."
-    $addsResourceGroup = New-AzureRmResourceGroup -Name $addsResourceGroupName -Location $Location
+  #  # Creating ADDS resource group
+  #  Write-Host "Creating ADDS resource group..."
+  #  $addsResourceGroup = New-AzureRmResourceGroup -Name $addsResourceGroupName -Location $Location
 
 
-    # "Deploying ADDS servers..."
-    Write-Host "Deploying ADDS servers..."
-    New-AzureRmResourceGroupDeployment -Name "operational-adds-deployment" `
-		-ResourceGroupName $addsResourceGroup.ResourceGroupName  -TemplateUri $virtualMachineTemplate.AbsoluteUri `
-		-TemplateParameterFile $azureAddsVirtualMachinesParametersFile
+  #  # "Deploying ADDS servers..."
+  #  Write-Host "Deploying ADDS servers..."
+  #  New-AzureRmResourceGroupDeployment -Name "operational-adds-deployment" `
+		#-ResourceGroupName $addsResourceGroup.ResourceGroupName  -TemplateUri $virtualMachineTemplate.AbsoluteUri `
+		#-TemplateParameterFile $azureAddsVirtualMachinesParametersFile
 
-    # Remove the Azure DNS entry since the forest will create a DNS forwarding entry.
-    Write-Host "Updating virtual network DNS servers..."
-    New-AzureRmResourceGroupDeployment -Name "operational-azure-dns-vnet-deployment" `
-        -ResourceGroupName $addsResourceGroup.ResourceGroupName -TemplateUri $virtualNetworkTemplate.AbsoluteUri `
-        -TemplateParameterFile $azureVirtualNetworkDnsParametersFile
+  #  # Remove the Azure DNS entry since the forest will create a DNS forwarding entry.
+  #  Write-Host "Updating virtual network DNS servers..."
+  #  New-AzureRmResourceGroupDeployment -Name "operational-azure-dns-vnet-deployment" `
+  #      -ResourceGroupName $addsResourceGroup.ResourceGroupName -TemplateUri $virtualNetworkTemplate.AbsoluteUri `
+  #      -TemplateParameterFile $azureVirtualNetworkDnsParametersFile
 
-    Write-Host "Creating ADDS forest..."
-    New-AzureRmResourceGroupDeployment -Name "operational-azure-adds-forest-deployment" `
-        -ResourceGroupName $addsResourceGroup.ResourceGroupName `
-        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureCreateAddsForestExtensionParametersFile
+  #  Write-Host "Creating ADDS forest..."
+  #  New-AzureRmResourceGroupDeployment -Name "operational-azure-adds-forest-deployment" `
+  #      -ResourceGroupName $addsResourceGroup.ResourceGroupName `
+  #      -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureCreateAddsForestExtensionParametersFile
 
-    Write-Host "Creating ADDS domain controller..."
-    New-AzureRmResourceGroupDeployment -Name "operational-azure-adds-dc-deployment" `
-        -ResourceGroupName $addsResourceGroup.ResourceGroupName `
-        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureAddAddsDomainControllerExtensionParametersFile
+  #  Write-Host "Creating ADDS domain controller..."
+  #  New-AzureRmResourceGroupDeployment -Name "operational-azure-adds-dc-deployment" `
+  #      -ResourceGroupName $addsResourceGroup.ResourceGroupName `
+  #      -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureAddAddsDomainControllerExtensionParametersFile
 
 }
 
@@ -169,27 +169,27 @@ if ($Mode -eq "ADDS" -Or $Mode -eq "Prepare") {
 
 if ($Mode -eq "Workload" -Or $Mode -eq "Prepare") {
 
- #   Write-Host "Creating workload resource group..."
- #   $workloadResourceGroup = New-AzureRmResourceGroup -Name $workloadResourceGroupName -Location $Location
+    Write-Host "Creating workload resource group..."
+    $workloadResourceGroup = New-AzureRmResourceGroup -Name $workloadResourceGroupName -Location $Location
 
-	## Deploy management vnet network infrastructure
- #   Write-Host "Deploying management jumpbox..."
- #   New-AzureRmResourceGroupDeployment -Name "azure-mgmt-rg-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
- #       -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $mgmtVMJumpboxParametersFile
+	# Deploy management vnet network infrastructure
+    Write-Host "Deploying management jumpbox..."
+    New-AzureRmResourceGroupDeployment -Name "azure-mgmt-rg-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $mgmtVMJumpboxParametersFile
 
-	##Deploy workload tiers
- #   Write-Host "Deploying web load balancer..."
- #   New-AzureRmResourceGroupDeployment -Name "operational-web-deployment"  `
-	#	-ResourceGroupName $workloadResourceGroup.ResourceGroupName `
- #       -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $webLoadBalancerParametersFile
+	#Deploy workload tiers
+    Write-Host "Deploying web load balancer..."
+    New-AzureRmResourceGroupDeployment -Name "operational-web-deployment"  `
+		-ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+        -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $webLoadBalancerParametersFile
 
- #   Write-Host "Deploying biz load balancer..."
- #   New-AzureRmResourceGroupDeployment -Name "operational-biz-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
- #       -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $bizLoadBalancerParametersFile
+    Write-Host "Deploying biz load balancer..."
+    New-AzureRmResourceGroupDeployment -Name "operational-biz-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+        -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $bizLoadBalancerParametersFile
 
- #   Write-Host "Deploying data load balancer..."
- #   New-AzureRmResourceGroupDeployment -Name "operational-data-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
- #       -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $dataLoadBalancerParametersFile
+    Write-Host "Deploying data load balancer..."
+    New-AzureRmResourceGroupDeployment -Name "operational-data-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+        -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $dataLoadBalancerParametersFile
 
  }
 
@@ -197,27 +197,27 @@ if ($Mode -eq "Workload" -Or $Mode -eq "Prepare") {
 ##### Domain join VMs
 ##############################################################################
 
-#if ($Mode -eq "Post" -Or $Mode -eq "Prepare") {
+if ($Mode -eq "Post" -Or $Mode -eq "Prepare") {
 
-#    ##Domain Join Operational Workload VMs
+    ##Domain Join Operational Workload VMs
 
-#    #Get Operational Resource groups
-#	Write-Host "Get Operational resource group..."
-#    $workloadResourceGroup = Get-AzureRmResourceGroup -Name $workloadResourceGroupName
+    #Get Operational Resource groups
+	Write-Host "Get Operational resource group..."
+    $workloadResourceGroup = Get-AzureRmResourceGroup -Name $workloadResourceGroupName
 
-#	##Domain join operational machines
-#	Write-Host "Joining Operational Vms to domain..."
-#    New-AzureRmResourceGroupDeployment -Name "vm-join-domain-deployment" `
-#        -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-#        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureOperationVmDomainJoinExtensionParametersFile
+	##Domain join operational machines
+	Write-Host "Joining Operational Vms to domain..."
+    New-AzureRmResourceGroupDeployment -Name "vm-join-domain-deployment" `
+        -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureOperationVmDomainJoinExtensionParametersFile
 
-#	#Enable windows authentication
-#    Write-Host "Enable Windows Auth for Operational Vms..."
-#    New-AzureRmResourceGroupDeployment -Name "vm-enable-windows-auth" `
-#        -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-#        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureOperationalVmEnableWindowsAuthExtensionParametersFile
+	#Enable windows authentication
+    Write-Host "Enable Windows Auth for Operational Vms..."
+    New-AzureRmResourceGroupDeployment -Name "vm-enable-windows-auth" `
+        -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureOperationalVmEnableWindowsAuthExtensionParametersFile
     
-# }
+ }
 
 
 

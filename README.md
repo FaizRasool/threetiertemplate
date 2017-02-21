@@ -29,7 +29,7 @@
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
 </a>
 
@@ -77,7 +77,7 @@ Architecture Diagram and Components
  extends an on-premises network to Azure allowing web based workloads
  to be accessed securely by corporate users or from the internet.
 
-![alt text](https://github.com/ben-houghton/threetiertemplate/blob/master/images/diagram.png "Azure UK-OFFICAL Three Tier Architecture")
+![alt text](/images/diagram.png?raw=true "Azure UK-OFFICAL Three Tier Architecture")
 
 
  The components of this architecture include –
@@ -502,7 +502,7 @@ troubleshooting** blade.
 3.	Select a region such as `UKSouth` from the Location drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
 4.	Do not edit the *Template Root Uri* or the *Parameter Root Uri* text boxes.
 5.	In the Settings textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
-![alt text](https://blob/master/images/create-official-aads-rg.JPG "Create ADDS deployment")
+![alt text](images/create-official-aads-rg.JPG?raw=true "Create ADDS deployment") 
 6.	Review the terms and conditions, then click the *I agree to the terms and conditions stated above* checkbox.
 7.	Click on the *Purchase* button.
 8.	Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
@@ -522,7 +522,7 @@ troubleshooting** blade.
 3.	Select a region such as `UKSouth` from the Location drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
 4.	Do not edit the *Template Root Uri* or the *Parameter Root Uri* text boxes.
 5.	In the Settings textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
-![alt text](https://blob/master/images/\create-official-ops-rg.JPG "Create ADDS deployment")
+![alt text](/images/create-official-ops-rg.JPG?raw=true "Create ADDS deployment")
 6.	Review the terms and conditions, then click the *I agree to the terms and conditions stated above* checkbox.
 7.	Click on the *Purchase* button.
 8.	Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
