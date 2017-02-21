@@ -5,16 +5,25 @@ Microsoft Azure UK-OFFICIAL Three Tier Web Application Architecture
 Contents
 ========
 
-[Overview](#overview) 	
-[Architecture Diagram and Components](#architecture-diagram-and-components)
-[Guidance and Recommendations](#guidance-and-recommendations)
-[Security Matrix](#security-matrix)
-[Deployment Guide](#deployment-guide])
-[Deployment and Configuration Activities]([#deployment-and-configuration-activities)
-[Deployment Process](#deployment-process)
-[UK Governments Private Network Connectivity](#uk-governments-private-network-connectivity)
-[Cost](#cost)
-[Further reading](#further-reading)
+- [Overview](#overview) 	
+- [Architecture Diagram and Components](#architecture-diagram-and-components)
+- [Guidance and Recommendations](#guidance-and-recommendations)
+	- [Business continuity](#business-continuity)
+	- [Logging and Audit](#logging-and-audit)
+	- [Identity](#identity)
+	- [Security](#security)
+- [NCSC Security Matrix Compliance](#ncsc-security-matrix-compliance)
+- [Deployment Guide](#deployment-guide])
+- [Deployment and Configuration Activities]([#deployment-and-configuration-activities)
+	- [Deployment Process](#deployment-process)
+	- [Deploy Networking Infrastructure](#deploy-networking-infrastructure)
+	- [Deploy Active Directory Domain](#deploy-active-directory-domain)
+	- [Deploy operational workload infrastructure](#deploy-operational-workload-infrastructure)
+	- [Execute post deployment configuration](#execute-post-deployment-configuration)
+	- [(Optional) PowerShell Deployment](#optional-powershell-deployment)
+- [UK Governments Private Network Connectivity](#uk-governments-private-network-connectivity)
+- [Cost](#cost)
+- [Further reading](#further-reading)
 
 
 
