@@ -2,20 +2,20 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "operationalVirtualNetworkName": {
-      "type": "string",
-      "defaultValue": "azure-operational-vnet",
-      "metadata": {
-        "description": "Operational Resources VNet"
-        }
-      },
-      "operationalVirtualNetworkResourceGroupName": {
-        "type": "string",
-        "defaultValue": "uk-official-networking-rg ",
-        "metadata": {
-          "description": "Operational VNet Resource Group"
-        }
-      }
+    //"operationalVirtualNetworkName": {
+    //  "type": "string",
+    //  "defaultValue": "azure-operational-vnet",
+    //  "metadata": {
+    //    "description": "Operational Resources VNet"
+    //    }
+    //  },
+    //  "operationalVirtualNetworkResourceGroupName": {
+    //    "type": "string",
+    //    "defaultValue": "uk-official-networking-rg ",
+    //    "metadata": {
+    //      "description": "Operational VNet Resource Group"
+    //    }
+    //  }
     },
   "variables": {
     "virtualNetworkSettings": {
@@ -52,11 +52,11 @@
               "uri": "[variables('parameterFiles').azureAddsVirtualMachinesParametersFile]",
               "contentVersion": "1.0.0.0"
             },
-            "parameters": {
-              "virtualNetworkSettings": {
-                "value": "[variables('virtualNetworkSettings')]"
-              }
-            }
+            //"parameters": {
+            //  "virtualNetworkSettings": {
+            //    "value": "[variables('virtualNetworkSettings')]"
+            //  }
+           // }
           }
         },
       {
@@ -70,8 +70,7 @@
           "mode": "incremental",
           "templateLink": {
             "uri": "[variables('buildingBlocks').virtualNetworkTemplate]",
-            "contentVersion": "1.0.0.0"
-          },
+yment          },
           "parametersLink": {
             "uri": "[variables('parameterFiles').azureVirtualNetworkDnsParametersFile]",
             "contentVersion": "1.0.0.0"
