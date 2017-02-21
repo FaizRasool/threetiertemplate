@@ -54,7 +54,7 @@ Overview
  a UK-OFFICIAL compliant architecture.
 
  This architecture and corresponding ARM templates are underpinned by
- the Microsoft whitepaper [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://microsoft.sharepoint.com/teams/UKresponsetoAWSUKOFFICALtemplate/Shared%20Documents/General/Azure%20UK%20Governments%20-%2014%20compliance%20controls.pdf)
+ the Microsoft whitepaper [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](documents/Azure%20UK%20Governments%20-%2014%20compliance%20controls.pdf)
  . This paper catalogue how Azure services align with the fourteen
  cloud security principles set forth in the CESG/NCSC publication “[Implementing the Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)"
  thereby enabling organisations to fast-track their ability to meet
