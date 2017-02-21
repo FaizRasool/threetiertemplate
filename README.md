@@ -14,7 +14,7 @@ Contents
 	- [Security](#security)
 - [NCSC Security Matrix Compliance](#ncsc-security-matrix-compliance)
 - [Deployment Guide](#deployment-guide])
-- [Deployment and Configuration Activities]([#deployment-and-configuration-activities)
+- [Deployment and Configuration Activities](#deployment-and-configuration-activities)
 	- [Deployment Process](#deployment-process)
 	- [Deploy Networking Infrastructure](#deploy-networking-infrastructure)
 	- [Deploy Active Directory Domain](#deploy-active-directory-domain)
