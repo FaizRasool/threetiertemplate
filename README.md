@@ -385,14 +385,11 @@ data to be adequately protected.
 Deployment Guide
 ================
  
->
-> These templates automatically deploy the Azure resources for a multi-tier, Windows based three tier application with an Active
-> Directory Domain architecture. **As this is a complex deployment that delivers the full infrastructure and environment configuration
-> deployment can take up to two hours.** Progress can be monitored from > the Resource Group blade and Deployment output blade in the Azure
-> Portal.
->
->  
->
+These templates automatically deploy the Azure resources for a multi-tier, Windows based three tier application with an Active Directory Domain architecture. **As this is a complex deployment that delivers the full infrastructure and environment configuration
+deployment can take up to two hours.** Progress can be monitored from > the Resource Group blade and Deployment output blade in the Azure
+Portal.
+
+
 > Rather than develop the templates for this environment from scratch, some templates used are drawn from the [Microsoft Patterns and
 > Practices GitHub Repository](https://github.com/mspnp) [Template
 > Building Blocks](https://github.com/mspnp/template-building-blocks)
@@ -406,18 +403,16 @@ Deployment Guide
 > with the corresponding ARM Templates found at [Azure Reference
 > Architectures ARM
 > Templates](https://github.com/mspnp/reference-architectures).
->
->  
->
-> As a pre-requisite to deployment users should ensure that they have –
 
->-   An Azure Subscription
+ As a pre-requisite to deployment users should ensure that they have –
 
->-   Admin or co-admin rights for the Subscription
+-   An Azure Subscription
 
->-   The Azure Subscription ID has been noted
+-   Admin or co-admin rights for the Subscription
 
->-   The latest version of PowerShell to execute the deployment script
+-   The Azure Subscription ID has been noted
+
+-   The latest version of PowerShell to execute the deployment script
 
  
 
