@@ -2,8 +2,7 @@
 Microsoft Azure UK-OFFICIAL Three Tier Web Application Architecture
 ===================================================================
 
-Contents
-========
+##Contents
 
 - [Overview](#overview) 	
 - [Architecture Diagram and Components](#architecture-diagram-and-components)
@@ -422,7 +421,7 @@ Deployment Guide
 
  
 
-### Deployment and Configuration Activities
+## Deployment and Configuration Activities
 
   Activity|Configuration|
   ---|---
@@ -446,7 +445,7 @@ Deployment Guide
   Domain join VMs|The provided template creates a demo 'treyresearch' domain. To ensure that Virtual Machines are correctly joined parameter configuration is required in the following files; Domain Controller - [https://parameters/azure/add-adds-domain-controller.parameters.json](https://parameters/azure/add-adds-domain-controller.parameters.json) template parameters file; Operational workload Virtual Machines - [https://parameters/azure/add-adds-domain-controller.parameters.json](https://[root]/parameters/azure/add-adds-domain-controller.parameters.json) template parameters file; Management Jumpbox - [https://parameters/azure/add-adds-domain-controller.parameters.json](https://parameters/azure/add-adds-domain-controller.parameters.json) template parameters file.|
                                                   
 
-### Deployment Process
+## Deployment Process
 
 A deployment for this reference architecture is available on
 [GitHub](https://github.com/ben-houghton/threetiertemplate/tree/master/templates).
