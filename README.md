@@ -1,40 +1,21 @@
 
+Microsoft Azure UK-OFFICIAL Three Tier Web Application Architecture
+===================================================================
 
-## Deploy Networking Infrastructure
-  
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fvirtualnetwork.azuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fvirtualnetwork.azuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
-</a>
+Contents
+========
 
-## Deploy Active Directory Domain 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Faads.azuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Faads.azuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
-</a>
+[Overview](#overview) 	
+[Architecture Diagram and Components](#architecture-diagram-and-components)
+[Guidance and Recommendations](#guidance-and-recommendations)
+[Security Matrix](#security-matrix)
+[Deployment Guide](#deployment-guide])
+[Deployment and Configuration Activities]([#deployment-and-configuration-activities)
+[Deployment Process](#deployment-process)
+[UK Governments Private Network Connectivity](#uk-governments-private-network-connectivity)
+[Cost](#cost)
+[Further reading](#further-reading)
 
-## Deploy operational workload infrastructure 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fworkloads.azuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fworkloads.azuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
-</a>
-
-## Execute post deployment configuration
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
-</a>
-
-
-##Microsoft Azure UK-OFFICIAL Three Tier Web Application Architecture 
 
 
 Overview
@@ -54,7 +35,7 @@ Overview
  a UK-OFFICIAL compliant architecture.
 
  This architecture and corresponding ARM templates are underpinned by
- the Microsoft whitepaper [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](documents/Azure%20UK%20Governments%20-%2014%20compliance%20controls.pdf)
+ the Microsoft whitepaper [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](documents/Azure%20UK%20Governments%20-%2014%20compliance%20controls.pdf?raw=true)
  . This paper catalogue how Azure services align with the fourteen
  cloud security principles set forth in the CESG/NCSC publication “[Implementing the Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)"
  thereby enabling organisations to fast-track their ability to meet
@@ -290,7 +271,7 @@ NCSC Security Matrix Compliance
  UK-OFFICIAL.
 
  The following matrix provides a high level alignment of the 14 cloud security principles the Microsoft Azure security model, a detailed
- mapping of the 14 principles can be found in Microsoft's [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://microsoft.sharepoint.com/teams/UKresponsetoAWSUKOFFICALtemplate/Shared%20Documents/General/Azure%20UK%20Governments%20-%2014%20compliance%20controls.pdf)
+ mapping of the 14 principles can be found in Microsoft's [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](documents/General/Azure%20UK%20Governments%20-%2014%20compliance%20controls.pdf?raw=true)
  whitepaper.
  
  ---

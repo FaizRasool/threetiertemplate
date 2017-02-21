@@ -5,7 +5,7 @@
     "virtualMachinesExtensionSettings": {
       "value": [
         {
-          "vms": [ "operational-ad-vm2", "operational-web-vm1", "operational-web-vm2", "operational-biz-vm1", "operational-biz-vm2", "operational-data-vm1", "operational-data-vm1", "azure-mgmt-vm1"],
+          "vms": [ "operational-web-vm1", "operational-web-vm2", "operational-biz-vm1", "operational-biz-vm2", "operational-data-vm1", "operational-data-vm2", "azure-mgmt-vm1"],
           "extensions": [
             {
               "name": "join-ad-domain",

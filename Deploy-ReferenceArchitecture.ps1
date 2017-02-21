@@ -66,12 +66,8 @@ $webLoadBalancerParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "param
 $bizLoadBalancerParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\loadBalancer-biz.parameters.json")
 $dataLoadBalancerParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\loadBalancer-data.parameters.json")
 #postdeployment config
-$azureOperationVmDomainJoinExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\ops-vm-domain-join.parameters.json")
-$azureOperationalVmEnableWindowsAuthExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\ops-vm-enable-windows-auth.parameters.json")
-$azureMgmtVmDomainJoinExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\mgmt-vm-domain-join.parameters.json")
-$azureMgmtVmEnableWindowsAuthExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\mgmt-vm-enable-windows-auth.parameters.json")
-
-
+$azurenVmDomainJoinExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\vm-domain-join.parameters.json")
+$azureVmEnableWindowsAuthExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\vm-enable-windows-auth.parameters.json")
 
 
 # Azure ADDS Deployments
@@ -169,27 +165,27 @@ if ($Mode -eq "ADDS" -Or $Mode -eq "Prepare") {
 
 if ($Mode -eq "Workload" -Or $Mode -eq "Prepare") {
 
-    Write-Host "Creating workload resource group..."
-    $workloadResourceGroup = New-AzureRmResourceGroup -Name $workloadResourceGroupName -Location $Location
+ #   Write-Host "Creating workload resource group..."
+ #   $workloadResourceGroup = New-AzureRmResourceGroup -Name $workloadResourceGroupName -Location $Location
 
-	# Deploy management vnet network infrastructure
-    Write-Host "Deploying management jumpbox..."
-    New-AzureRmResourceGroupDeployment -Name "azure-mgmt-rg-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-        -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $mgmtVMJumpboxParametersFile
+	## Deploy management vnet network infrastructure
+ #   Write-Host "Deploying management jumpbox..."
+ #   New-AzureRmResourceGroupDeployment -Name "azure-mgmt-rg-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+ #       -TemplateUri $virtualMachineTemplate.AbsoluteUri -TemplateParameterFile $mgmtVMJumpboxParametersFile
 
-	#Deploy workload tiers
-    Write-Host "Deploying web load balancer..."
-    New-AzureRmResourceGroupDeployment -Name "operational-web-deployment"  `
-		-ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-        -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $webLoadBalancerParametersFile
+	##Deploy workload tiers
+ #   Write-Host "Deploying web load balancer..."
+ #   New-AzureRmResourceGroupDeployment -Name "operational-web-deployment"  `
+	#	-ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+ #       -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $webLoadBalancerParametersFile
 
-    Write-Host "Deploying biz load balancer..."
-    New-AzureRmResourceGroupDeployment -Name "operational-biz-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-        -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $bizLoadBalancerParametersFile
+ #   Write-Host "Deploying biz load balancer..."
+ #   New-AzureRmResourceGroupDeployment -Name "operational-biz-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+ #       -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $bizLoadBalancerParametersFile
 
-    Write-Host "Deploying data load balancer..."
-    New-AzureRmResourceGroupDeployment -Name "operational-data-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-        -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $dataLoadBalancerParametersFile
+ #   Write-Host "Deploying data load balancer..."
+ #   New-AzureRmResourceGroupDeployment -Name "operational-data-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+ #       -TemplateUri $loadBalancerTemplate.AbsoluteUri -TemplateParameterFile $dataLoadBalancerParametersFile
 
  }
 
@@ -199,7 +195,7 @@ if ($Mode -eq "Workload" -Or $Mode -eq "Prepare") {
 
 if ($Mode -eq "Post" -Or $Mode -eq "Prepare") {
 
-    ##Domain Join Operational Workload VMs
+       ##Domain Join VMs
 
     #Get Operational Resource groups
 	Write-Host "Get Operational resource group..."
@@ -207,15 +203,14 @@ if ($Mode -eq "Post" -Or $Mode -eq "Prepare") {
 
 	##Domain join operational machines
 	Write-Host "Joining Operational Vms to domain..."
-    New-AzureRmResourceGroupDeployment -Name "vm-join-domain-deployment" `
-        -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureOperationVmDomainJoinExtensionParametersFile
+    New-AzureRmResourceGroupDeployment -Name "vm-join-domain-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azurenVmDomainJoinExtensionParametersFile
 
 	#Enable windows authentication
     Write-Host "Enable Windows Auth for Operational Vms..."
-    New-AzureRmResourceGroupDeployment -Name "vm-enable-windows-auth" `
-        -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureOperationalVmEnableWindowsAuthExtensionParametersFile
+    New-AzureRmResourceGroupDeployment -Name "vm-enable-windows-auth"  -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
+        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureVmEnableWindowsAuthExtensionParametersFile
+    
     
  }
 
