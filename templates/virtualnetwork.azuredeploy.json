@@ -41,22 +41,6 @@
         }
       }
     },
-    //{
-    //  "apiVersion": "2015-01-01",
-    //  "name": "azure-ops-network-deployment",
-    //  "type": "Microsoft.Resources/deployments",
-    //  "properties": {
-    //    "mode": "incremental",
-    //    "templateLink": {
-    //      "uri": "[variables('buildingBlocks').virtualNetworkTemplate]",
-    //      "contentVersion": "1.0.0.0"
-    //    },
-    //    "parametersLink": {
-    //      "uri": "[variables('parameterFiles').opsNetworkInfrastructureParametersFile]",
-    //      "contentVersion": "1.0.0.0"
-    //    }
-    //  }
-    //},
     {
       "apiVersion": "2015-01-01",
       "name": "azure-mgmt-vnet-deployment",
@@ -75,43 +59,24 @@
     },
     {
       "apiVersion": "2015-01-01",
-      "name": "operational-vpn-deployment",
+      "name": "operational-vnet-peering-deployment",
       "type": "Microsoft.Resources/deployments",
       "dependsOn": [
-        "[concat('Microsoft.Resources/deployments/', 'azure-ops-network-deployment')]"
+        "[concat('Microsoft.Resources/deployments/', 'azure-ops-network-deployment')]",
+        "[concat('Microsoft.Resources/deployments/', 'azure-mgmt-vnet-deployment')]"
       ],
       "properties": {
         "mode": "incremental",
         "templateLink": {
-          "uri": "[variables('buildingBlocks').virtualNetworkGatewayTemplate]",
+          "uri": "[variables('vnetPeeringTemplate')]",
           "contentVersion": "1.0.0.0"
         },
         "parametersLink": {
-          "uri": "[variables('parameterFiles').azureVirtualNetworkGatewayParametersFile]",
+          "uri": "[variables('parameterFiles').operationalVnetPeeringParametersFile]",
           "contentVersion": "1.0.0.0"
         }
       }
     },
-    //{
-    //  "apiVersion": "2015-01-01",
-    //  "name": "operational-vnet-peering-deployment",
-    //  "type": "Microsoft.Resources/deployments",
-    //  "dependsOn": [
-    //    "[concat('Microsoft.Resources/deployments/', 'azure-ops-network-deployment')]",
-    //    "[concat('Microsoft.Resources/deployments/', 'azure-mgmt-vnet-deployment')]"
-    //  ],
-    //  "properties": {
-    //    "mode": "incremental",
-    //    "templateLink": {
-    //      "uri": "[variables('vnetPeeringTemplate')]",
-    //      "contentVersion": "1.0.0.0"
-    //    },
-    //    "parametersLink": {
-    //      "uri": "[variables('parameterFiles').operationalVnetPeeringParametersFile]",
-    //      "contentVersion": "1.0.0.0"
-    //    }
-    //  }
-    //},
     {
       "apiVersion": "2015-01-01",
       "name": "mgmt-vnet-peering-deployment",
@@ -147,26 +112,6 @@
           "contentVersion": "1.0.0.0"
         }
       }
-      // },
-      //{
-      //  "apiVersion": "2015-01-01",
-      //  "name": "operational-app-gateway-deployment",
-      //  "type": "Microsoft.Resources/deployments",
-      //  "dependsOn": [
-      //    "[concat('Microsoft.Resources/deployments/', 'azure-ops-network-deployment')]",
-      //    "[concat('Microsoft.Resources/deployments/', 'azure-mgmt-vnet-deployment')]"
-      //  ],
-      //  "properties": {
-      //    "mode": "incremental",
-      //    "templateLink": {
-      //      "uri": "[variables('applicationGatewayTemplate')]",
-      //      "contentVersion": "1.0.0.0"
-      //    },
-      //    "parametersLink": {
-      //      "uri": "[variables('parameterFiles').applicationGatewayParametersFile]",
-      //      "contentVersion": "1.0.0.0"
-      //   }
-      //}
     }
   ]
 }

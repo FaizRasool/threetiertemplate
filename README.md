@@ -34,16 +34,8 @@
 </a>
 
 
-**Azure UK-OFFICIAL Three Tier Architecture Quickstart Draft**
+##Microsoft Azure UK-OFFICIAL Three Tier Web Application Architecture 
 
-Wednesday, February 20, 2017
-
-Ben Houghton
-
- 
-
- 
-=
 
 Overview
 ========
@@ -85,7 +77,7 @@ Architecture Diagram and Components
  extends an on-premises network to Azure allowing web based workloads
  to be accessed securely by corporate users or from the internet.
 
-![alt text](https://github.com/ben-houghton/threetiertemplate/blob/master/diagram.png "Azure UK-OFFICAL Three Tier Architecture")
+![alt text](https://github.com/ben-houghton/threetiertemplate/blob/master/images/diagram.png "Azure UK-OFFICAL Three Tier Architecture")
 
 
  The components of this architecture include –
@@ -444,111 +436,25 @@ Deployment Guide
 
   Activity|Configuration|
   ---|---
-  Create Management VNet Resource Groups|None required
-  Create Operational VNet Resource Groups|None required
-  Deploy management VNet network infrastructure |None required
-  Deploy operational VNet network infrastructure|None required
+  Create Management VNet Resource Groups|NEnter resource group name during deployment
+  Create Operational VNet Resource Groups|Enter resource group name during deployment
+  Deploy  VNet network infrastructure|Enter resource group name during deployment
   Create VNet Peerings|None required|
-  Deploy VPN Gateway|The template deploys an Azure environment with a public facing endpoint and an Azure Gateway to allow VPN setup between the Azure environment and your on-premises environment. To complete this VPN connection, you will need to provide the Local Gateway (your on-premises VPN public IP address) and complete the VPN connection set up locally. VPN Gateway requires local gateway configuration in the [https://\[root\]/parameters/azure/ops-network.parameters.json](https://[root]/parameters/azure/ops-network.parameters.json) template parameters file.                                      
-                                                  `"connectionSettings": {
-                                                   "value": {
-                                                   "name": "operational-vpn-cn",
-                                                   "connectionType": "IPSec",
-                                                   
-                                                   "sharedKey": "\[Yourshared secret\]",
-                                                   
-                                                   "virtualNetworkGateway1": {
-                                                   
-                                                   "name": "operational-vpn-vgw",
-                                                   
-                                                   "resourceGroup": "azure-operational-network-rg"
-                                                   
-                                                   },
-                                                   
-                                                   "localNetworkGateway": {
-                                                   
-                                                   "name": "bb-hybrid-vpn-lgw",
-                                                   
-                                                   "ipAddress": "\[Your-on-premises-gateway-IP-address\]",
-                                                   
-                                                   "addressPrefixes": \[ "\[Your network address range\]" \]
-                                                   
-                                                   }
-                                                   
-                                                   }`|
-
-  Deploying internet facing Application Gateway    |For SSL termination, Application Gateway requires you SSL certificates to be uploaded. When provisioned the Application Gateway will instantiate a public IP address and domain name to allow access to the web application.|
-                                                   
-                                                    
-                                                                                                    
-                                                    
-                                                   
-                                                    
-
- Create Network Security Groups for VNETs|RDP access to the Management VNet Jumpbox must be secured to a trusted IP address range. It is important to amend the "sourceAddressPrefix" parameter with your own trusted source IP address range in the [https://\[root\]/parameters/azure/mgmt-subnet-nsg.parameters.json](https://[root]/parameters/azure/mgmt-subnet-nsg.parameters.json) template parameters file.
-                                                   
-                                                    
-                                                   
-                                                   `"securityRules": \[
-                                                   
-                                                   {
-                                                   
-                                                   "name": "RDPAllow",
-                                                   
-                                                   "direction": "Inbound",
-                                                   
-                                                   "priority": 100,
-                                                   
-                                                   "sourceAddressPrefix": "10.0.0.128/25",
-                                                   
-                                                   "destinationAddressPrefix": "\*",
-                                                   
-                                                   "sourcePortRange": "\*",
-                                                   
-                                                   "destinationPortRange": "3389",
-                                                   
-                                                   "access": "Allow",
-                                                   
-                                                   "protocol": "Tcp"
-                                                   
-                                                   }
-                                                   
-                                                   \]`
-                                                   
-                                                   NSG configuration for the Operation VNet can be found in the [https://\[root\]/parameters/azure/ops-vent-nsgs.json](https://[root]/parameters/azure/ops-vent-nsgs.json) template parameters file.|
-
-  |Create ADDS resource group                       |None required|
-
-  |Deploying ADDS servers                           |None required|
-
-  |Updating DNS servers                             |None required|
-
-  |Create ADDS forest                               |The provided templates create a demo 'treyresearch' domain. To ensure that the required Active Directory Domain in created with the desired domain name and administrative user the [https://\[root\]/parameters/azure/create-adds-forest-extension.parameters.json](https://[root]/parameters/azure/create-adds-forest-extension.parameters.json) template parameters file must be edited with the required values.|
-
-  |Create ADDS domain controller                    |None required|
-
-  |Create operational workload Resource Group       |None required|
-
-  |Deploy operational VM tiers and load balancers   |None required|
-
-  |Domain join VMs                                  |The provided template creates a demo 'treyresearch' domain. To ensure that Virtual Machines are correctly joined parameter configuration is required in the following files
-                                                   
-                                                    
-                                                   
-                                                   Domain Controller - [https://\[root\]/parameters/azure/add-adds-domain-controller.parameters.json](https://[root]/parameters/azure/add-adds-domain-controller.parameters.json) template parameters file.
-                                                   
-                                                   Operational workload Virtual Machines - [https://\[root\]/parameters/azure/add-adds-domain-controller.parameters.json](https://[root]/parameters/azure/add-adds-domain-controller.parameters.json) template parameters file.
-                                                   
-                                                   Management Jumpbox - [https://\[root\]/parameters/azure/add-adds-domain-controller.parameters.json](https://[root]/parameters/azure/add-adds-domain-controller.parameters.json) template parameters file.|
-                                                   
-                                                    
-
-  |Enable Windows Auth for VMs                      |None required|
-
-  |Deploy Microsoft Anti-malware to VMs             |None required|
-
-
-
+  Deploy VPN Gateway|The template deploys an Azure environment with a public facing endpoint and an Azure Gateway to allow VPN setup between the Azure environment and your on-premises environment. To complete this VPN connection, you will need to provide the Local Gateway (your on-premises VPN public IP address) and complete the VPN connection set up locally. VPN Gateway requires local gateway configuration in the [/parameters/azure/ops-network.parameters.json](/parameters/azure/ops-network.parameters.json) template parameters file  or through the Azure portal.                                    
+  Deploying internet facing Application Gateway|For SSL termination, Application Gateway requires you SSL certificates to be uploaded. When provisioned the Application Gateway will instantiate a public IP address and domain name to allow access to the web application.|
+  Create Network Security Groups for VNETs|RDP access to the Management VNet Jumpbox must be secured to a trusted IP address range. It is important to amend the "sourceAddressPrefix" parameter with your own trusted source IP address range in the [https://parameters/azure/nsg-rules.parameters.json](https://parameters/azure/nsg-rules.parameters.json) template parameters file.
+  Create ADDS resource group|Enter resource group name during deployment
+  Deploying ADDS servers|None required
+  Updating DNS servers|None required
+  Create ADDS forest|The provided templates create a demo 'treyresearch' domain. To ensure that the required Active Directory Domain in created with the desired domain name and administrative user the [https://parameters/azure/create-adds-forest-extension.parameters.json](https://parameters/azure/create-adds-forest-extension.parameters.json) template parameters file must be edited with the required values.
+  Create ADDS domain controller|None required
+  Create operational workload Resource Group|Enter resource group name during deployment
+  Deploy operational VM tiers and load balancers   |None required
+  Set up IIS web server role for web tier|None required
+  Enable Windows Auth for VMs|None required
+  Deploy Microsoft Anti-malware to VMs|None required
+  Domain join VMs|The provided template creates a demo 'treyresearch' domain. To ensure that Virtual Machines are correctly joined parameter configuration is required in the following files; Domain Controller - [https://parameters/azure/add-adds-domain-controller.parameters.json](https://parameters/azure/add-adds-domain-controller.parameters.json) template parameters file; Operational workload Virtual Machines - [https://parameters/azure/add-adds-domain-controller.parameters.json](https://[root]/parameters/azure/add-adds-domain-controller.parameters.json) template parameters file; Management Jumpbox - [https://parameters/azure/add-adds-domain-controller.parameters.json](https://parameters/azure/add-adds-domain-controller.parameters.json) template parameters file.|
+                                                  
 
 ### Deployment Process
 
@@ -557,35 +463,9 @@ A deployment for this reference architecture is available on
 The reference architecture is deployed in four stages. To deploy the
 architecture, follow these steps for each deployment stage –
 
-1.  Click on the ‘Deploy to Azure’ button to begin the first stage of
-    the deployment. The link takes you to the Azure Portal.
-
-2.  Select **Create New** and enter an appropriate value such as
-    uk-official-networking-rg in the **Resource group** textbox
-
-3.  Select a region such as UKSouth from the **Location** drop down box
-    (All Resource Groups required for this architecture should be in the
-    same Azure region e.g. UKSouth
-
-4.  Do not edit the **Template Root Uri** or the **Parameter Root Uri**
-    text boxes.
-
-5.  Review the terms and conditions, then click the **I agree to the
-    terms and conditions stated above** checkbox.
-
-6.  Click on the **Purchase** button.
-
-7.  Check Azure portal notification for a message that the stage of
-    deployment is complete and move on to the next until completed.
-
-8.  If for some reason your deployment fails. To avoid incurring cost
-    and orphan resources it is advisable to delete the resource group in
-    its entirety, fix the issue and redeploy the resource groups and
-    template.
-
 For Virtual Machines The parameter files include a hard-coded
-administrator user names and passwords, and it is strongly recommended
-that you immediately change both on all the VMs. Click on each VM in the
+administrator user names and passwords, and it is *strongly recommended
+that you immediately change both on all the VMs*. Click on each VM in the
 Azure portal then click on **Reset password** in the **Support +
 troubleshooting** blade.
 
@@ -599,6 +479,16 @@ troubleshooting** blade.
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
 </a>
 
+1.	Click on the ‘Deploy to Azure’ button to begin the first stage of the deployment. The link takes you to the Azure Portal.
+2.	Select *Create New* and enter a value such as `uk-official-networking-rg` in the *Resource group* textbox.
+3.	Select a region such as `UKSouth` from the Location drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
+4.	Do not edit the *Template Root Uri* or the *Parameter Root Uri* text boxes.
+5.	Review the terms and conditions, then click the *I agree to the terms and conditions stated above* checkbox.
+6.	Click on the *Purchase* button.
+7.	Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
+8.	If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
+
+
 ## Deploy Active Directory Domain 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Faads.azuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
@@ -606,6 +496,18 @@ troubleshooting** blade.
 <a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Faads.azuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
 </a>
+
+1.  Click on the ‘Deploy to Azure’ button to begin the first stage of the deployment. The link takes you to the Azure Portal.
+2.	Select *Create New* and enter a value such as `uk-official-ad-rg` in the *Resource group* textbox.
+3.	Select a region such as `UKSouth` from the Location drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
+4.	Do not edit the *Template Root Uri* or the *Parameter Root Uri* text boxes.
+5.	In the Settings textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
+![alt text](https://blob/master/images/create-official-aads-rg.JPG "Create ADDS deployment")
+6.	Review the terms and conditions, then click the *I agree to the terms and conditions stated above* checkbox.
+7.	Click on the *Purchase* button.
+8.	Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
+9.	If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
+
 
 ## Deploy operational workload infrastructure 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fworkloads.azuredeploy.json" target="_blank">
@@ -615,35 +517,58 @@ troubleshooting** blade.
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
 </a>
 
+1.	Click on the ‘Deploy to Azure’ button to begin the first stage of the deployment. The link takes you to the Azure Portal.
+2.	Select *Create New* and enter a value such as `uk-official-ops-rg` in the *Resource group* textbox.
+3.	Select a region such as `UKSouth` from the Location drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
+4.	Do not edit the *Template Root Uri* or the *Parameter Root Uri* text boxes.
+5.	In the Settings textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
+![alt text](https://blob/master/images/\create-official-ops-rg.JPG "Create ADDS deployment")
+6.	Review the terms and conditions, then click the *I agree to the terms and conditions stated above* checkbox.
+7.	Click on the *Purchase* button.
+8.	Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
+9.	If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
+
+
 ## Execute post deployment configuration
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
 </a>
 
+1.	Click on the ‘Deploy to Azure’ button to begin the first stage of the deployment. The link takes you to the Azure Portal.
+2.	Select *Use Existing* and select the resource group you created for the operational workload deployment from the *Resource group* drop down
+4.	Do not edit the *Template Root Uri* or the *Parameter Root Uri* text boxes.
+6.	Review the terms and conditions, then click the *I agree to the terms and conditions stated above* checkbox.
+7.	Click on the *Purchase* button.
+8.	Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
+9.	If for some reason your deployment fails check the deployment messages blade for futher information
+
+##(Optional) PowerShell Deployment 
+
+To deploy this solution through PowerShell, you will need the latest version of the Azure CLI to run the PowerShell script that deploys the solution. To deploy the reference architecture, follow these steps
+
+1.	Download or clone the solution folder from GitHub to your local machine.
+2.	Open the Azure CLI and navigate to the local solution folder.
+3.	Run the following command:  `.\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> <mode>`
+4.	Replace `<subscription id>` with your Azure subscription ID.
+5.	For `<location>`, specify an Azure region, such as `UKSouth` or `UKWest`.
+6.	The `<mode>` parameter controls the granularity of the deployment, and can be one of the following values:
+7.	`Infrastructure`: deploys the networking infrastructure
+8.	`ADDS`: deploys the VMs acting as Active Directory DS servers, deploys Active Directory to these VMs, and deploys the domain in Azure.
+9.	`Operational`: deploys the web, business and data tier VMs and load balancers
+10.	`Post`: Initiates post deployment configuration such as domain joining the Jumpbox VM.
+11.	`Prepare`: deploys all the preceding deployments. 
 
 
 UK Governments Private Network Connectivity
 ===========================================
 
-Microsoft’s customers are now able to use [private
-connections](https://news.microsoft.com/en-gb/2016/12/14/microsoft-now-offers-private-internet-connections-to-its-uk-data-centres/#sm.0001dca7sq10r1couwf4vvy9a85zx)
-to the company’s UK data centres. Microsoft’s partners are providing a
-gateway from PSN/N3 to
-[ExpressRoute](https://azure.microsoft.com/en-us/services/expressroute/)
-and into Azure – just one of the new services the group has unveiled
-since the company launched its
-[**Azure**](https://azure.microsoft.com/en-us/blog/) and Office 365
-cloud offering in this country [**three months
-ago**](http://news.microsoft.com/en-gb/2016/09/07/not-publish-microsoft-becomes-first-company-open-data-centres-uk/).
-
-Since then, [**thousands of
-customers**](https://enterprise.microsoft.com/en-gb/industries/public-sector/microsoft-uk-data-centres-continue-to-build-momentum/?wt.mc_id=AID563187_QSG_1236)
-– including the Ministry of Defence, the Met Police and parts of the NHS
-– have signed up to take advantage of the sites, which offer UK data
-residency, security and reliability.
+Microsoft’s customers are now able to use [private connections](https://news.microsoft.com/en-gb/2016/12/14/microsoft-now-offers-private-internet-connections-to-its-uk-data-centres/#sm.0001dca7sq10r1couwf4vvy9a85zx)
+to the company’s UK data centres. Microsoft’s partners are providing a gateway from PSN/N3 to [ExpressRoute](https://azure.microsoft.com/en-us/services/expressroute/) and into Azure – just one of the new services the group has unveiled
+since the company launched its [**Azure**](https://azure.microsoft.com/en-us/blog/) and Office 365 cloud offering in this country [**three months ago**](http://news.microsoft.com/en-gb/2016/09/07/not-publish-microsoft-becomes-first-company-open-data-centres-uk/). Since then, [**thousands of customers**](https://enterprise.microsoft.com/en-gb/industries/public-sector/microsoft-uk-data-centres-continue-to-build-momentum/?wt.mc_id=AID563187_QSG_1236)
+– including the Ministry of Defence, the Met Police and parts of the NHS – have signed up to take advantage of the sites, which offer UK data residency, security and reliability.
 
 Cost
 ====

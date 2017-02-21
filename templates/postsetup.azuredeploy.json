@@ -19,7 +19,7 @@
   "resources": [
     {
       "apiVersion": "2015-01-01",
-      "name": "azure-mgmt-jumpbox-deployment",
+      "name": "domain-join-deployment",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "incremental",
@@ -35,7 +35,7 @@
     },
     {
       "apiVersion": "2015-01-01",
-      "name": "azure-mgmt-jumpbox-deployment",
+      "name": "windows-auth-deployment",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "incremental",
