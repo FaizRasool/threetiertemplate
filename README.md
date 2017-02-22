@@ -43,7 +43,7 @@ Overview
  a UK-OFFICIAL compliant architecture.
 
  This architecture and corresponding ARM templates are underpinned by
- the Microsoft whitepaper [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](documents/Azure%20UK%20Governments%20-%2014%20compliance%20controls.pdf?raw=true)
+ the Microsoft whitepaper [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)
  . This paper catalogue how Azure services align with the fourteen
  cloud security principles set forth in the CESG/NCSC publication “[Implementing the Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)"
  thereby enabling organisations to fast-track their ability to meet
@@ -279,7 +279,7 @@ NCSC Security Matrix Compliance
  UK-OFFICIAL.
 
  The following matrix provides a high level alignment of the 14 cloud security principles the Microsoft Azure security model, a detailed
- mapping of the 14 principles can be found in Microsoft's [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](documents/General/Azure%20UK%20Governments%20-%2014%20compliance%20controls.pdf?raw=true)
+ mapping of the 14 principles can be found in Microsoft's [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)
  whitepaper.
  
  ---
@@ -412,7 +412,7 @@ Portal.
 
 -   The Azure Subscription ID has been noted
 
--   The latest version of PowerShell to execute the deployment script
+-   The [latest version of PowerShell](https://azure.microsoft.com/en-us/documentation/articles/powershell-install-configure/) to execute the deployment script
 
  
 
@@ -551,7 +551,7 @@ UK Governments Private Network Connectivity
 
 Microsoft’s customers are now able to use [private connections](https://news.microsoft.com/en-gb/2016/12/14/microsoft-now-offers-private-internet-connections-to-its-uk-data-centres/#sm.0001dca7sq10r1couwf4vvy9a85zx)
 to the company’s UK data centres. Microsoft’s partners are providing a gateway from PSN/N3 to [ExpressRoute](https://azure.microsoft.com/en-us/services/expressroute/) and into Azure – just one of the new services the group has unveiled
-since the company launched its [**Azure**](https://azure.microsoft.com/en-us/blog/) and Office 365 cloud offering in this country [**three months ago**](http://news.microsoft.com/en-gb/2016/09/07/not-publish-microsoft-becomes-first-company-open-data-centres-uk/). Since then, [**thousands of customers**](https://enterprise.microsoft.com/en-gb/industries/public-sector/microsoft-uk-data-centres-continue-to-build-momentum/?wt.mc_id=AID563187_QSG_1236)
+since the company launched its [**Azure**](https://azure.microsoft.com/en-us/blog/) and Office 365 cloud offering in this country at launch(http://news.microsoft.com/en-gb/2016/09/07/not-publish-microsoft-becomes-first-company-open-data-centres-uk/). Since then, [**thousands of customers**](https://enterprise.microsoft.com/en-gb/industries/public-sector/microsoft-uk-data-centres-continue-to-build-momentum/?wt.mc_id=AID563187_QSG_1236)
 – including the Ministry of Defence, the Met Police and parts of the NHS – have signed up to take advantage of the sites, which offer UK data residency, security and reliability.
 
 Cost
