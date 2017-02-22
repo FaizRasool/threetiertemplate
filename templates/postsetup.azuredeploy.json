@@ -5,15 +5,15 @@
   },
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
-    "parameterFileBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
+    "localRepoBaseUrl": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/",
 
     "buildingBlocks": {
       "virtualNetworkGatewayTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vpn-gateway-vpn-connection/azuredeploy.json')]",
       "virtualMachineExtensionsTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/virtualMachine-extensions/azuredeploy.json')]"
     },
     "parameterFiles": {
-      "azureVmDomainJoinExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/vm-domain-join.parameters.json')]",
-      "azureVmEnableWindowsAuthExtensionParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/vm-enable-windows-auth.parameters.json')]",
+      "azureVmDomainJoinExtensionParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/vm-domain-join.parameters.json')]",
+      "azureVmEnableWindowsAuthExtensionParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/vm-enable-windows-auth.parameters.json')]"
     }
   },
   "resources": [

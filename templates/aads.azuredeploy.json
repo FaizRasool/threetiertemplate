@@ -50,7 +50,7 @@
                 "computerNamePrefix": "aad",
                 "size": "Standard_DS3_v2",
                 "osType": "Windows",
-                "adminUsername": "testuser",
+                "adminUsername": "AdminUser",
                 "adminPassword": "AweS0me@PW",
                 "osAuthenticationType": "password",
                 "nics": [

@@ -17,7 +17,7 @@
               "settingsConfig": {
                 "activeDirectorySettings": {
                   "domainName": "treyresearch.com",
-                  "adminUser": "testuser",
+                  "adminUser": "AdminUser",
                   "adminPassword": "AweS0me@PW",
                   "siteName": "Default-First-Site-Name",
                   "safeModePassword": "Saf3M0de@PW"

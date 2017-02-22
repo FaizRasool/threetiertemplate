@@ -17,7 +17,7 @@
               "settingsConfig": {
                 "Name": "treyresearch.com",
                 "OUPath": "",
-                "User": "treyresearch.com\\testuser",
+                "User": "treyresearch.com\\AdminUser",
                 "Restart": true,
                 "Options": 3
               },

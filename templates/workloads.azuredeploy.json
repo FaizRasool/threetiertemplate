@@ -19,15 +19,15 @@
   },
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
-    "parameterFileBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
-     "buildingBlocks": {
-      "loadBalancerTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/loadBalancer-backend-n-vm/azuredeploy.json')]",
+    "localRepoBaseUrl": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/",
+    "buildingBlocks": {
+      "loadBalancerTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/loadBalancer-backend-n-vm/azuredeploy.json')]"
     },
     "parameterFiles": {
-      "webLoadBalancerParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/loadBalancer-web.parameters.json')]",
-      "bizLoadBalancerParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/loadBalancer-biz.parameters.json')]",
-      "dataLoadBalancerParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/loadBalancer-data.parameters.json')]",
-      "mgmtVMJumpboxParametersFile": "[concat(variables('parameterFileBaseUrl'), 'parameters/azure/mgmt-virtualmachine.parameters.json')]"
+      "webLoadBalancerParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/loadBalancer-web.parameters.json')]",
+      "bizLoadBalancerParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/loadBalancer-biz.parameters.json')]",
+      "dataLoadBalancerParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/loadBalancer-data.parameters.json')]",
+      "mgmtVMJumpboxParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/mgmt-virtualmachine.parameters.json')]"
     }
   },
   "resources": [
@@ -64,7 +64,7 @@
                 "computerNamePrefix": "web",
                 "size": "Standard_DS1_v2",
                 "osType": "windows",
-                "adminUsername": "testuser",
+                "adminUsername": "AdminUser",
                 "adminPassword": "AweS0me@PW",
                 "osAuthenticationType": "password",
                 "nics": [
@@ -229,7 +229,7 @@
               "computerNamePrefix": "biz",
               "size": "Standard_DS1_v2",
               "osType": "windows",
-              "adminUsername": "testuser",
+              "adminUsername": "AdminUser",
               "adminPassword": "AweS0me@PW",
               "osAuthenticationType": "password",
               "nics": [
@@ -364,7 +364,7 @@
               "computerNamePrefix": "data",
               "size": "Standard_DS1_v2",
               "osType": "windows",
-              "adminUsername": "testuser",
+              "adminUsername": "AdminUser",
               "adminPassword": "AweS0me@PW",
               "osAuthenticationType": "password",
               "nics": [

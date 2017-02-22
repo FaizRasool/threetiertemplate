@@ -8,7 +8,7 @@
         "computerNamePrefix": "data",
         "size": "Standard_DS1_v2",
         "osType": "windows",
-        "adminUsername": "testuser",
+        "adminUsername": "AdminUser",
         "adminPassword": "AweS0me@PW",
         "osAuthenticationType": "password",
         "nics": [
