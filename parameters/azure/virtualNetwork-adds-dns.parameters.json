@@ -3,6 +3,9 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "virtualNetworkSettings": {
+      "metadata": {
+        "description": "ADDS DNS settings"
+      },
       "value": {
         "name": "azure-operational-vnet",
         "addressPrefixes": [

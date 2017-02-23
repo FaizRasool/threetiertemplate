@@ -3,9 +3,15 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "remoteVirtualNetworkName": {
+      "metadata": {
+        "description": "Remote Vnet name"
+      },
       "type": "string"
     },
     "peeringName": {
+      "metadata": {
+        "description": "Peering name"
+      },
       "type": "string"
     }
   },

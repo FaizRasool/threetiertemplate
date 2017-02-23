@@ -3,6 +3,9 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "virtualMachinesExtensionSettings": {
+      "metadata": {
+          "description": "VM Settings for ADDS DC"
+        },
       "value": [
         {
           "vms": [ "operational-ad-vm2" ],

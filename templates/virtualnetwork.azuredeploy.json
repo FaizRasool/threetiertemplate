@@ -17,9 +17,8 @@
     "parameterFiles": {
       "opsNetworkInfrastructureParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/ops-network.parameters.json')]",
       "azureMgmtVirtualNetworkParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/mgmt-vnet.parameters.json')]",
-      "azureVirtualNetworkGatewayParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualNetworkGateway.parameters.json')]",
-      "applicationGatewayParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/application-gateway.parameters.json')]",
       "nsgParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/nsg-rules.parameters.json')]",
+      "opsNsgParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/ops-vent-nsgs.json')]",
       "operationalVnetPeeringParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/operational-vnet-peering.parameters.json')]",
       "mgmtVnetPeeringParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/mgmt-vnet-peering.parameters.json')]"
     }
@@ -109,6 +108,22 @@
         },
         "parametersLink": {
           "uri": "[variables('parameterFiles').nsgParametersFile]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
+    },
+    {
+      "apiVersion": "2015-01-01",
+      "name": "ops-nsg-deployment",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+        "mode": "incremental",
+        "templateLink": {
+          "uri": "[variables('buildingBlocks').nsgTemplate]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parametersLink": {
+          "uri": "[variables('parameterFiles').opsNsgParametersFile]",
           "contentVersion": "1.0.0.0"
         }
       }

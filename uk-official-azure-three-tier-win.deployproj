@@ -39,7 +39,6 @@
     <None Include="images\create-official-workload-rg.JPG" />
     <None Include="metadata.json" />
     <None Include="parameters\azure\add-adds-domain-controller.parameters.json" />
-    <None Include="parameters\azure\application-gateway.parameters.json" />
     <None Include="parameters\azure\ops-vent-nsgs.json" />
     <None Include="parameters\azure\mgmt-vnet-peering.parameters.json" />
     <None Include="parameters\azure\operational-vnet-peering.parameters.json" />

@@ -3,6 +3,9 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "virtualMachinesSettings": {
+      "metadata": {
+        "description": "VM Settings data tier"
+      },
       "value": {
         "namePrefix": "operational-data",
         "computerNamePrefix": "data",

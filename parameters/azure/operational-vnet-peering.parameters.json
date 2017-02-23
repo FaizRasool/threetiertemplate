@@ -3,9 +3,15 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "remoteVirtualNetworkName": {
+      "metadata": {
+        "description": "Remote VNet Name"
+      },
       "value": "azure-mgmt-vnet"
     },
     "peeringName": {
+      "metadata": {
+        "description": "Peering name"
+      },
       "value": "azure-operational-vnet/peering-to-mgmt-vnet"
     }
   }

@@ -3,6 +3,9 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "virtualNetworkSettings": {
+      "metadata": {
+        "description": "Settings for Mgmt Vnet"
+      },
       "value": {
         "name": "azure-mgmt-vnet",
         "addressPrefixes": [

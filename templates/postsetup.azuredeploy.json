@@ -8,7 +8,6 @@
     "localRepoBaseUrl": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/",
 
     "buildingBlocks": {
-      "virtualNetworkGatewayTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vpn-gateway-vpn-connection/azuredeploy.json')]",
       "virtualMachineExtensionsTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/virtualMachine-extensions/azuredeploy.json')]"
     },
     "parameterFiles": {

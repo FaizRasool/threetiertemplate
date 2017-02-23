@@ -3,11 +3,17 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "virtualNetworkSettings": {
+      "metadata": {
+        "description": "VNet name"
+      },
       "value": {
         "name": "azure-mgmt-vnet"
       }
     },
     "networkSecurityGroupsSettings": {
+      "metadata": {
+        "description": "NSG Settings"
+      },
       "value": [
         {
           "name": "mgmt-subnet-nsg",

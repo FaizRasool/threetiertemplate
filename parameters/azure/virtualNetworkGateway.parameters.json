@@ -3,12 +3,18 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "virtualNetworkSettings": {
+      "metadata": {
+        "description": "Vnet settings"
+      },
       "value": {
         "name": "azure-operational-vnet",
         "resourceGroup": "uk-official-networking-rg"
-       }
+      }
     },
     "virtualNetworkGatewaySettings": {
+      "metadata": {
+        "description": "VPN Gateway settings"
+      },
       "value": {
         "name": "operational-vpn-vgw",
         "gatewayType": "Vpn",
@@ -17,6 +23,9 @@
       }
     },
     "connectionSettings": {
+      "metadata": {
+        "description": "Local connection settings"
+      },
       "value": {
         "name": "operational-vpn-cn",
         "connectionType": "IPSec",

@@ -26,7 +26,6 @@
       "virtualMachineExtensionsTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/virtualMachine-extensions/azuredeploy.json')]"
     },
     "parameterFiles": {
-      "azureAddsVirtualMachinesParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualMachines-adds.parameters.json')]",
       "azureCreateAddsForestExtensionParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/create-adds-forest-extension.parameters.json')]",
       "azureAddAddsDomainControllerExtensionParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/add-adds-domain-controller.parameters.json')]",
       "azureVirtualNetworkDnsParametersFile": "[concat(variables('localRepoBaseUrl'), 'parameters/azure/virtualNetwork-adds-dns.parameters.json')]"
@@ -88,6 +87,9 @@
                   "useExistingAvailabilitySet": "No",
                   "name": "operational-ad-as"
                 }
+              },
+              "metadata": {
+              "description": "Settings for AD VMs"
               }
             },
             "virtualNetworkSettings": {

@@ -3,6 +3,9 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "virtualMachinesSettings": {
+      "metadata": {
+        "description": "VM Settings for ADDS"
+      },
       "value": {
         "namePrefix": "operational-ad",
         "computerNamePrefix": "aad",

@@ -3,6 +3,9 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "virtualMachinesSettings": {
+      "metadata": {
+        "description": "VM Settings for web tier"
+      },
       "value": {
         "namePrefix": "operational-web",
         "computerNamePrefix": "web",
