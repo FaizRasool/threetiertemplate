@@ -1,4 +1,3 @@
-
 Microsoft Azure UK-OFFICIAL Three Tier Web Application Architecture
 ===================================================================
 
@@ -36,16 +35,16 @@ Overview
  Using an Infrastructure as Code approach, the set of [Azure Resource
  Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)
  (ARM) templates deploy an environment that aligns to the National
- Cyber Security Centre (NCSC) [Cloud Security
- Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) and
- the Center for Internet Security (CIS) [Critical Security
+ Cyber Security Centre (NCSC)ï¿½[Cloud Security
+ Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)ï¿½and
+ the Center for Internet Security (CIS)ï¿½[Critical Security
  Controls](https://www.cisecurity.org/critical-controls.cfm) to ensure
  a UK-OFFICIAL compliant architecture.
 
  This architecture and corresponding ARM templates are underpinned by
  the Microsoft whitepaper [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)
  . This paper catalogue how Azure services align with the fourteen
- cloud security principles set forth in the CESG/NCSC publication “[Implementing the Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)"
+ cloud security principles set forth in the CESG/NCSC publication ï¿½[Implementing the Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)"
  thereby enabling organisations to fast-track their ability to meet
  their compliance obligations using cloud-based services globally and
  in the UK on the Microsoft Azure cloud.
@@ -54,13 +53,13 @@ Overview
  code and supporting business tier and data tier software must be
  installed and configured.
 
- If you do now have an Azure subscription then you can sign up quickly and easily, [Get Started with Azure](https://azure.microsoft.com/en-us/get-started/).
+ If you do not have an Azure subscription then you can sign up quickly and easily, [Get Started with Azure](https://azure.microsoft.com/en-us/get-started/).
 
 
 Architecture Diagram and Components
 ===================================
 
- The Azure ARM templates deliver a three-tier web application
+ The Azure templates deliver a three-tier web application
  architecture in an Azure cloud environment that supports UK-OFFICIAL
  workloads. The architecture delivers a secure hybrid environment that
  extends an on-premises network to Azure allowing web based workloads
@@ -69,11 +68,11 @@ Architecture Diagram and Components
 ![alt text](/images/diagram.png?raw=true "Azure UK-OFFICAL Three Tier Architecture")
 
 
- The components of this architecture include –
+ The components of this architecture include ï¿½
 
 1.  **On-premises network**. A private local-area network implemented in an organization.
 
-2.  **Production VNet**. The Production [VNet](https://docs.microsoft.com/en-us/azure/Virtual-Network/virtual-networks-overview)(Virtual Network) hosts the application and other operational resources running in Azure. Each VNet may contain several subnets which are used for isolating and managing network traffic.
+2.  **Production VNet**. The Production [VNet](https://docs.microsoft.com/en-us/azure/Virtual-Network/virtual-networks-overview) (Virtual Network) hosts the application and other operational resources running in Azure. Each VNet may contain several subnets which are used for isolating and managing network traffic.
 
 3.  **Web tier.** Handles incoming HTTP requests. Responses are returned through this tier.
 
@@ -94,7 +93,7 @@ Architecture Diagram and Components
 11. **Network Peered VNETs:** The Production and Management VNets are connected using [VNet Peering](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)**.**
      They are still managed as separate resources, but appear as one for all connectivity purposes with virtual machines in these networks able to communicate with each other directly by using private IP addresses. VNet peering is subject to the VNets being in the same Azure Region
 
-12. **Network Security Groups:** [NSGs](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg)contain Access Control Lists that allow or Deny traffic within a VNet. NSGs can be used to secure traffic at a subnet or individual VM level.
+12. **Network Security Groups:** [NSGs](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg) contain Access Control Lists that allow or Deny traffic within a VNet. NSGs can be used to secure traffic at a subnet or individual VM level.
 
 13. **Active Directory Domain Services (AD DS):** This architecture provides a dedicated [Active Directory](https://msdn.microsoft.com/library/azure/jj156090.aspx) [Active Directory Domain Services](https://technet.microsoft.com/library/dd448614.aspx) into a separate forest in the cloud.
 
@@ -112,8 +111,6 @@ Guidance and Recommendations
 > configuration ensures that during a planned or unplanned maintenance
 > event at least one virtual machine will be available and meet the
 > 99.95% Azure SLA.
->
->  
 
 ### Logging and Audit
 
@@ -143,8 +140,6 @@ Guidance and Recommendations
 > centralised Azure storage account for archival and a defined retention
 > period. Logs can be processed using Azure Log Analytics or by third
 > party SIEM systems
->
->  
 
 ### Identity 
 
@@ -164,16 +159,11 @@ Guidance and Recommendations
 > Virtual
 > Machines](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 >
->  
->
 > **Active Directory Integration:** As an alternative to a dedicated AD
 > DS architecture, customers may wish to use [Azure Active
 > Directory](https://docs.microsoft.com/en-gb/azure/guidance/guidance-ra-identity#using-azure-active-directory)
 > integration or [Active Directory in Azure joined to an on-premises
-> forest](https://docs.microsoft.com/en-gb/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest)**.
-> **
->
->  
+> forest](https://docs.microsoft.com/en-gb/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest).
 
 ### Security 
 
@@ -259,15 +249,12 @@ Guidance and Recommendations
 > It is recommended that customers enable Azure Security Center in their
 > Azure Subscription.
 >
-> 
 > [RBAC](https://docs.microsoft.com/en-gb/azure/active-directory/role-based-access-control-configure)
 > can be used to restrict the operations that DevOps can perform on each
 > tier. When granting permissions, use the [principle of least
 > privilege](https://msdn.microsoft.com/library/hdb58b2f(v=vs.110).aspx#Anchor_1).
 > Log all administrative operations and perform regular audits to ensure
 > any configuration changes were planned.
->
-
 
 NCSC Security Matrix Compliance
 ===============
@@ -293,7 +280,7 @@ communication internally and between customers and the cloud.
 tampering, loss, damage, and seizure.
 > Most Azure services are deployed regionally, and customers can configure certain Azure services to store customer data only in a single region. Each facility is designed to run 24x7x365 and employs various industry-standard measures to help protect operations from power failure, physical intrusion, and network outages.
 > These datacenters comply with industry standards (such as ISO 27001) for physical security and availability. They are managed, monitored, and administered by Microsoft operations personnel. Azure offers a wide range of encryption capabilities, giving customers the flexibility to choose the solution that best meets their needs. 
-> When customers delete data or leave Azure, Microsoft follows strict standards for overwriting storage resources before reuse.Upon a system’s end-of-life, 
+> When customers delete data or leave Azure, Microsoft follows strict standards for overwriting storage resources before reuse.Upon a systemï¿½s end-of-life, 
 > Microsoft operational personnel follow rigorous data handling procedures and hardware disposal processes to help assure that no hardware that may contain customer data is made available to untrusted parties.                                                                                                                                                                                                                                         
 > To ensure data resiliency Azure asynchronously replicates data from a primary location to a secondary location within the same region.
 > For applications resiliency, Microsoft Azure patterns ensure that at least one virtual machine will be available and meet the 99.95% Azure SLA.
@@ -322,13 +309,13 @@ tampering, loss, damage, and seizure.
 *Operational security:* The service provider should have processes and procedures in place to ensure the operational security of the service.
 > Operational Security Assurance (OSA) is a framework that incorporates the knowledge gained through a variety of resources that are unique to Microsoft, 
 > such as the Microsoft Security Response Center (MSRC), and incorporates deep awareness of the cybersecurity threat landscape. 
-> OSA helps make Microsoft cloud-based services’ infrastructure more resilient to attack by decreasing the amount of time needed to prevent, detect, contain 
+> OSA helps make Microsoft cloud-based servicesï¿½ infrastructure more resilient to attack by decreasing the amount of time needed to prevent, detect, contain 
 > and respond to real and potential Internet-based security threats, thereby increasing the security of those services for customers.
 
 *Personnel security:* Service provider staff should be subject to personnel security screening and security education appropriate for their role.
 > Microsoft Azure Operations and Customer Support personnel and data center staff, who operate Azure services and provide customer support (or Microsoft subcontractors
 > who assist with platform operations, troubleshooting, and technical support) undergo a Microsoft standard background (or equivalent) check to evaluate employee 
-> education, employment, and criminal history. The background checks that are carried out are broadly in line with the requirements of the UK Government’s 
+> education, employment, and criminal history. The background checks that are carried out are broadly in line with the requirements of the UK Governmentï¿½s 
 > BPSS / BS7858. They do not specifically include a formal identity check.
 
 *Secure development:* Services should be designed and developed to identify and mitigate threats to their security.
@@ -346,7 +333,7 @@ claims to implement.|
                                                                                                                                                                                                                                                
 *Secure consumer management:* Consumers should be provided with the tools required to help them securely manage their service.
 > Customers administer their Azure resources through the Azure portal, which provides access to all virtual machines, databases, cloud services, and 
-> other resources configured for the customer’s account. Web access to the Azure portal is secured by industry-standard Transport Layer Security (TLS) 1.2 
+> other resources configured for the customerï¿½s account. Web access to the Azure portal is secured by industry-standard Transport Layer Security (TLS) 1.2 
 > connections using 2048-bit RSA/SHA256 encryption keys, as recommended by CESG/NCSC . Role-based access controls are provided to enable customers to provide 
 > limited access to Azure management resources for specific users and groups.
                                                                                                                                                                                                                                                
@@ -355,14 +342,14 @@ claims to implement.|
 
 *External interface protection:* All external or less trusted interfaces of the service should be identified and have appropriate protections to defend against 
 attacks through them.
-> Microsoft employs a method it calls “Red Teaming” to improve Azure security controls and processes through regular penetration testing.
+> Microsoft employs a method it calls ï¿½Red Teamingï¿½ to improve Azure security controls and processes through regular penetration testing.
 
-*Secure service administration:* The methods used by the service provider’s administrators to manage the operational service should be designed to mitigate 
+*Secure service administration:* The methods used by the service providerï¿½s administrators to manage the operational service should be designed to mitigate 
 any risk of exploitation that could undermine the security of the service.
 > Azure infrastructure operations personnel are required to use secure admin workstations (SAWs; also known as privileged access workstations, or PAWs). The SAW approach is an extension of the well-established recommended practice to use separate admin and user accounts for administrative personnel.
 
 *Audit information provision to consumers:* Consumers should be provided with the audit records they need to monitor access to their service and the data held within it.
-> Azure Log Analytics collects records of the events occurring within an organisation’s systems and networks as soon as they occur, before anyone can tamper with them, and allows different types of analysis by correlating data across multiple computers.
+> Azure Log Analytics collects records of the events occurring within an organisationï¿½s systems and networks as soon as they occur, before anyone can tamper with them, and allows different types of analysis by correlating data across multiple computers.
 
 *Secure use of the service by the consumer:* Consumers have certain responsibilities when using a cloud service in order for this use to remain secure, and for their 
 data to be adequately protected.
@@ -371,24 +358,19 @@ data to be adequately protected.
 > and works with a broad ecosystem of security solutions.
 
 
- The CSA published the Cloud Control Matrix to support customers in the evaluation of cloud providers and to identify questions that should be
- answered before moving to cloud services. In response, Microsoft Azure answered the CSA Consensus Assessment Initiative Questionnaire [CSA CAIQ](https://aka.ms/csacaiqresponsesto) describe how Microsoft
- addresses the suggested principles.
+The CSA published the Cloud Control Matrix to support customers in the evaluation of cloud providers and to identify questions that should be
+answered before moving to cloud services. In response, Microsoft Azure answered the CSA Consensus Assessment Initiative Questionnaire [CSA CAIQ](https://aka.ms/csacaiqresponsesto) describe how Microsoft
+addresses the suggested principles.
 
-  
- The Crown Commercial Service (an agency that works to improve commercial and procurement activity by the government) renewed the
- classification of Microsoft in-scope enterprise cloud services to  G-Cloud v6, covering all its offerings at the OFFICIAL level. Details
- of Azure and G-Cloud can be found in the [Azure UK G-Cloud security assessment summary](https://www.microsoft.com/en-us/trustcenter/Compliance/UK-G-Cloud?downloadDocument=1&documentId=b4ed7712-d221-4a9c-ad0b-b36cf0d83eae).
-
-
+The Crown Commercial Service (an agency that works to improve commercial and procurement activity by the government) renewed the
+classification of Microsoft in-scope enterprise cloud services to  G-Cloud v6, covering all its offerings at the OFFICIAL level. Details
+of Azure and G-Cloud can be found in the [Azure UK G-Cloud security assessment summary](https://www.microsoft.com/en-us/trustcenter/Compliance/UK-G-Cloud?downloadDocument=1&documentId=b4ed7712-d221-4a9c-ad0b-b36cf0d83eae).
 
 Deployment Guide
 ================
- 
 These templates automatically deploy the Azure resources for a multi-tier, Windows based three tier application with an Active Directory Domain architecture. **As this is a complex deployment that delivers the full infrastructure and environment configuration
-deployment can take up to two hours.** Progress can be monitored from > the Resource Group blade and Deployment output blade in the Azure
+deployment can take up to two hours.** Progress can be monitored from the Resource Group blade and Deployment output blade in the Azure
 Portal.
-
 
 > Rather than develop the templates for this environment from scratch, some templates used are drawn from the [Microsoft Patterns and
 > Practices GitHub Repository](https://github.com/mspnp) [Template
@@ -404,23 +386,21 @@ Portal.
 > Architectures ARM
 > Templates](https://github.com/mspnp/reference-architectures).
 
- As a pre-requisite to deployment users should ensure that they have –
+ As a pre-requisite to deployment users should ensure that they have ï¿½
 
--   An Azure Subscription
+- An Azure Subscription
 
--   Admin or co-admin rights for the Subscription
+- Admin or co-admin rights for the Subscription
 
--   The Azure Subscription ID has been noted
+- The Azure Subscription ID has been noted
 
--   The [latest version of PowerShell](https://azure.microsoft.com/en-us/documentation/articles/powershell-install-configure/) to execute the deployment script
-
- 
+- The [latest version of PowerShell](https://azure.microsoft.com/en-us/documentation/articles/powershell-install-configure/) to execute the deployment script
 
 ## Deployment and Configuration Activities
 
   Activity|Configuration|
   ---|---
-  Create Management VNet Resource Groups|NEnter resource group name during deployment
+  Create Management VNet Resource Groups|Enter resource group name during deployment
   Create Operational VNet Resource Groups|Enter resource group name during deployment
   Deploy  VNet network infrastructure|Enter resource group name during deployment
   Create VNet Peerings|None required|
@@ -445,7 +425,7 @@ Portal.
 A deployment for this reference architecture is available on
 [GitHub](https://github.com/ben-houghton/threetiertemplate/tree/master/templates).
 The reference architecture is deployed in four stages. To deploy the
-architecture, follow these steps for each deployment stage –
+architecture, follow these steps for each deployment stage ï¿½
 
 For Virtual Machines The parameter files include a hard-coded
 administrator user names and passwords, and it is *strongly recommended
@@ -453,6 +433,7 @@ that you immediately change both on all the VMs*. Click on each VM in the
 Azure portal then click on **Reset password** in the **Support +
 troubleshooting** blade.
 
+<!-- or change them int he parameter files -->
 
 ## Deploy Networking Infrastructure
   
@@ -463,14 +444,14 @@ troubleshooting** blade.
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
 </a>
 
-1.	Click on the ‘Deploy to Azure’ button to begin the first stage of the deployment. The link takes you to the Azure Portal.
-2.	Select *Create New* and enter a value such as `uk-official-networking-rg` in the *Resource group* textbox.
-3.	Select a region such as `UKSouth` from the Location drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
-4.	Do not edit the *Template Root Uri* or the *Parameter Root Uri* text boxes.
-5.	Review the terms and conditions, then click the *I agree to the terms and conditions stated above* checkbox.
-6.	Click on the *Purchase* button.
-7.	Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
-8.	If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
+1. Click on the **Deploy to Azure** button to begin the first stage of the deployment. The link takes you to the Azure Portal.
+2. Select **Create New** and enter a value such as `uk-official-networking-rg` in the **Resource group** textbox.
+3. Select a region such as `UKSouth` from the **Location** drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
+4. Do not edit the **Template Root Uri** or the **Parameter Root Uri** text boxes.
+5. Review the terms and conditions, then click the **I agree to the terms and conditions stated above** checkbox.
+6. Click on the **Purchase** button.
+7. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
+8. If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
 
 
 ## Deploy Active Directory Domain 
@@ -481,17 +462,19 @@ troubleshooting** blade.
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
 </a>
 
-1.  Click on the ‘Deploy to Azure’ button to begin the first stage of the deployment. The link takes you to the Azure Portal.
-2.	Select *Create New* and enter a value such as `uk-official-ad-rg` in the *Resource group* textbox.
-3.	Select a region such as `UKSouth` from the Location drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
-4.	Do not edit the *Template Root Uri* or the *Parameter Root Uri* text boxes.
-5.	In the Settings textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
-![alt text](images/create-official-aads-rg.JPG?raw=true "Create ADDS deployment") 
-6.	Review the terms and conditions, then click the *I agree to the terms and conditions stated above* checkbox.
-7.	Click on the *Purchase* button.
-8.	Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
-9.	If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
+1. Click on the **Deploy to Azure** button to begin the first stage of the deployment. The link takes you to the Azure Portal.
+2. Select **Create New** and enter a value such as `uk-official-ad-rg` in the **Resource group** textbox.
+3. Select a region such as `UKSouth` from the **Location** drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`.
+4. Do not edit the **Template Root Uri** or the **Parameter Root Uri** text boxes.
+<!-- I'm not sure we should say this. Maybe we should say that if they want to edit the parameter files, they can do so and provide the URI for the parameters here -->
+5. In the **Settings** textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
 
+![alt text](images/create-official-aads-rg.JPG?raw=true "Create ADDS deployment")
+
+6. Review the terms and conditions, then click the **I agree to the terms and conditions stated above* checkbox.
+7. Click on the **Purchase** button.
+8. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
+9. If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
 
 ## Deploy operational workload infrastructure 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fworkloads.azuredeploy.json" target="_blank">
@@ -501,17 +484,18 @@ troubleshooting** blade.
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
 </a>
 
-1.	Click on the ‘Deploy to Azure’ button to begin the first stage of the deployment. The link takes you to the Azure Portal.
-2.	Select *Create New* and enter a value such as `uk-official-ops-rg` in the *Resource group* textbox.
-3.	Select a region such as `UKSouth` from the Location drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
-4.	Do not edit the *Template Root Uri* or the *Parameter Root Uri* text boxes.
-5.	In the Settings textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
-![alt text](/images/create-official-ops-rg.JPG?raw=true "Create ADDS deployment")
-6.	Review the terms and conditions, then click the *I agree to the terms and conditions stated above* checkbox.
-7.	Click on the *Purchase* button.
-8.	Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
-9.	If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
+1. Click on the **Deploy to Azure** button to begin the first stage of the deployment. The link takes you to the Azure Portal.
+2. Select **Create New** and enter a value such as `uk-official-ops-rg` in the **Resource group** textbox.
+3. Select a region such as `UKSouth` from the **Location** drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
+4. Do not edit the **Template Root Uri** or the **Parameter Root Uri** text boxes.
+5. In the **Settings** textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
 
+![alt text](/images/create-official-ops-rg.JPG?raw=true "Create ADDS deployment").
+
+6. Review the terms and conditions, then click the **I agree to the terms and conditions stated above** checkbox.
+7. Click on the **Purchase** button.
+8. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
+9. If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
 
 ## Execute post deployment configuration
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json" target="_blank">
@@ -521,38 +505,37 @@ troubleshooting** blade.
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
 </a>
 
-1.	Click on the ‘Deploy to Azure’ button to begin the first stage of the deployment. The link takes you to the Azure Portal.
-2.	Select *Use Existing* and select the resource group you created for the operational workload deployment from the *Resource group* drop down
-4.	Do not edit the *Template Root Uri* or the *Parameter Root Uri* text boxes.
-6.	Review the terms and conditions, then click the *I agree to the terms and conditions stated above* checkbox.
-7.	Click on the *Purchase* button.
-8.	Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
-9.	If for some reason your deployment fails check the deployment messages blade for futher information
+1. Click on the *Deploy to Azure* button to begin the first stage of the deployment. The link takes you to the Azure Portal.
+2. Select **Use Existing** and select the resource group you created for the operational workload deployment from the **Resource group** drop down
+4. Do not edit the **Template Root Uri** or the **Parameter Root Uri** text boxes.
+6. Review the terms and conditions, then click the **I agree to the terms and conditions stated above** checkbox.
+7. Click on the **Purchase** button.
+8. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
+9. If for some reason your deployment fails check the deployment messages blade for futher information.
 
 ##(Optional) PowerShell Deployment 
 
 To deploy this solution through PowerShell, you will need the latest version of the Azure CLI to run the PowerShell script that deploys the solution. To deploy the reference architecture, follow these steps
 
-1.	Download or clone the solution folder from GitHub to your local machine.
-2.	Open the Azure CLI and navigate to the local solution folder.
-3.	Run the following command:  `.\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> <mode>`
-4.	Replace `<subscription id>` with your Azure subscription ID.
-5.	For `<location>`, specify an Azure region, such as `UKSouth` or `UKWest`.
-6.	The `<mode>` parameter controls the granularity of the deployment, and can be one of the following values:
-7.	`Infrastructure`: deploys the networking infrastructure
-8.	`ADDS`: deploys the VMs acting as Active Directory DS servers, deploys Active Directory to these VMs, and deploys the domain in Azure.
-9.	`Operational`: deploys the web, business and data tier VMs and load balancers
-10.	`Post`: Initiates post deployment configuration such as domain joining the Jumpbox VM.
-11.	`Prepare`: deploys all the preceding deployments. 
-
+1. Download or clone the solution folder from GitHub to your local machine.
+2. Open the Azure CLI and navigate to the local solution folder.
+3. Run the following command:  `.\Deploy-ReferenceArchitecture.ps1 <subscription id> <location> <mode>`
+4. Replace `<subscription id>` with your Azure subscription ID.
+5. For `<location>`, specify an Azure region, such as `UKSouth` or `UKWest`.
+6. The `<mode>` parameter controls the granularity of the deployment, and can be one of the following values:
+- `Infrastructure`: deploys the networking infrastructure
+- `ADDS`: deploys the VMs acting as Active Directory DS servers, deploys Active Directory to these VMs, and deploys the domain in Azure.
+- `Operational`: deploys the web, business and data tier VMs and load balancers
+- `Post`: Initiates post deployment configuration such as domain joining the Jumpbox VM.
+- `Prepare`: deploys all the preceding deployments. 
 
 UK Governments Private Network Connectivity
 ===========================================
 
-Microsoft’s customers are now able to use [private connections](https://news.microsoft.com/en-gb/2016/12/14/microsoft-now-offers-private-internet-connections-to-its-uk-data-centres/#sm.0001dca7sq10r1couwf4vvy9a85zx)
-to the company’s UK data centres. Microsoft’s partners are providing a gateway from PSN/N3 to [ExpressRoute](https://azure.microsoft.com/en-us/services/expressroute/) and into Azure – just one of the new services the group has unveiled
-since the company launched its [**Azure**](https://azure.microsoft.com/en-us/blog/) and Office 365 cloud offering in this country at launch(http://news.microsoft.com/en-gb/2016/09/07/not-publish-microsoft-becomes-first-company-open-data-centres-uk/). Since then, [**thousands of customers**](https://enterprise.microsoft.com/en-gb/industries/public-sector/microsoft-uk-data-centres-continue-to-build-momentum/?wt.mc_id=AID563187_QSG_1236)
-– including the Ministry of Defence, the Met Police and parts of the NHS – have signed up to take advantage of the sites, which offer UK data residency, security and reliability.
+Microsoft's customers are now able to use [private connections](https://news.microsoft.com/en-gb/2016/12/14/microsoft-now-offers-private-internet-connections-to-its-uk-data-centres/#sm.0001dca7sq10r1couwf4vvy9a85zx)
+to the company's UK data centres. Microsoft's partners are providing a gateway from PSN/N3 to [ExpressRoute](https://azure.microsoft.com/en-us/services/expressroute/) and into Azure - just one of the new services the group has unveiled
+since the company launched its [**Azure**](https://azure.microsoft.com/en-us/blog/) and Office 365 cloud offering in this country at launch (http://news.microsoft.com/en-gb/2016/09/07/not-publish-microsoft-becomes-first-company-open-data-centres-uk/). Since then, [**thousands of customers**](https://enterprise.microsoft.com/en-gb/industries/public-sector/microsoft-uk-data-centres-continue-to-build-momentum/?wt.mc_id=AID563187_QSG_1236)
+- including the Ministry of Defence, the Met Police and parts of the NHS - have signed up to take advantage of the sites, which offer UK data residency, security and reliability.
 
 Cost
 ====
