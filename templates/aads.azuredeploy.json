@@ -3,12 +3,12 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "operationalVirtualNetworkName": {
-      "type": "string",
-      "defaultValue": "azure-operational-vnet",
       "metadata": {
         "description": "Operational Resources VNet"
-        }
       },
+      "type": "string",
+      "defaultValue": "azure-operational-vnet"
+    },
       "operationalVirtualNetworkResourceGroupName": {
         "type": "string",
         "defaultValue": "uk-official-networking-rg",
@@ -87,9 +87,6 @@
                   "useExistingAvailabilitySet": "No",
                   "name": "operational-ad-as"
                 }
-              },
-              "metadata": {
-              "description": "Settings for AD VMs"
               }
             },
             "virtualNetworkSettings": {
