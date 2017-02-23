@@ -31,7 +31,7 @@
               "priority": 100,
               "sourceAddressPrefix": "10.1.0.0/27",
               "destinationAddressPrefix": "*",
-              "sourcePortRange": "10.1.0.29",
+              "sourcePortRange": "3389",
               "destinationPortRange": "3389",
               "access": "Allow",
               "protocol": "Tcp"

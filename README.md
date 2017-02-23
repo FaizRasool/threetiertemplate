@@ -28,23 +28,19 @@ Microsoft Azure UK-OFFICIAL Three Tier Web Application Architecture
 Overview
 ========
 
- This document provides guidance and automation scripts to deliver a
- Microsoft Azure three-tier web based workload that is classified as
- United Kingdom UK-OFFICIAL.
+ This document provides guidance and automation scripts to deliver a Microsoft Azure three-tier web based workload that is classified as United Kingdom UK-OFFICIAL.
 
  Using an Infrastructure as Code approach, the set of [Azure Resource
  Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)
  (ARM) templates deploy an environment that aligns to the National
- Cyber Security Centre (NCSC)�[Cloud Security
- Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)�and
- the Center for Internet Security (CIS)�[Critical Security
+ Cyber Security Centre (NCSC) [Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) and  the Center for Internet Security (CIS) [Critical Security
  Controls](https://www.cisecurity.org/critical-controls.cfm) to ensure
  a UK-OFFICIAL compliant architecture.
 
  This architecture and corresponding ARM templates are underpinned by
  the Microsoft whitepaper [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)
  . This paper catalogue how Azure services align with the fourteen
- cloud security principles set forth in the CESG/NCSC publication �[Implementing the Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)"
+ cloud security principles set forth in the CESG/NCSC publication [Implementing the Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)"
  thereby enabling organisations to fast-track their ability to meet
  their compliance obligations using cloud-based services globally and
  in the UK on the Microsoft Azure cloud.
@@ -68,7 +64,7 @@ Architecture Diagram and Components
 ![alt text](/images/diagram.png?raw=true "Azure UK-OFFICAL Three Tier Architecture")
 
 
- The components of this architecture include �
+ The components of this architecture include -
 
 1.  **On-premises network**. A private local-area network implemented in an organization.
 
@@ -205,18 +201,14 @@ Guidance and Recommendations
 > Gateway. Customers should ensure that they are using an appropriate
 > VPN Gateway to connect to Azure. Example [VPN Gateway ARM
 > Template](https://github.com/mspnp/template-building-blocks/tree/master/templates/buildingBlocks/vpn-gateway-vpn-connection)**.**
-> Customers running large-scale, mission critical workloads with big
-> data requirement may wish to consider a hybrid network architecture
-> using
+> Customers running large-scale, mission critical workloads with big data requirements may wish to consider a hybrid network architecture using
 > [ExpressRoute](https://docs.microsoft.com/en-gb/azure/guidance/guidance-hybrid-network-expressroute)
 > to ensure private network connectivity to Microsoft cloud services
 >
 > **Separation of concerns:** This pattern separates the VNets for
 > Management operations and business operations. Separate VNets and
 > subnets allow traffic management and traffic ingress and egress
-> restriction using NSGs between network segments following [Microsoft
-> cloud services and network
-> security](https://docs.microsoft.com/en-gb/azure/best-practices-network-security)
+> restriction using NSGs between network segments following [Microsoft cloud services and network security](https://docs.microsoft.com/en-gb/azure/best-practices-network-security)
 > best practices.
 >
 > **Resource Management**: Azure resources such as VMs, VNets, and load
@@ -236,8 +228,7 @@ Guidance and Recommendations
 > also consider the use of third party vendor Network Virtual Appliances
 > for additional layers of networking security as an alternative to the
 > [Azure Application
-> Gateway](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-introduction)**.
-> **
+> Gateway](https://docs.microsoft.com/en-us/azure/application-gateway/application-gateway-introduction).
 >
 > **Azure Security Center:** The [Azure Security
 > Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro)
@@ -280,7 +271,7 @@ communication internally and between customers and the cloud.
 tampering, loss, damage, and seizure.
 > Most Azure services are deployed regionally, and customers can configure certain Azure services to store customer data only in a single region. Each facility is designed to run 24x7x365 and employs various industry-standard measures to help protect operations from power failure, physical intrusion, and network outages.
 > These datacenters comply with industry standards (such as ISO 27001) for physical security and availability. They are managed, monitored, and administered by Microsoft operations personnel. Azure offers a wide range of encryption capabilities, giving customers the flexibility to choose the solution that best meets their needs. 
-> When customers delete data or leave Azure, Microsoft follows strict standards for overwriting storage resources before reuse.Upon a system�s end-of-life, 
+> When customers delete data or leave Azure, Microsoft follows strict standards for overwriting storage resources before reuse.Upon a system's end-of-life, 
 > Microsoft operational personnel follow rigorous data handling procedures and hardware disposal processes to help assure that no hardware that may contain customer data is made available to untrusted parties.                                                                                                                                                                                                                                         
 > To ensure data resiliency Azure asynchronously replicates data from a primary location to a secondary location within the same region.
 > For applications resiliency, Microsoft Azure patterns ensure that at least one virtual machine will be available and meet the 99.95% Azure SLA.
@@ -309,13 +300,13 @@ tampering, loss, damage, and seizure.
 *Operational security:* The service provider should have processes and procedures in place to ensure the operational security of the service.
 > Operational Security Assurance (OSA) is a framework that incorporates the knowledge gained through a variety of resources that are unique to Microsoft, 
 > such as the Microsoft Security Response Center (MSRC), and incorporates deep awareness of the cybersecurity threat landscape. 
-> OSA helps make Microsoft cloud-based services� infrastructure more resilient to attack by decreasing the amount of time needed to prevent, detect, contain 
+> OSA helps make Microsoft cloud-based services' infrastructure more resilient to attack by decreasing the amount of time needed to prevent, detect, contain 
 > and respond to real and potential Internet-based security threats, thereby increasing the security of those services for customers.
 
 *Personnel security:* Service provider staff should be subject to personnel security screening and security education appropriate for their role.
 > Microsoft Azure Operations and Customer Support personnel and data center staff, who operate Azure services and provide customer support (or Microsoft subcontractors
 > who assist with platform operations, troubleshooting, and technical support) undergo a Microsoft standard background (or equivalent) check to evaluate employee 
-> education, employment, and criminal history. The background checks that are carried out are broadly in line with the requirements of the UK Government�s 
+> education, employment, and criminal history. The background checks that are carried out are broadly in line with the requirements of the UK Government's 
 > BPSS / BS7858. They do not specifically include a formal identity check.
 
 *Secure development:* Services should be designed and developed to identify and mitigate threats to their security.
@@ -333,7 +324,7 @@ claims to implement.|
                                                                                                                                                                                                                                                
 *Secure consumer management:* Consumers should be provided with the tools required to help them securely manage their service.
 > Customers administer their Azure resources through the Azure portal, which provides access to all virtual machines, databases, cloud services, and 
-> other resources configured for the customer�s account. Web access to the Azure portal is secured by industry-standard Transport Layer Security (TLS) 1.2 
+> other resources configured for the customer's account. Web access to the Azure portal is secured by industry-standard Transport Layer Security (TLS) 1.2 
 > connections using 2048-bit RSA/SHA256 encryption keys, as recommended by CESG/NCSC . Role-based access controls are provided to enable customers to provide 
 > limited access to Azure management resources for specific users and groups.
                                                                                                                                                                                                                                                
@@ -342,14 +333,14 @@ claims to implement.|
 
 *External interface protection:* All external or less trusted interfaces of the service should be identified and have appropriate protections to defend against 
 attacks through them.
-> Microsoft employs a method it calls �Red Teaming� to improve Azure security controls and processes through regular penetration testing.
+> Microsoft employs a method it calls 'Red Teaming' to improve Azure security controls and processes through regular penetration testing.
 
-*Secure service administration:* The methods used by the service provider�s administrators to manage the operational service should be designed to mitigate 
+*Secure service administration:* The methods used by the service providers administrators to manage the operational service should be designed to mitigate 
 any risk of exploitation that could undermine the security of the service.
 > Azure infrastructure operations personnel are required to use secure admin workstations (SAWs; also known as privileged access workstations, or PAWs). The SAW approach is an extension of the well-established recommended practice to use separate admin and user accounts for administrative personnel.
 
 *Audit information provision to consumers:* Consumers should be provided with the audit records they need to monitor access to their service and the data held within it.
-> Azure Log Analytics collects records of the events occurring within an organisation�s systems and networks as soon as they occur, before anyone can tamper with them, and allows different types of analysis by correlating data across multiple computers.
+> Azure Log Analytics collects records of the events occurring within an organisation's systems and networks as soon as they occur, before anyone can tamper with them, and allows different types of analysis by correlating data across multiple computers.
 
 *Secure use of the service by the consumer:* Consumers have certain responsibilities when using a cloud service in order for this use to remain secure, and for their 
 data to be adequately protected.
@@ -386,7 +377,7 @@ Portal.
 > Architectures ARM
 > Templates](https://github.com/mspnp/reference-architectures).
 
- As a pre-requisite to deployment users should ensure that they have �
+ As a pre-requisite to deployment users should ensure that they have -
 
 - An Azure Subscription
 
@@ -425,12 +416,12 @@ Portal.
 A deployment for this reference architecture is available on
 [GitHub](https://github.com/ben-houghton/threetiertemplate/tree/master/templates).
 The reference architecture is deployed in four stages. To deploy the
-architecture, follow these steps for each deployment stage �
+architecture, follow these steps for each deployment stage -
 
 For Virtual Machines The parameter files include a hard-coded
 administrator user names and passwords, and it is *strongly recommended
 that you immediately change both on all the VMs*. Click on each VM in the
-Azure portal then click on **Reset password** in the **Support +
+Azure portal then click on **Reset password** in the **Support
 troubleshooting** blade.
 
 <!-- or change them int he parameter files -->
