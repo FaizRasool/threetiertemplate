@@ -1,4 +1,4 @@
-Microsoft Azure UK-OFFICIAL Three Tier Web Application Architecture
+Deployment of a Microsoft Azure Three Tier Web Application Architecture That Aligns To UK-OFFICIAL Classification.
 ===================================================================
 
 ##Contents
@@ -28,7 +28,7 @@ Microsoft Azure UK-OFFICIAL Three Tier Web Application Architecture
 Overview
 ========
 
- This document provides guidance and automation scripts to deliver a Microsoft Azure three-tier web based workload that is classified as United Kingdom UK-OFFICIAL.
+ This document provides guidance and automation scripts to deliver a Microsoft Azure three-tier web based workload that aligns to United Kingdom UK-OFFICIAL classification and NCSC guidance.
 
  Using an Infrastructure as Code approach, the set of [Azure Resource
  Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)
@@ -37,17 +37,14 @@ Overview
  Controls](https://www.cisecurity.org/critical-controls.cfm) to ensure
  a UK-OFFICIAL compliant architecture.
 
- This architecture and corresponding ARM templates are underpinned by
- the Microsoft whitepaper [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)
+ This architecture and corresponding ARM templates are underpinned by the Microsoft whitepaper [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)
  . This paper catalogue how Azure services align with the fourteen
  cloud security principles set forth in the CESG/NCSC publication [Implementing the Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)"
  thereby enabling organisations to fast-track their ability to meet
  their compliance obligations using cloud-based services globally and
  in the UK on the Microsoft Azure cloud.
 
- This template deploys the infrastructure for the workload. Application
- code and supporting business tier and data tier software must be
- installed and configured.
+ This template deploys the infrastructure for the workload. Application code and supporting business tier and data tier software must be installed and configured.
 
  If you do not have an Azure subscription then you can sign up quickly and easily, [Get Started with Azure](https://azure.microsoft.com/en-us/get-started/).
 

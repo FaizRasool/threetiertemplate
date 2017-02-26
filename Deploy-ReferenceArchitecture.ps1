@@ -68,7 +68,7 @@ $azureVmEnableWindowsAuthExtensionParametersFile = [System.IO.Path]::Combine($PS
 
 # Azure ADDS Deployments
 $azureNetworkResourceGroupName = "uk-official-networking-rg"
-$workloadResourceGroupName = "uk-official-operaional-rg"
+$workloadResourceGroupName = "uk-official-operational-rg"
 $addsResourceGroupName = "uk-official-adds-rg"
 
 # Login to Azure and select your subscription
