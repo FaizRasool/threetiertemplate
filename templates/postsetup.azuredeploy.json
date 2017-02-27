@@ -2,6 +2,27 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "domainName": {
+      "type": "string",
+      "defaultValue": "treyresearch",
+      "metadata": {
+        "description": "AD Domain Name"
+      }
+    },
+    "vmAdminUserName": {
+      "type": "string",
+      "defaultValue": "AdminUser",
+      "metadata": {
+        "description": "VM Administrator Name"
+      }
+    },
+    "vmAdminPassword": {
+      "type": "string",
+      "defaultValue": "AweS0me@PW",
+      "metadata": {
+        "description": "VM Admin Password"
+      }
+    }
   },
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
@@ -26,9 +47,34 @@
           "uri": "[variables('buildingBlocks').virtualMachineExtensionsTemplate]",
           "contentVersion": "1.0.0.0"
         },
-        "parametersLink": {
-          "uri": "[variables('parameterFiles').azureVmDomainJoinExtensionParametersFile]",
-          "contentVersion": "1.0.0.0"
+       "parameters": {
+          "virtualMachinesExtensionSettings": {
+            "value": [
+              {
+                "vms": [ "operational-web-vm1", "operational-web-vm2", "operational-biz-vm1", "operational-biz-vm2", "operational-data-vm1", "operational-data-vm2", "azure-mgmt-vm1" ],
+                "extensions": [
+                  {
+                    "name": "join-ad-domain",
+                    "publisher": "Microsoft.Compute",
+                    "type": "JsonADDomainExtension",
+                    "typeHandlerVersion": "1.3",
+                    "autoUpgradeMinorVersion": true,
+                    "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
+                    "settingsConfig": {
+                      "Name": "treyresearch.com",
+                      "OUPath": "",
+                      "User": "[concat(parameters('domainName'),'//', parameters('vmAdminUserName'))]",
+                      "Restart": true,
+                      "Options": 3
+                    },
+                    "protectedSettingsConfig": {
+                      "Password": "[parameters('vmAdminPassword')]"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
         }
       }
     },
