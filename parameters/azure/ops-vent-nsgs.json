@@ -38,16 +38,14 @@
             },
             {
               "name": "OpsTrafficAllow",
-              "properties": {
-                "protocol": "*",
-                "sourcePortRange": "*",
-                "destinationPortRange": "*",
-                "sourceAddressPrefix": "10.0.0.0/16",
-                "destinationAddressPrefix": "*",
-                "access": "Allow",
-                "priority": 110,
-                "direction": "Inbound"
-              }
+              "direction": "Inbound",
+              "priority": 110,
+              "sourceAddressPrefix": "10.0.0.0/16",
+              "destinationAddressPrefix": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "*",
+              "access": "Allow",
+              "protocol": "*"
             }
           ]
         }
