@@ -431,7 +431,7 @@ troubleshooting** blade.
 1. Click on the **Deploy to Azure** button to begin the first stage of the deployment. The link takes you to the Azure Portal.
 2. Select **Create New** and enter a value such as `uk-official-networking-rg` in the **Resource group** textbox.
 3. Select a region such as `UKSouth` from the **Location** drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
-4. Do not edit the **Template Root Uri** or the **Parameter Root Uri** text boxes if using the provided parameters. If the templates or parameters have been been customised, provide the URLs to the customised files in these textboxes.
+4. Some parameters can be edited in the deployment page. If greater customisation is requried this can be down through cloning and editing the templates directly, or in situ by editing the templates by clicking 'Edit template'.
 5. Review the terms and conditions, then click the **I agree to the terms and conditions stated above** checkbox.
 6. Click on the **Purchase** button.
 7. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
@@ -449,15 +449,16 @@ troubleshooting** blade.
 1. Click on the **Deploy to Azure** button to begin the first stage of the deployment. The link takes you to the Azure Portal.
 2. Select **Create New** and enter a value such as `uk-official-ad-rg` in the **Resource group** textbox.
 3. Select a region such as `UKSouth` from the **Location** drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`.
-4. Do not edit the **Template Root Uri** or the **Parameter Root Uri** text boxes if using the provided parameters. If the templates or parameters have been been customised, provide the URLs to the customised files in these textboxes.
+4. Some parameters can be edited in the deployment page. If greater customisation is requried this can be down through cloning and editing the templates directly, or in situ by editing the templates by clicking 'Edit template'.
 5. In the **Settings** textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
+6. Enter the Domain settings and Admin credentials.
+7. Review the terms and conditions, then click the **I agree to the terms and conditions stated above* checkbox.
+8. Click on the **Purchase** button.
+9. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
+10. If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
 
 ![alt text](images/create-official-aads-rg.JPG?raw=true "Create ADDS deployment")
 
-6. Review the terms and conditions, then click the **I agree to the terms and conditions stated above* checkbox.
-7. Click on the **Purchase** button.
-8. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
-9. If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
 
 ## Deploy operational workload infrastructure 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fworkloads.azuredeploy.json" target="_blank">
@@ -470,15 +471,16 @@ troubleshooting** blade.
 1. Click on the **Deploy to Azure** button to begin the first stage of the deployment. The link takes you to the Azure Portal.
 2. Select **Create New** and enter a value such as `uk-official-ops-rg` in the **Resource group** textbox.
 3. Select a region such as `UKSouth` from the **Location** drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
-4. Do not edit the **Template Root Uri** or the **Parameter Root Uri** text boxes if using the provided parameters. If the templates or parameters have been been customised, provide the URLs to the customised files in these textboxes.
+4. Some parameters can be edited in the deployment page. If greater customisation is requried this can be down through cloning and editing the templates directly, or in situ by editing the templates by clicking 'Edit template'.
 5. In the **Settings** textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
+6. Enter the Virtual Machine Admin credentials.
+7. Review the terms and conditions, then click the **I agree to the terms and conditions stated above** checkbox.
+8. Click on the **Purchase** button.
+9. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
+10. If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
 
 ![alt text](/images/create-official-ops-rg.JPG?raw=true "Create ADDS deployment").
 
-6. Review the terms and conditions, then click the **I agree to the terms and conditions stated above** checkbox.
-7. Click on the **Purchase** button.
-8. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
-9. If for some reason your deployment fails. To avoid incurring cost and orphan resources it is advisable to delete the resource group in its entirety, fix the issue and redeploy the resource groups and template.
 
 ## Execute post deployment configuration
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json" target="_blank">
@@ -490,11 +492,17 @@ troubleshooting** blade.
 
 1. Click on the *Deploy to Azure* button to begin the first stage of the deployment. The link takes you to the Azure Portal.
 2. Select **Use Existing** and select the resource group you created for the operational workload deployment from the **Resource group** drop down
-4. Do not edit the **Template Root Uri** or the **Parameter Root Uri** text boxes if using the provided parameters. If the templates or parameters have been been customised, provide the URLs to the customised files in these textboxes.
-6. Review the terms and conditions, then click the **I agree to the terms and conditions stated above** checkbox.
-7. Click on the **Purchase** button.
-8. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
-9. If for some reason your deployment fails check the deployment messages blade for futher information.
+4. Some parameters can be edited in the deployment page. If greater customisation is requried this can be down through cloning and editing the templates directly, or in situ by editing the templates by clicking 'Edit template'.
+5. In the **Settings** textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
+6. Enter the Virtual Machine domain name and Admin credentials.
+7. Review the terms and conditions, then click the **I agree to the terms and conditions stated above** checkbox.
+8. Click on the **Purchase** button.
+9. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
+10. If for some reason your deployment fails check the deployment messages blade for futher information.
+
+![alt text](/images/create-postdeployment.JPG?raw=true "Deploy post deployment configuration").
+
+
 
 ##(Optional) PowerShell Deployment 
 
