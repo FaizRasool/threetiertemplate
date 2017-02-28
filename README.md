@@ -1,4 +1,4 @@
-Deployment of a Microsoft Azure Three Tier Web Application Architecture That Aligns To UK-OFFICIAL Classification.
+A Microsoft Azure Three Tier Web Application Architecture For Workloads Classified as UK-OFFICIAL.
 ===================================================================
 
 ##Contents
