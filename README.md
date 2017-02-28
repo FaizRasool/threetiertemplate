@@ -28,21 +28,17 @@ Deployment of a Microsoft Azure Three Tier Web Application Architecture That Ali
 Overview
 ========
 
- This document provides guidance and automation scripts to deliver a Microsoft Azure three-tier web based workload that aligns to United Kingdom UK-OFFICIAL classification and NCSC guidance.
+ This article provides guidance and automation scripts to deliver a Microsoft Azure three-tier web based architecture appropriate for handling many workloads classified as OFFICIAL in the United Kingdom.    
 
- Using an Infrastructure as Code approach, the set of [Azure Resource
- Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)
- (ARM) templates deploy an environment that aligns to the National
- Cyber Security Centre (NCSC) [Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) and  the Center for Internet Security (CIS) [Critical Security
- Controls](https://www.cisecurity.org/critical-controls.cfm) to ensure
- a UK-OFFICIAL compliant architecture.
+ Using an Infrastructure as Code approach, the set of [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)
+ (ARM) templates deploy an environment that aligns to the National Cyber Security Centre (NCSC) [Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles) and  the Center for Internet Security (CIS) [Critical Security
+ Controls](https://www.cisecurity.org/critical-controls.cfm).
 
- This architecture and corresponding ARM templates are underpinned by the Microsoft whitepaper [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)
- . This paper catalogue how Azure services align with the fourteen
+ The NCSC recommend their Cloud Security Principles be used by customers to evaluate the security properties of the service, and to help understand the division of responsibility between the customer and supplier. We’ve provided information against each of these principles to help you understand the split of responsibilities.
+
+ This architecture and corresponding ARM templates are underpinned by the Microsoft whitepaper [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1). This paper catalogue how Azure services align with the fourteen
  cloud security principles set forth in the CESG/NCSC publication [Implementing the Cloud Security Principles](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)"
- thereby enabling organisations to fast-track their ability to meet
- their compliance obligations using cloud-based services globally and
- in the UK on the Microsoft Azure cloud.
+ thereby enabling organisations to fast-track their ability to meet their compliance obligations using cloud-based services globally and in the UK on the Microsoft Azure cloud.
 
  This template deploys the infrastructure for the workload. Application code and supporting business tier and data tier software must be installed and configured.
 
