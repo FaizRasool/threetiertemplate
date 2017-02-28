@@ -90,6 +90,9 @@ Architecture Diagram and Components
 
 13. **Active Directory Domain Services (AD DS):** This architecture provides a dedicated [Active Directory](https://msdn.microsoft.com/library/azure/jj156090.aspx) [Active Directory Domain Services](https://technet.microsoft.com/library/dd448614.aspx) into a separate forest in the cloud.
 
+14. **Logging and Audit: ** [Azure Activity Log](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) is a log that provides insight into the operations that were performed on resources in your subscription.
+The log captures operations were taken on the resources in your subscription, who initiated the operation, when the operation occurred, the status of the operation and the values of other properties that might help you research the operation. Azure Activity Log is a standard services that captures all actions on a subscription. Logs can be archived or exported.
+
 
 
 Guidance and Recommendations 
@@ -113,7 +116,7 @@ Guidance and Recommendations
 > the activity log, metrics, and diagnostic logs of all your Azure
 > resources. Azure Monitor can be configured to visualize, query, route,
 > archive, and act on the metrics and logs coming from resources in
-> Azure.
+> Azure. It is recommended that Resource Based Access Control is used to secure the audit trail to ensure that users don’t have the ability to modify the logs.
 >
 > **Activity Logs**: Configure [Azure Activity
 > Logs](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
