@@ -67,7 +67,7 @@ Architecture Diagram and Components
 
 4.  **Business tier:** Implements business processes and other functional logic for the system.
 
-5.  **Database tier:** Provides persistent data storage, using [SQL Server Always On Availability Groups](https://msdn.microsoft.com/en-us/library/hh510230.aspx) for high availability.
+5.  **Database tier:** Provides persistent data storage, using [SQL Server Always On Availability Groups](https://msdn.microsoft.com/en-us/library/hh510230.aspx) for high availability. Customers may wish to consider using [Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-technical-overview) as a PaaS alternative
 
 6.  **Gateway**: The [VPN Gateway](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpngateways) provides connectivity between the routers in the on-premises network and the Production VNet.
 
@@ -86,9 +86,11 @@ Architecture Diagram and Components
 
 13. **Active Directory Domain Services (AD DS):** This architecture provides a dedicated [Active Directory](https://msdn.microsoft.com/library/azure/jj156090.aspx) [Active Directory Domain Services](https://technet.microsoft.com/library/dd448614.aspx) into a separate forest in the cloud.
 
-14. **Logging and Audit: ** [Azure Activity Log](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) is a log that provides insight into the operations that were performed on resources in your subscription.
-The log captures operations were taken on the resources in your subscription, who initiated the operation, when the operation occurred, the status of the operation and the values of other properties that might help you research the operation. Azure Activity Log is a standard services that captures all actions on a subscription. Logs can be archived or exported.
+14. **Logging and Audit:** [Azure Activity Log](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) captures operations 
+taken on the resources in your subscription such as who initiated the operation, when the operation occurred, the status of the operation and the values of other properties that might help you research the operation. 
+Azure Activity Log is an Azure platform service that captures all actions on a subscription. Logs can be archived or exported if requried.
 
+15. **Network Monitoring and Alerting** [Azure Network Watcher](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview) is a platform service provides network packet capture, flow logging, topology tools and diagnostics  for network traffics within your VNets. 
 
 
 Guidance and Recommendations 
@@ -446,7 +448,7 @@ troubleshooting** blade.
 </a>
 
 1. Click on the **Deploy to Azure** button to begin the first stage of the deployment. The link takes you to the Azure Portal.
-2. Select **Create New** and enter a value such as `uk-official-ad-rg` in the **Resource group** textbox.
+2. Select **Create New** and enter a value such as `uk-official-adds-rg` in the **Resource group** textbox.
 3. Select a region such as `UKSouth` from the **Location** drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`.
 4. Some parameters can be edited in the deployment page. If greater customisation is requried this can be down through cloning and editing the templates directly, or in situ by editing the templates by clicking 'Edit template'.
 5. In the **Settings** textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
