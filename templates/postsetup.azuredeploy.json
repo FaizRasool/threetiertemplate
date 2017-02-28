@@ -4,9 +4,16 @@
   "parameters": {
     "domainName": {
       "type": "string",
+      "defaultValue": "treyresearch.com",
+      "metadata": {
+        "description": "AD Domain"
+      }
+    },
+    "domainNetBiosName": {
+      "type": "string",
       "defaultValue": "treyresearch",
       "metadata": {
-        "description": "AD Domain Name"
+        "description": "AD Domain Net Bios Name"
       }
     },
     "vmAdminUserName": {
@@ -61,9 +68,9 @@
                     "autoUpgradeMinorVersion": true,
                     "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/templates/resources/Microsoft.Compute/virtualMachines/extensions/vm-extension-passthrough-settings-mapper.json",
                     "settingsConfig": {
-                      "Name": "treyresearch.com",
+                      "Name": "parameters('domainName')",
                       "OUPath": "",
-                      "User": "[concat(parameters('domainName'),'//', parameters('vmAdminUserName'))]",
+                      "User": "[concat(parameters('domainNetBiosName'),'//', parameters('vmAdminUserName'))]",
                       "Restart": true,
                       "Options": 3
                     },

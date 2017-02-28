@@ -2,13 +2,6 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "operationalVirtualNetworkName": {
-      "metadata": {
-        "description": "Operational Resources VNet"
-      },
-      "type": "string",
-      "defaultValue": "azure-operational-vnet"
-    },
     "operationalVirtualNetworkResourceGroupName": {
       "type": "string",
       "defaultValue": "uk-official-networking-rg",
@@ -55,6 +48,8 @@
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
     "localRepoBaseUrl": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/",
+    "operationalVirtualNetworkName": "azure-operational-vnet",
+    "managementlVirtualNetworkName": "azure-mgmt-vnet",
     "buildingBlocks": {
       "virtualNetworkTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/vnet-n-subnet/azuredeploy.json')]",
       "virtualMachineTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json')]",
@@ -126,7 +121,7 @@
           },
           "virtualNetworkSettings": {
             "value": {
-              "name": "[parameters('operationalVirtualNetworkName')]",
+              "name": "[variables('operationalVirtualNetworkName')]",
               "resourceGroup": "[parameters('operationalVirtualNetworkResourceGroupName')]"
             }
           },

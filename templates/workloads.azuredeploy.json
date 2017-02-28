@@ -2,25 +2,11 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "operationalVirtualNetworkName": {
-      "type": "string",
-      "defaultValue": "azure-operational-vnet",
-      "metadata": {
-        "description": "Operational Resources VNet"
-      }
-    },
-    "managementlVirtualNetworkName": {
-      "type": "string",
-      "defaultValue": "azure-mgmt-vnet",
-      "metadata": {
-        "description": "Management Resources VNet"
-      }
-    },
     "operationalVirtualNetworkResourceGroupName": {
       "type": "string",
       "defaultValue": "uk-official-networking-rg",
       "metadata": {
-        "description": "Operational VNet Resource Group"
+        "description": "Networking Resource Group"
       }
     },
     "vmAdminUserName": {
@@ -41,6 +27,8 @@
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
     "localRepoBaseUrl": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/",
+    "operationalVirtualNetworkName": "azure-operational-vnet",
+    "managementlVirtualNetworkName": "azure-mgmt-vnet",
     "buildingBlocks": {
       "loadBalancerTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/loadBalancer-backend-n-vm/azuredeploy.json')]",
       "vmTemplate": "[concat(variables('templateBaseUrl'), 'templates/buildingBlocks/multi-vm-n-nic-m-storage/azuredeploy.json')]"
@@ -125,7 +113,7 @@
           },
           "virtualNetworkSettings": {
             "value": {
-              "name": "[parameters('managementlVirtualNetworkName')]",
+              "name": "[variables('managementlVirtualNetworkName')]",
               "resourceGroup": "[parameters('operationalVirtualNetworkResourceGroupName')]"
             }
           },
@@ -290,7 +278,7 @@
             },
             "virtualNetworkSettings": {
               "value": {
-                "name": "[parameters('operationalVirtualNetworkName')]",
+                "name": "[variables('operationalVirtualNetworkName')]",
                 "resourceGroup": "[parameters('operationalVirtualNetworkResourceGroupName')]"
               }
             },
@@ -425,7 +413,7 @@
           },
           "virtualNetworkSettings": {
             "value": {
-              "name": "[parameters('operationalVirtualNetworkName')]",
+              "name": "[variables('operationalVirtualNetworkName')]",
               "resourceGroup": "[parameters('operationalVirtualNetworkResourceGroupName')]"
             }
           },
@@ -560,7 +548,7 @@
           },
           "virtualNetworkSettings": {
             "value": {
-              "name": "[parameters('operationalVirtualNetworkName')]",
+              "name": "[variables('operationalVirtualNetworkName')]",
               "resourceGroup": "[parameters('operationalVirtualNetworkResourceGroupName')]"
             }
           },
