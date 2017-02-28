@@ -451,7 +451,7 @@ troubleshooting** blade.
 2. Select **Create New** and enter a value such as `uk-official-adds-rg` in the **Resource group** textbox.
 3. Select a region such as `UKSouth` from the **Location** drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`.
 4. Some parameters can be edited in the deployment page. If greater customisation is requried this can be down through cloning and editing the templates directly, or in situ by editing the templates by clicking 'Edit template'.
-5. In the **Settings** textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
+5. In the **Settings** textboxes, enter the networking resource group as entered when creating the networking infrastructure in deployment step 1.
 6. Enter the Domain settings and Admin credentials.
 7. Review the terms and conditions, then click the **I agree to the terms and conditions stated above* checkbox.
 8. Click on the **Purchase** button.
@@ -470,10 +470,10 @@ troubleshooting** blade.
 </a>
 
 1. Click on the **Deploy to Azure** button to begin the first stage of the deployment. The link takes you to the Azure Portal.
-2. Select **Create New** and enter a value such as `uk-official-ops-rg` in the **Resource group** textbox.
+2. Select **Create New** and enter a value such as `uk-official-operational-rg` in the **Resource group** textbox.
 3. Select a region such as `UKSouth` from the **Location** drop down box (All Resource Groups required for this architecture should be in the same Azure region e.g. `UKSouth`
 4. Some parameters can be edited in the deployment page. If greater customisation is requried this can be down through cloning and editing the templates directly, or in situ by editing the templates by clicking 'Edit template'.
-5. In the **Settings** textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
+5. In the **Settings** textboxes, enter the operational network resource group as entered when creating the networking infrastructure in deployment step 1.
 6. Enter the Virtual Machine Admin credentials.
 7. Review the terms and conditions, then click the **I agree to the terms and conditions stated above** checkbox.
 8. Click on the **Purchase** button.
@@ -494,8 +494,7 @@ troubleshooting** blade.
 1. Click on the *Deploy to Azure* button to begin the first stage of the deployment. The link takes you to the Azure Portal.
 2. Select **Use Existing** and select the resource group you created for the operational workload deployment from the **Resource group** drop down
 4. Some parameters can be edited in the deployment page. If greater customisation is requried this can be down through cloning and editing the templates directly, or in situ by editing the templates by clicking 'Edit template'.
-5. In the **Settings** textboxes, enter the operational Virtual Network name and resource group as entered when creating the networking infrastructure in deployment step 1.
-6. Enter the Virtual Machine domain name and Admin credentials.
+5. In the **Settings** textboxes, enter the AD domain name and Admin credentials.
 7. Review the terms and conditions, then click the **I agree to the terms and conditions stated above** checkbox.
 8. Click on the **Purchase** button.
 9. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
