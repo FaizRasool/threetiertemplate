@@ -7,8 +7,7 @@
         "description": "VNet name"
       },
       "value": {
-        "name": "azure-mgmt-vnet",
-        "resourceGroup": "uk-official-networking-rg"
+        "name": "azure-mgmt-vnet"
       }
     },
     "networkSecurityGroupsSettings": {
