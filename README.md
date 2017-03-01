@@ -17,7 +17,6 @@ A Microsoft Azure Three Tier Web Application Architecture For Workloads Classifi
 	- [Deploy Networking Infrastructure](#deploy-networking-infrastructure)
 	- [Deploy Active Directory Domain](#deploy-active-directory-domain)
 	- [Deploy operational workload infrastructure](#deploy-operational-workload-infrastructure)
-	- [Execute post deployment configuration](#execute-post-deployment-configuration)
 	- [(Optional) PowerShell Deployment](#optional-powershell-deployment)
 - [UK Governments Private Network Connectivity](#uk-governments-private-network-connectivity)
 - [Cost](#cost)
