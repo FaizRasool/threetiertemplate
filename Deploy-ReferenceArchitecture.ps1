@@ -9,7 +9,7 @@ param(
   $Location,
   
   [Parameter(Mandatory=$false)]
-  [ValidateSet("DeployAll", "Infrastructure", "ADDS", "Operational", "Post")]
+  [ValidateSet("DeployAll", "Infrastructure", "ADDS", "Operational")]
   $Mode = "DeployAll"
 )
 
@@ -63,9 +63,6 @@ $mgmtVMJumpboxParametersFile  = [System.IO.Path]::Combine($PSScriptRoot, "parame
 $webLoadBalancerParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\loadBalancer-web.parameters.json")
 $bizLoadBalancerParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\loadBalancer-biz.parameters.json")
 $dataLoadBalancerParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\loadBalancer-data.parameters.json")
-#postdeployment config
-$azurenVmDomainJoinExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\vm-domain-join.parameters.json")
-$azureVmEnableWindowsAuthExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\vm-enable-windows-auth.parameters.json")
 
 # Azure ADDS Deployments
 $azureNetworkResourceGroupName = "uk-official-networking-rg"
@@ -187,29 +184,6 @@ if ($Mode -eq "Workload" -Or $Mode -eq "DeployAll") {
 
  }
 
-##############################################################################
-##### Domain join VMs
-##############################################################################
-
-if ($Mode -eq "Post" -Or $Mode -eq "DeployAll") {
-
-
-    #Get Operational Resource groups
-	Write-Host "Get Operational resource group..."
-    $workloadResourceGroup = Get-AzureRmResourceGroup -Name $workloadResourceGroupName
-
-	#Domain join operational machines
-	Write-Host "Joining Operational Vms to domain..."
-    New-AzureRmResourceGroupDeployment -Name "vm-join-domain-deployment" -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azurenVmDomainJoinExtensionParametersFile
-
-	#Enable windows authentication
-    Write-Host "Enable Windows Auth for Operational Vms..."
-    New-AzureRmResourceGroupDeployment -Name "vm-enable-windows-auth"  -ResourceGroupName $workloadResourceGroup.ResourceGroupName `
-        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureVmEnableWindowsAuthExtensionParametersFile
-    
-    
- }
 
 
 

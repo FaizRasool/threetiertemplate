@@ -406,7 +406,7 @@ Portal.
   Set up IIS web server role for web tier|None required
   Enable Windows Auth for VMs|None required
   Deploy Microsoft Anti-malware to VMs|None required
-  Domain Join VMs|The provided template creates a demo 'treyresearch' domain. To ensure that Virtual Machines are correctly joined you can edit the vlues provided in the Deployment screen or edit the parameter configuration in the following files; [/parameters/azure/add-adds-domain-controller.parameters.json](/parameters/azure/add-adds-domain-controller.parameters.json); [/parameters/azure/vm-domain-join.parameters.json](/parameters/azure/vm-domain-join.parameters.json)
+  Domain Join VMs|Domain joining the Virtual Machines is a post deployment step and must be **manually** completed
                                                   
 
 ## Deployment Process
@@ -483,27 +483,6 @@ troubleshooting** blade.
 ![alt text](/images/create-official-workload-rg.JPG?raw=true "Create ADDS deployment").
 
 
-## Execute post deployment configuration 
-### (VM Domain Joining and Windows Authentication)
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
-</a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json" target="_blank">
-<img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.png"/>
-</a>
-
-1. Click on the *Deploy to Azure* button to begin the first stage of the deployment. The link takes you to the Azure Portal.
-2. Select **Use Existing** and select the resource group you created for the operational workload deployment from the **Resource group** drop down
-4. Some parameters can be edited in the deployment page. If greater customisation is requried this can be down through cloning and editing the templates directly, or in situ by editing the templates by clicking 'Edit template'.
-5. In the **Settings** textboxes, enter the AD domain name and Admin credentials.
-7. Review the terms and conditions, then click the **I agree to the terms and conditions stated above** checkbox.
-8. Click on the **Purchase** button.
-9. Check Azure portal notification for a message that the stage of deployment is complete and move on to the next if completed.
-10. If for some reason your deployment fails check the deployment messages blade for futher information.
-
-![alt text](/images/create-postdeployment.JPG?raw=true "Deploy post deployment configuration").
-
-
 
 ##(Optional) PowerShell Deployment 
 
@@ -518,7 +497,6 @@ To deploy this solution through PowerShell, you will need the latest version of 
 - `Infrastructure`: deploys the networking infrastructure
 - `ADDS`: deploys the VMs acting as Active Directory DS servers, deploys Active Directory to these VMs, and deploys the domain in Azure.
 - `Operational`: deploys the web, business and data tier VMs and load balancers
-- `Post`: Initiates post deployment configuration such as domain joining the Jumpbox VM.
 - `DeployAll`: deploys all the preceding deployments. 
 
 UK Governments Private Network Connectivity
