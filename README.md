@@ -394,9 +394,8 @@ Portal.
   Deploy  VNet network infrastructure|Enter resource group name during deployment
   Create VNet Peerings|None required|
   Deploy VPN Gateway|The template deploys an Azure environment with a public facing endpoint and an Azure Gateway to allow VPN setup between the Azure environment and your on-premises environment. To complete this VPN connection, you will need to provide the Local Gateway (your on-premises VPN public IP address) and complete the VPN connection set up locally. VPN Gateway requires local gateway configuration in the [/parameters/azure/ops-network.parameters.json](/parameters/azure/ops-network.parameters.json) template parameters file  or through the Azure portal.                                    
-  Deploying internet facing Application Gateway|For SSL termination, Application Gateway requires you SSL certificates to be uploaded. When provisioned the Application Gateway will instantiate a public IP address and domain name to allow access to the web application.|
-  Create Network Security Groups for VNETs|RDP access to the Management VNet Jumpbox must be secured to a trusted IP address range. It is important to amend the "sourceAddressPrefix" parameter with your own trusted source IP address range in the [/parameters/azure/nsg-rules.parameters.json](/parameters/azure/nsg-rules.parameters.json) 
-  template parameters file. NSG configuration for the operational VNet can be found at [/parameters/azure/ops-vent-nsgs.json](/parameters/azure/ops-vent-nsgs.json)
+  Deploying internet facing Application Gateway|For SSL termination, Application Gateway requires you SSL certificates to be uploaded. When provisioned the Application Gateway will instantiate a public IP address and domain name to allow access to the web application
+  Create Network Security Groups for VNETs|RDP access to the Management VNet Jumpbox must be secured to a trusted IP address range. It is important to amend the "sourceAddressPrefix" parameter with your own trusted source IP address range in the [/parameters/azure/nsg-rules.parameters.json](/parameters/azure/nsg-rules.parameters.json) template parameters file. NSG configuration for the operational VNet can be found at [/parameters/azure/ops-vent-nsgs.json](/parameters/azure/ops-vent-nsgs.json)
   Create ADDS resource group|Enter resource group name during deployment and edit the configuration fields if required
   Deploying ADDS servers|None required
   Updating DNS servers|None required
@@ -407,9 +406,7 @@ Portal.
   Set up IIS web server role for web tier|None required
   Enable Windows Auth for VMs|None required
   Deploy Microsoft Anti-malware to VMs|None required
-  Domain join VMs|The provided template creates a demo 'treyresearch' domain. To ensure that Virtual Machines are correctly joined you can edit the vlues provided in the Deployment screen or edit the parameter configuration in the following files; 
-  Domain Controller - [/parameters/azure/add-adds-domain-controller.parameters.json](/parameters/azure/add-adds-domain-controller.parameters.json);
-   [/parameters/azure/vm-domain-join.parameters.json](/parameters/azure/vm-domain-join.parameters.json) template parameters file;
+  Domain Join VMs|The provided template creates a demo 'treyresearch' domain. To ensure that Virtual Machines are correctly joined you can edit the vlues provided in the Deployment screen or edit the parameter configuration in the following files; [/parameters/azure/add-adds-domain-controller.parameters.json](/parameters/azure/add-adds-domain-controller.parameters.json); [/parameters/azure/vm-domain-join.parameters.json](/parameters/azure/vm-domain-join.parameters.json)
                                                   
 
 ## Deployment Process
