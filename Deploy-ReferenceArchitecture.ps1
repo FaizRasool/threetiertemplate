@@ -9,8 +9,8 @@ param(
   $Location,
   
   [Parameter(Mandatory=$false)]
-  [ValidateSet("Prepare", "Infrastructure", "ADDS", "Operational", "Post")]
-  $Mode = "Prepare"
+  [ValidateSet("DeployAll", "Infrastructure", "ADDS", "Operational", "Post")]
+  $Mode = "DeployAll"
 )
 
 $ErrorActionPreference = "Stop"
@@ -81,7 +81,7 @@ Login-AzureRmAccount -SubscriptionId $SubscriptionId  #| Out-Null
 # Deploy Vnet and VPN Infrastructure in cloud
 ##########################################################################
 
-if ($Mode -eq "Infrastructure" -Or $Mode -eq "Prepare") {
+if ($Mode -eq "Infrastructure" -Or $Mode -eq "DeployAll") {
 
 
     #Create resource group
@@ -125,7 +125,7 @@ if ($Mode -eq "Infrastructure" -Or $Mode -eq "Prepare") {
 ## Deploy ADDS forest in cloud
 ###########################################################################
 
-if ($Mode -eq "ADDS" -Or $Mode -eq "Prepare") {
+if ($Mode -eq "ADDS" -Or $Mode -eq "DeployAll") {
     # Deploy AD tier in azure
 
     # Creating ADDS resource group
@@ -161,7 +161,7 @@ if ($Mode -eq "ADDS" -Or $Mode -eq "Prepare") {
 ## Deploy operational tier workloads loadbalancers & VMs
 ###########################################################################
 
-if ($Mode -eq "Workload" -Or $Mode -eq "Prepare") {
+if ($Mode -eq "Workload" -Or $Mode -eq "DeployAll") {
 
     Write-Host "Creating workload resource group..."
     $workloadResourceGroup = New-AzureRmResourceGroup -Name $workloadResourceGroupName -Location $Location
@@ -191,7 +191,7 @@ if ($Mode -eq "Workload" -Or $Mode -eq "Prepare") {
 ##### Domain join VMs
 ##############################################################################
 
-if ($Mode -eq "Post" -Or $Mode -eq "Prepare") {
+if ($Mode -eq "Post" -Or $Mode -eq "DeployAll") {
 
 
     #Get Operational Resource groups

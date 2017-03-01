@@ -518,7 +518,7 @@ To deploy this solution through PowerShell, you will need the latest version of 
 - `ADDS`: deploys the VMs acting as Active Directory DS servers, deploys Active Directory to these VMs, and deploys the domain in Azure.
 - `Operational`: deploys the web, business and data tier VMs and load balancers
 - `Post`: Initiates post deployment configuration such as domain joining the Jumpbox VM.
-- `Prepare`: deploys all the preceding deployments. 
+- `DeployAll`: deploys all the preceding deployments. 
 
 UK Governments Private Network Connectivity
 ===========================================
