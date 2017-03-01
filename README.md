@@ -254,7 +254,7 @@ NCSC Security Matrix Compliance
  UK-OFFICIAL.
 
  The following matrix provides a high level alignment of the 14 cloud security principles the Microsoft Azure security model, a detailed
- mapping of the 14 principles can be found in Microsoft's [14 Cloud Security Controls for UK Cloud Using Microsoft Azure](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)
+ mapping of the 14 principles can be found in Microsoft's [Azure Blueprint for the UK Government](https://aka.ms/azureblueprintukg-cloud)
  whitepaper.
  
  ---
