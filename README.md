@@ -412,7 +412,7 @@ Portal.
 ## Deployment Process
 
 A deployment for this reference architecture is available on
-[GitHub](https://github.com/ben-houghton/threetiertemplate/tree/master/templates). The templates can be cloned or downloaded if customisation of parameters are requried.
+[GitHub](https://aka.ms/ukofficialwebapp). The templates can be cloned or downloaded if customisation of parameters are requried.
 The reference architecture is deployed in four stages. To deploy the architecture, follow these steps for each deployment stage -
 
 For Virtual Machines The parameter files include a hard-coded
@@ -483,7 +483,8 @@ troubleshooting** blade.
 ![alt text](/images/create-official-workload-rg.JPG?raw=true "Create ADDS deployment").
 
 
-## Execute post deployment configuration (VM Domain Joining and Windows Authentication)
+## Execute post deployment configuration 
+# (VM Domain Joining and Windows Authentication)
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fben-houghton%2Fthreetiertemplate%2Fmaster%2Ftemplates%2Fpostsetup.azuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
