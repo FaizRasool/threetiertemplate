@@ -16,13 +16,6 @@
         "description": "AD Domain"
       }
     },
-    "domainNetBiosName": {
-      "type": "string",
-      "defaultValue": "treyresearch",
-      "metadata": {
-        "description": "AD Domain Net Bios Name"
-      }
-    },
     "vmAdminUserName": {
       "type": "string",
       "defaultValue": "AdminUser",

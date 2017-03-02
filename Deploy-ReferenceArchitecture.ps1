@@ -110,7 +110,7 @@ if ($Mode -eq "Infrastructure" -Or $Mode -eq "DeployAll") {
 
 	#Create NSGs for ops VNET
 	 Write-Host "Deploying NSGs"
-	 New-AzureRmResourceGroupDeployment -Name "ops-nsg-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName ` 
+	 New-AzureRmResourceGroupDeployment -Name "ops-nsg-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
         -TemplateUri $nsgTemplate.AbsoluteUri -TemplateParameterFile $opsNsgParametersFile
 
 }
