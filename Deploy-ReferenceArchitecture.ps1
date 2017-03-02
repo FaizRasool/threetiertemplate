@@ -77,43 +77,43 @@ Login-AzureRmAccount -SubscriptionId $SubscriptionId  #| Out-Null
 # Deploy Vnet and VPN Infrastructure in cloud
 ##########################################################################
 
-#if ($Mode -eq "Infrastructure" -Or $Mode -eq "DeployAll") {
+if ($Mode -eq "Infrastructure" -Or $Mode -eq "DeployAll") {
 
-#    #Create resource group
-#	Write-Host "Creating Networking resource group..."
-#    $azureNetworkResourceGroup = New-AzureRmResourceGroup -Name $azureNetworkResourceGroupName -Location $Location
+    #Create resource group
+	Write-Host "Creating Networking resource group..."
+    $azureNetworkResourceGroup = New-AzureRmResourceGroup -Name $azureNetworkResourceGroupName -Location $Location
 
-#	# Deploy network infrastructure, VPN and App Gateway
-#    Write-Host "Deploying operations network, VPN and AppGateway infrastructure..."
-#    New-AzureRmResourceGroupDeployment -Name "ops-network-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
-#           -TemplateFile $opsNetworkInfrastructureTemplate -TemplateParameterFile $opsNetworkParametersFile
+	# Deploy network infrastructure, VPN and App Gateway
+    Write-Host "Deploying operations network, VPN and AppGateway infrastructure..."
+    New-AzureRmResourceGroupDeployment -Name "ops-network-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
+           -TemplateFile $opsNetworkInfrastructureTemplate -TemplateParameterFile $opsNetworkParametersFile
 
-#	#Deploy Mgmt network
-#    Write-Host "Deploying management network infrastructure..."
-#    New-AzureRmResourceGroupDeployment -Name "mgmt-network-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
-#           -TemplateUri $virtualNetworkTemplate.AbsoluteUri -TemplateParameterFile $azureMgmtVirtualNetworkParametersFile
+	#Deploy Mgmt network
+    Write-Host "Deploying management network infrastructure..."
+    New-AzureRmResourceGroupDeployment -Name "mgmt-network-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
+           -TemplateUri $virtualNetworkTemplate.AbsoluteUri -TemplateParameterFile $azureMgmtVirtualNetworkParametersFile
 
-#	#Create VNet Peerings
-#	Write-Host "Deploying Operational VNet Peering to Mgmt VNet..."
-#	New-AzureRmResourceGroupDeployment -Name "ops-vnetpeer-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
-#	-TemplateFile $vnetPeeringTemplate  -TemplateParameterFile $mgmtVnetPeeringParametersFile
+	#Create VNet Peerings
+	Write-Host "Deploying Operational VNet Peering to Mgmt VNet..."
+	New-AzureRmResourceGroupDeployment -Name "ops-vnetpeer-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
+	-TemplateFile $vnetPeeringTemplate  -TemplateParameterFile $mgmtVnetPeeringParametersFile
 
 
-#	Write-Host "Deploying Mgmt VNet Peering to Operational VNet..."
-#	New-AzureRmResourceGroupDeployment -Name "mgmt-vnetpeer-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
-#	-TemplateFile $vnetPeeringTemplate -TemplateParameterFile $operationalVnetPeeringParametersFile
+	Write-Host "Deploying Mgmt VNet Peering to Operational VNet..."
+	New-AzureRmResourceGroupDeployment -Name "mgmt-vnetpeer-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName `
+	-TemplateFile $vnetPeeringTemplate -TemplateParameterFile $operationalVnetPeeringParametersFile
 
-#	##Create NSGs for management VNET
-#	 Write-Host "Deploying NSGs"
-#	 New-AzureRmResourceGroupDeployment -Name "nsg-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName ` `
-#        -TemplateUri $nsgTemplate.AbsoluteUri -TemplateParameterFile $nsgParametersFile
+	##Create NSGs for management VNET
+	 Write-Host "Deploying NSGs"
+	 New-AzureRmResourceGroupDeployment -Name "nsg-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName ` `
+        -TemplateUri $nsgTemplate.AbsoluteUri -TemplateParameterFile $nsgParametersFile
 
-#	#Create NSGs for ops VNET
-#	 Write-Host "Deploying NSGs"
-#	 New-AzureRmResourceGroupDeployment -Name "ops-nsg-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName ` 
-#        -TemplateUri $nsgTemplate.AbsoluteUri -TemplateParameterFile $opsNsgParametersFile
+	#Create NSGs for ops VNET
+	 Write-Host "Deploying NSGs"
+	 New-AzureRmResourceGroupDeployment -Name "ops-nsg-deployment" -ResourceGroupName $azureNetworkResourceGroup.ResourceGroupName ` 
+        -TemplateUri $nsgTemplate.AbsoluteUri -TemplateParameterFile $opsNsgParametersFile
 
-#}
+}
 
 
 ##########################################################################
