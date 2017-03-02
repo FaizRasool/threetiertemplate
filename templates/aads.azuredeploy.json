@@ -40,7 +40,7 @@
   },
   "variables": {
     "templateBaseUrl": "https://raw.githubusercontent.com/mspnp/template-building-blocks/master/",
-    "localRepoBaseUrl": "https://raw.githubusercontent.com/ben-houghton/threetiertemplate/master/",
+    "localRepoBaseUrl": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/guidance-uk-official/three-tier-web-with-adds/",
     "operationalVirtualNetworkName": "azure-operational-vnet",
     "managementlVirtualNetworkName": "azure-mgmt-vnet",
     "buildingBlocks": {
@@ -151,7 +151,7 @@
                     "type": "CustomScriptExtension",
                     "typeHandlerVersion": "1.8",
                     "autoUpgradeMinorVersion": false,
-                    "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/guidance-identity-adds-trust/templates/onpremise/ad-forest-extension-settings-mapper.json",
+                    "settingsConfigMapperUri": "https://raw.githubusercontent.com/mspnp/reference-architectures/master/guidance-ra-identity-adds/templates/onpremise/adds-domain-controller-extension-settings-mapper.json",
                     "settingsConfig": {
                       "activeDirectorySettings": {
                         "domainName": "[parameters('domainName')]",
@@ -161,7 +161,7 @@
                         "safeModePassword": "[parameters('aDSafeModePassword')]"
                       },
                       "fileUris": [
-                        "https://raw.githubusercontent.com/mspnp/reference-architectures/master/guidance-identity-adds-trust/extensions/adds-forest.ps1"
+                        "https://raw.githubusercontent.com/mspnp/reference-architectures/master/guidance-ra-identity-adds/extensions/adds.ps1"
                       ]
                     },
                     "protectedSettingsConfig": {
