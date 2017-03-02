@@ -394,7 +394,7 @@ Portal.
   Create ADDS resource group|Enter resource group name during deployment and edit the configuration fields if required
   Deploying ADDS servers|None required
   Updating DNS servers|None required
-  Create ADDS domain|The provided templates create a demo 'treyresearch' domain. To ensure that the required Active Directory Domain is created with the desired domain name and administrative user the fields can be configured in the deployment screen or in the [/parameters/azure/create-adds-forest-extension.parameters.json](/parameters/azure/create-adds-forest-extension.parameters.json) template parameters file must be edited with the required values
+  Create ADDS domain|The provided templates create a demo 'treyresearch' domain. To ensure that the required Active Directory Domain is created with the desired domain name and administrative user the fields can be configured in the deployment screen or in the [/parameters/azure/add-adds-domain-controller.parameters.json](/parameters/azure/add-adds-domain-controller.parameters.json) template parameters file must be edited with the required values
   Create ADDS domain controller|None required
   Create operational workload Resource Group|Enter resource group name during deployment
   Deploy operational VM tiers and load balancers   |None required
