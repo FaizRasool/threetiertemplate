@@ -55,7 +55,6 @@ $nsgParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\
 $opsNsgParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\ops-vent-nsgs.json")
 #aads
 $azureAddsVirtualMachinesParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\virtualMachines-adds.parameters.json")
-$azureCreateAddsForestExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\create-adds-forest-extension.parameters.json")
 $azureAddAddsDomainControllerExtensionParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\add-adds-domain-controller.parameters.json")
 $azureVirtualNetworkDnsParametersFile = [System.IO.Path]::Combine($PSScriptRoot, "parameters\azure\virtualNetwork-adds-dns.parameters.json")
 #workloads
@@ -134,18 +133,13 @@ if ($Mode -eq "ADDS" -Or $Mode -eq "DeployAll") {
 		-ResourceGroupName $addsResourceGroup.ResourceGroupName  -TemplateUri $virtualMachineTemplate.AbsoluteUri `
 		-TemplateParameterFile $azureAddsVirtualMachinesParametersFile
 
-    # Remove the Azure DNS entry since the forest will create a DNS forwarding entry.
+    # Update Azure DNS entrys
     Write-Host "Updating virtual network DNS servers..."
     New-AzureRmResourceGroupDeployment -Name "operational-azure-dns-vnet-deployment" `
         -ResourceGroupName $addsResourceGroup.ResourceGroupName -TemplateUri $virtualNetworkTemplate.AbsoluteUri `
         -TemplateParameterFile $azureVirtualNetworkDnsParametersFile
 
-    Write-Host "Creating ADDS forest..."
-    New-AzureRmResourceGroupDeployment -Name "operational-azure-adds-forest-deployment" `
-        -ResourceGroupName $addsResourceGroup.ResourceGroupName `
-        -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureCreateAddsForestExtensionParametersFile
-
-    Write-Host "Creating ADDS domain controller..."
+    Write-Host "Creating ADDS domain..."
     New-AzureRmResourceGroupDeployment -Name "operational-azure-adds-dc-deployment" `
         -ResourceGroupName $addsResourceGroup.ResourceGroupName `
         -TemplateUri $virtualMachineExtensionsTemplate.AbsoluteUri -TemplateParameterFile $azureAddAddsDomainControllerExtensionParametersFile

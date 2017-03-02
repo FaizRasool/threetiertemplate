@@ -83,7 +83,7 @@ Architecture Diagram and Components
 
 12. **Network Security Groups:** [NSGs](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg) contain Access Control Lists that allow or Deny traffic within a VNet. NSGs can be used to secure traffic at a subnet or individual VM level.
 
-13. **Active Directory Domain Services (AD DS):** This architecture provides a dedicated [Active Directory](https://msdn.microsoft.com/library/azure/jj156090.aspx) [Active Directory Domain Services](https://technet.microsoft.com/library/dd448614.aspx) into a separate forest in the cloud.
+13. **Active Directory Domain Services (AD DS):** This architecture provides a dedicated [Active Directory](https://msdn.microsoft.com/library/azure/jj156090.aspx) [Active Directory Domain Services](https://technet.microsoft.com/library/dd448614.aspx) deployment.
 
 14. **Logging and Audit:** [Azure Activity Log](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) captures operations 
 taken on the resources in your subscription such as who initiated the operation, when the operation occurred, the status of the operation and the values of other properties that might help you research the operation. 
@@ -137,11 +137,7 @@ Guidance and Recommendations
 ### Identity 
 
 > **Active Directory Domain Services:** This architecture delivers an
-> Active Directory Domain Services forest in Azure with a one-way
-> outgoing trust relationship with an on-premises domain. The forest in
-> Azure contains a domain that does not exist on-premises, but because
-> of the trust relationship, logons made against on-premises domains can
-> be trusted for access to resources in the separate Azure domain. For
+> Active Directory Domain Services deployment in Azure w For
 > specific recommendations on implementing Active Directory in Azure,
 > see the following articles -
 >
@@ -398,7 +394,7 @@ Portal.
   Create ADDS resource group|Enter resource group name during deployment and edit the configuration fields if required
   Deploying ADDS servers|None required
   Updating DNS servers|None required
-  Create ADDS forest|The provided templates create a demo 'treyresearch' domain. To ensure that the required Active Directory Domain is created with the desired domain name and administrative user the fields can be configured in the deployment screen or in the [/parameters/azure/create-adds-forest-extension.parameters.json](/parameters/azure/create-adds-forest-extension.parameters.json) template parameters file must be edited with the required values
+  Create ADDS domain|The provided templates create a demo 'treyresearch' domain. To ensure that the required Active Directory Domain is created with the desired domain name and administrative user the fields can be configured in the deployment screen or in the [/parameters/azure/create-adds-forest-extension.parameters.json](/parameters/azure/create-adds-forest-extension.parameters.json) template parameters file must be edited with the required values
   Create ADDS domain controller|None required
   Create operational workload Resource Group|Enter resource group name during deployment
   Deploy operational VM tiers and load balancers   |None required
