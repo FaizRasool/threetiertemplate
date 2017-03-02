@@ -38,6 +38,7 @@
     <None Include="images\create-official-ops-rg.JPG" />
     <None Include="images\create-official-workload-rg.JPG" />
     <None Include="images\create-postdeployment.JPG" />
+    <None Include="images\diagram.png" />
     <None Include="metadata.json" />
     <None Include="parameters\azure\add-adds-domain-controller.parameters.json" />
     <None Include="parameters\azure\ops-vent-nsgs.json" />
